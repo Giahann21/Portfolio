@@ -4,6 +4,21 @@
 📍 Université Paris Nanterre
 
 ---
+### Compétences
+#### Data & Visualisation
+- **Python for Data Science**, **Power BI** (Dashboards, DAX), **R**, **SQL**, QGIS  
+- **Base de données relationnelles**, **PL/SQL (Oracle Database)**, **Excel avancé**, **SAS**  
+- Visualisation (Power BI, QGIS, PowerPoint), storytelling de données
+
+#### Machine Learning & Statistiques
+- Régression linéaire, clustering, arbres de décision  
+- Tests statistiques, ACP, modèles économétriques
+
+#### Bureautique & Programmation
+- Suite **Microsoft Office** (*PowerPoint, Excel, Word, Teams, Outlook*), Google Workspace  
+- Langages : Python, SQL, C/C++, Java
+
+---
 
 ### Expériences
 
