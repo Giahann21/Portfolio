@@ -20,7 +20,7 @@
 
 ---
 
-### Expériences
+### Expériences professionnelles
 
 **Chargée de consultation du service Achats @ GTM Bâtiment (VINCI Construction)**  
 _Juillet 2023 - Septembre 2023_
@@ -38,7 +38,7 @@ _Juin 2025 - Septembre 2025_
 
 ---
 
-### Projets
+### Projets académiques
 
 - [📊 Analyse du marché du travail](https://github.com/han-dinh/projet-marche-travail)  
 - [📈 Dashboard Power BI - Analyse des ventes](https://github.com/han-dinh/dashboard-ventes)
