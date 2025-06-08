@@ -15,7 +15,7 @@
 - Tests statistiques, ACP, modèles économétriques
 
 #### Bureautique & Programmation
-- Suite **Microsoft Office** (*PowerPoint, Excel, Word, Teams, Outlook*), Google Workspace  
+- Suite Microsoft Office (*PowerPoint, Excel, Word, Teams, Outlook*), Google Workspace  
 - Langages : Python, SQL, C/C++, Java
 
 ---
