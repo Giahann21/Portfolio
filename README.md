@@ -6,13 +6,13 @@
 ---
 
 ### Expériences
-Chargée de consultation du service Achats @ GTM Bâtiment (VINCI Construction)
+Chargée de consultation du service Achats @ GTM Bâtiment (VINCI Construction)**
 Juillet 2023 - Septembre 2023
 - Mise à jour de la base de données des fournisseurs (France et international) 
 - Création de tableaux comparatifs (Excel), rédaction de rapports
 - Suivi et analyse des KPIs de performance achats
 
-Data Analyst du service Commerciale @ Avestar Packaging Group Join Stock 
+Data Analyst du service Commerciale @ Avestar Packaging Group Join Stock**
 Juin 2025 - Septembre 2025
 - Analyse des ventes et suivi des KPIs
 - Segmentation clients et analyse de rentabilité produits
