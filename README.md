@@ -1,3 +1,5 @@
+# Data Analyst | Data Scientist
+
 🎓 Étudiante en Master Data Science for Social Sciences  
 📍 Université Paris Nanterre
 
@@ -17,5 +19,5 @@ Chargée de consultation @ GTM Bâtiment
 
 ### Contact
 
-📧 dinhtgh59@email.com  
-🔗 [LinkedIn](https://linkedin.com/in/han-dinh)
+📧 dinhtgh59@gmail.com  
+🔗 [LinkedIn](https://www.linkedin.com/in/dinh-tgh/)
