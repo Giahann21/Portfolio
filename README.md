@@ -1,7 +1,7 @@
 # Data Analyst | Data Scientist
 
 🎓 Étudiante en Master d'Ingénierie Data Science for Social Sciences  
-📍 Université Paris Nanterre
+🏫 Université Paris Nanterre
 
 ---
 ### Compétences
