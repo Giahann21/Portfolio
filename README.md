@@ -40,10 +40,10 @@ _Juin 2025 - Septembre 2025_
 
 ### Projets académiques
 
-
-- [🗓️ Création d’un système d’emploi du temps](https://emplois-du-temps.onrender.com) — [Voir le code](https://github.com/Giahann21/Emplois-du-temps)   
-- [📊 Analyse du marché du travail](https://github.com/han-dinh/projet-marche-travail)  
+- [📊 Analyse des tensions sur le marché du travail - Technologie: R](https://github.com/han-dinh/projet-marche-travail)
+- [🗳️ Analyse des comportements électoraux et des caractéristiques socio-démographiques - Technologie: Python for Data Science]
 - [📈 Dashboard Power BI - Analyse des ventes](https://github.com/han-dinh/dashboard-ventes)
+- [🗓️ Création d’un système d’emploi du temps - Technologies: Python, SQLite, HTML, CSS, JS](https://emplois-du-temps.onrender.com) — [Voir le code](https://github.com/Giahann21/Emplois-du-temps)   
 
 ---
 
