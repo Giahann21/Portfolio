@@ -42,7 +42,7 @@ _Juin 2025 - Septembre 2025_
 
 - [📊 Analyse des tensions sur le marché du travail - Technologie: R](https://github.com/Giahann21/projet-data-r)
 - [🗳️ Analyse des comportements électoraux et des caractéristiques socio-démographiques - Technologie: Python for Data Science](https://github.com/Giahann21/projet-data-python)
-- [📈 Dashboard Power BI - Analyse des ventes](./Analyse des ventes.pdf)
+- [📈 Dashboard Power BI - Analyse des ventes](./Analyse%20des%20ventes.pdf) 
 - [🗓️ Création d’un système d’emploi du temps - Technologies: Python, SQLite, HTML, CSS, JS](https://emplois-du-temps.onrender.com) — [Voir le code](https://github.com/Giahann21/Emplois-du-temps)   
 
 ---
