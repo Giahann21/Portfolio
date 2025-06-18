@@ -50,5 +50,5 @@ _Juin 2025 - Septembre 2025_
 ### Contact
 
 📧 dinhtgh59@gmail.com  
-🔗 [LinkedIn](https://www.linkedin.com/in/dinh-tgh/)
-📞 +33 6 18 35 92 24
+🔗 [LinkedIn](https://www.linkedin.com/in/dinh-tgh/)  
+📱 +33 6 18 35 92 24
