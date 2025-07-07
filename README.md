@@ -7,7 +7,7 @@
 ### Compétences
 #### Data & Visualisation
 - **Python for Data Science**, **Power BI** (Dashboards, DAX), **R**, **SQL**, QGIS  
-- **Base de données relationnelles**, **PL/SQL (Oracle Database)**, **Excel avancé**, **SAS**  
+- **Base de données relationnelles**, **PL/SQL (Oracle Database)**, **Excel (fontions avancées, VBA)**, **SAS**  
 - Visualisation (Power BI, QGIS, PowerPoint), storytelling de données
 
 #### Machine Learning & Statistiques
