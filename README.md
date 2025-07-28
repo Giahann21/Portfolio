@@ -1,4 +1,4 @@
-# Futur ingénieure Data Analyst 
+  # Futur ingénieure Data Analyst 
 
 🎓 Étudiante en Master d'Ingénierie Data Science for Social Sciences  
 🏫 Université Paris Nanterre
@@ -44,7 +44,7 @@ _Juin 2025 - Septembre 2025_
 - [🗳️ Analyse des comportements électoraux et des caractéristiques socio-démographiques - Technologie: Python for Data Science](https://github.com/Giahann21/projet-data-python)
 - [📈 Dashboard Power BI - Analyse des ventes](./Analyse%20des%20ventes.pdf) 
 - [🗓️ Création d’un système d’emploi du temps - Technologies: Python, SQLite, HTML, CSS, JS](https://emplois-du-temps.onrender.com) — [Voir le code](https://github.com/Giahann21/Emplois-du-temps)   
-- [🗓️ Recherche documentaire sur les matières premières critiques (critical raw materials) - Technologies: R](./critical_raw_materials.pdf)
+- [📚 Recherche documentaire sur les matières premières critiques (critical raw materials) - Technologies: R](./critical_raw_materials.pdf)
 
 ---
 
