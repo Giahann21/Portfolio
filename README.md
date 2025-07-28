@@ -25,16 +25,16 @@
 **Chargée de consultation du service Achats @ GTM Bâtiment (VINCI Construction)**  
 _Juillet 2023 - Septembre 2023_
 
-- Mise à jour de la base de données des fournisseurs (France et international)  
-- Création de tableaux comparatifs (Excel), rédaction de rapports  
-- Suivi et analyse des KPIs de performance achats  
+- Sourcing et mettre à jour la base de données des fournisseurs (France et international)
+- Créer des tableaux comparatifs des prix (sur Excel) et rédiger des rapports facilitant le choix des prestataires
+- Suivre les KPIs achats afin de contribuer à l’optimisation des coûts et à la performance du service
 
 **Data Analyst du service Commerciale @ Avestar Packaging Group Join Stock**  
 _Juin 2025 - Septembre 2025_
 
-- Analyse des ventes et suivi des KPIs  
-- Segmentation clients et analyse de rentabilité produits  
-- Création de rapports interactifs sous Power BI  
+- Analyser les ventes et suivre les KPIs pour identifier les tendances, anticiper les ruptures
+- Segmenter les clients et analyser la rentabilité des produits afin d’optimiser la supply chain
+- Créer des rapports interactifs sous Power BI pour piloter la performance en temps réel
 
 ---
 
