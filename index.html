@@ -7,17 +7,19 @@
   <meta name="description" content="Portfolio de projets en Data Science, Econométrie, Power BI, R et Python." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <!-- Inter + Playfair Display pour un rendu plus élégant -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg:#0a0a0a;           /* noir profond */
-      --bg2:#141414;          /* noir anthracite */
-      --card:#1a1a1a;         /* fond des cartes */
-      --muted:#b5b5b5;        /* gris clair */
-      --text:#f5f5f5;         /* blanc cassé */
-      --primary:#d4af37;      /* or (gold) */
-      --accent:#ffd700;       /* doré vif */
-      --ring:rgba(212,175,55,.35);
+      /* Palette noir & bleu élégant */
+      --bg:#0b0e13;          /* noir bleuté profond */
+      --bg2:#0a0a0a;         /* noir anthracite */
+      --card:#0f172a;        /* bleu nuit (cartes) */
+      --muted:#9fb0c2;       /* gris bleuté doux */
+      --text:#e8eef7;        /* blanc bleuté */
+      --primary:#60a5fa;     /* bleu */
+      --accent:#22d3ee;      /* cyan */
+      --ring:rgba(96,165,250,.35); /* halo bleu */
     }
     *{box-sizing:border-box}
     html,body{margin:0;height:100%}
@@ -25,19 +27,20 @@
     body{
       font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
       background:
-        radial-gradient(1200px 800px at 10% -10%, #2b2b2b 0%, transparent 60%),
-        radial-gradient(900px 600px at 110% 10%, #3a3a3a 0%, transparent 50%),
+        radial-gradient(1200px 800px at 10% -10%, #1b263b 0%, transparent 60%),
+        radial-gradient(900px 600px at 110% 10%, #0b1220 0%, transparent 55%),
         linear-gradient(180deg, var(--bg2), var(--bg));
       color:var(--text);
       line-height:1.6;
     }
+    h1,h2,h3{font-family:"Playfair Display", serif; letter-spacing:.2px; color:var(--text)}
     a{color:var(--primary);text-decoration:none}
-    a:hover{filter:brightness(1.1)}
+    a:hover{filter:brightness(1.08)}
     header{
       position:sticky;top:0;z-index:50;
-      background:linear-gradient(180deg,rgba(10,10,10,.9),rgba(10,10,10,.6));
+      background:linear-gradient(180deg,rgba(10,13,19,.9),rgba(10,13,19,.55));
       backdrop-filter:saturate(160%) blur(8px);
-      border-bottom:1px solid rgba(212,175,55,.25);
+      border-bottom:1px solid rgba(96,165,250,.28);
     }
     nav{max-width:1080px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:12px 20px}
     nav .brand{font-weight:800;letter-spacing:.3px}
@@ -46,58 +49,58 @@
     nav a:focus, nav a:hover{outline:none;box-shadow:0 0 0 6px var(--ring);color:var(--primary)}
     .container{max-width:1080px;margin:0 auto;padding:40px 20px}
     .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center;padding:48px 0}
-    .hero h1{font-size:clamp(28px,4.5vw,48px);line-height:1.1;margin:.2em 0}
+    .hero h1{font-size:clamp(28px,4.5vw,50px);line-height:1.1;margin:.2em 0}
     .hero p{color:var(--muted);font-size:clamp(14px,2.2vw,18px)}
     .pill{
       display:inline-flex;gap:8px;align-items:center;
-      background:rgba(212,175,55,.12);
-      border:1px solid rgba(212,175,55,.28);
-      padding:8px 12px;border-radius:999px;color:#fff3c2
+      background:rgba(96,165,250,.12);
+      border:1px solid rgba(96,165,250,.28);
+      padding:8px 12px;border-radius:999px;color:#d6e8ff
     }
     .cta{display:flex;gap:12px;margin-top:18px}
     .btn{
       background:linear-gradient(135deg,var(--primary),var(--accent));
-      color:#0a0a0a;
+      color:#06121f;
       padding:10px 16px;border-radius:12px;font-weight:700;border:none;cursor:pointer
     }
     .btn.secondary{
-      background:transparent;color:var(--primary);
-      border:1px solid rgba(212,175,55,.55)
+      background:transparent;color:var(--text);
+      border:1px solid rgba(255,255,255,.14)
     }
     .grid{display:grid;gap:16px}
     .projects{grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
     .card{
       background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));
-      border:1px solid rgba(212,175,55,.25);
-      border-radius:18px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.4)
+      border:1px solid rgba(96,165,250,.25);
+      border-radius:18px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.35)
     }
     .card img{width:100%;height:160px;object-fit:cover;display:block}
     .card .content{padding:14px}
     .tag{
-      display:inline-block;background:rgba(212,175,55,.15);
-      border:1px solid rgba(212,175,55,.4);padding:4px 10px;border-radius:999px;font-size:12px;color:var(--primary)
+      display:inline-block;background:rgba(96,165,250,.15);
+      border:1px solid rgba(96,165,250,.4);padding:4px 10px;border-radius:999px;font-size:12px;color:var(--primary)
     }
     .card h3{margin:10px 0 6px;font-size:18px}
-    .card p{margin:0;color:#d0d0d0;font-size:14px}
+    .card p{margin:0;color:#c9d6e2;font-size:14px}
     section{padding:20px 0}
-    footer{border-top:1px solid rgba(212,175,55,.25);padding:28px 20px;color:#cfcfcf}
+    footer{border-top:1px solid rgba(96,165,250,.28);padding:28px 20px;color:#b9c8d6}
 
     /* vignettes pour compétences clés */
     .skill-card{display:flex;flex-direction:column;align-items:center;text-align:center}
-    .skill-card img{width:60px;height:60px;margin-top:16px}
+    .skill-card img{width:60px;height:60px;margin-top:16px; filter:drop-shadow(0 8px 18px rgba(0,0,0,.35))}
 
-    /* Animations reveal + stagger */
-    .reveal-init{opacity:0; transform:translateY(24px); transition:opacity .7s cubic-bezier(.22,.61,.36,1), transform .7s cubic-bezier(.22,.61,.36,1)}
+    /* Animations reveal + stagger (élégant) */
+    .reveal-init{opacity:0; transform:translateY(22px); transition:opacity .7s cubic-bezier(.22,.61,.36,1), transform .7s cubic-bezier(.22,.61,.36,1)}
     .reveal-active{opacity:1; transform:none}
     .reveal-stagger > *{--stagger:0}
-    .reveal-stagger > *:nth-child(1){--stagger:.02s}
-    .reveal-stagger > *:nth-child(2){--stagger:.08s}
-    .reveal-stagger > *:nth-child(3){--stagger:.14s}
-    .reveal-stagger > *:nth-child(4){--stagger:.20s}
-    .reveal-stagger > *:nth-child(5){--stagger:.26s}
-    .reveal-stagger > *:nth-child(6){--stagger:.32s}
+    .reveal-stagger > *:nth-child(1){--stagger:.04s}
+    .reveal-stagger > *:nth-child(2){--stagger:.1s}
+    .reveal-stagger > *:nth-child(3){--stagger:.16s}
+    .reveal-stagger > *:nth-child(4){--stagger:.22s}
+    .reveal-stagger > *:nth-child(5){--stagger:.28s}
+    .reveal-stagger > *:nth-child(6){--stagger:.34s}
     .reveal-stagger > *{transition-delay:var(--stagger)}
-    .card.reveal-init{transform:translateY(18px) scale(.985)}
+    .card.reveal-init{transform:translateY(16px) scale(.985)}
     @media (prefers-reduced-motion: reduce){
       .reveal-init,.reveal-active{opacity:1; transform:none; transition:none}
     }
@@ -245,15 +248,17 @@
     </section>
 
     <section id="contact" class="reveal-init" style="text-align:center; position:relative; padding:80px 20px; background:
-      linear-gradient(180deg, rgba(255,215,0,.08), rgba(0,0,0,.95)); border-top:1px solid rgba(212,175,55,.25); border-radius:18px;">
+      radial-gradient(700px 400px at 50% 0%, rgba(34,211,238,.15), transparent 60%),
+      linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.00)),
+      var(--bg); border-top:1px solid rgba(96,165,250,.28); border-radius:18px;">
       <h2 style="letter-spacing:3px; font-size:14px; color:var(--primary); margin-bottom:12px;">CONTACTEZ-MOI</h2>
-      <h3 style="font-size:clamp(22px,4vw,36px); font-weight:400; line-height:1.4; margin:0 auto; max-width:720px; color:var(--text);">
+      <h3 style="font-size:clamp(22px,4vw,36px); font-weight:600; line-height:1.35; margin:0 auto; max-width:720px; color:var(--text);">
         Opportunités d'emploi ? <br> Envoyez un message.
       </h3>
       <div style="margin-top:40px;">
         <a href="https://www.linkedin.com/in/dinh-tgh/" target="_blank" rel="noreferrer"
            style="display:inline-flex; align-items:center; justify-content:center; width:64px; height:64px;
-                  border-radius:50%; background:linear-gradient(135deg,var(--primary),var(--accent)); color:#0a0a0a; font-size:28px; font-weight:700;
+                  border-radius:50%; background:linear-gradient(135deg,var(--primary),var(--accent)); color:#06121f; font-size:28px; font-weight:700;
                   text-decoration:none; box-shadow:0 6px 20px rgba(0,0,0,.35); transition:transform .3s ease;">
           →
         </a>
@@ -272,7 +277,7 @@
       <circle id="progressCircle" cx="22" cy="22" r="19" fill="none" stroke="var(--primary)" stroke-width="4"
               stroke-linecap="round" transform="rotate(-90 22 22)" stroke-dasharray="119.38" stroke-dashoffset="119.38"/>
       <text id="progressText" x="50%" y="52%" dominant-baseline="middle" text-anchor="middle"
-            font-size="11" font-weight="800" fill="#0a0a0a">0%</text>
+            font-size="11" font-weight="800" fill="#06121f">0%</text>
     </svg>
   </button>
 
