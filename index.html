@@ -10,42 +10,77 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg:#0b0f19;--card:#121829;--muted:#94a3b8;--text:#e5e7eb;--primary:#6ee7b7;--accent:#60a5fa;--ring:rgba(96,165,250,.35)
+      --bg:#0a0a0a;           /* noir profond */
+      --bg2:#141414;          /* noir anthracite */
+      --card:#1a1a1a;         /* fond des cartes */
+      --muted:#b5b5b5;        /* gris clair */
+      --text:#f5f5f5;         /* blanc cassé */
+      --primary:#d4af37;      /* or (gold) */
+      --accent:#ffd700;       /* doré vif */
+      --ring:rgba(212,175,55,.35);
     }
     *{box-sizing:border-box}
     html,body{margin:0;height:100%}
     html{scroll-behavior:smooth}
     body{
       font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
-      background:radial-gradient(1200px 800px at 10% -10%,#1f2937 0,transparent 60%),radial-gradient(1000px 700px at 110% 10%,#0ea5e9 0,transparent 50%),var(--bg);
-      color:var(--text);line-height:1.6
+      background:
+        radial-gradient(1200px 800px at 10% -10%, #2b2b2b 0%, transparent 60%),
+        radial-gradient(900px 600px at 110% 10%, #3a3a3a 0%, transparent 50%),
+        linear-gradient(180deg, var(--bg2), var(--bg));
+      color:var(--text);
+      line-height:1.6;
     }
     a{color:var(--primary);text-decoration:none}
     a:hover{filter:brightness(1.1)}
-    header{position:sticky;top:0;background:rgba(11,15,25,.6);backdrop-filter:saturate(160%) blur(8px);border-bottom:1px solid rgba(255,255,255,.06);z-index:50}
+    header{
+      position:sticky;top:0;z-index:50;
+      background:linear-gradient(180deg,rgba(10,10,10,.9),rgba(10,10,10,.6));
+      backdrop-filter:saturate(160%) blur(8px);
+      border-bottom:1px solid rgba(212,175,55,.25);
+    }
     nav{max-width:1080px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:12px 20px}
     nav .brand{font-weight:800;letter-spacing:.3px}
     nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0}
-    nav a{padding:8px 10px;border-radius:10px}
-    nav a:focus, nav a:hover{outline:none;box-shadow:0 0 0 6px var(--ring)}
+    nav a{padding:8px 10px;border-radius:10px;color:var(--text)}
+    nav a:focus, nav a:hover{outline:none;box-shadow:0 0 0 6px var(--ring);color:var(--primary)}
     .container{max-width:1080px;margin:0 auto;padding:40px 20px}
     .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center;padding:48px 0}
     .hero h1{font-size:clamp(28px,4.5vw,48px);line-height:1.1;margin:.2em 0}
     .hero p{color:var(--muted);font-size:clamp(14px,2.2vw,18px)}
-    .pill{display:inline-flex;gap:8px;align-items:center;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);padding:8px 12px;border-radius:999px;color:#cbd5e1}
+    .pill{
+      display:inline-flex;gap:8px;align-items:center;
+      background:rgba(212,175,55,.12);
+      border:1px solid rgba(212,175,55,.28);
+      padding:8px 12px;border-radius:999px;color:#fff3c2
+    }
     .cta{display:flex;gap:12px;margin-top:18px}
-    .btn{background:linear-gradient(135deg,var(--accent),#22d3ee);color:#001; padding:10px 16px;border-radius:12px;font-weight:700;border:none;cursor:pointer}
-    .btn.secondary{background:transparent;color:var(--text);border:1px solid rgba(255,255,255,.14)}
+    .btn{
+      background:linear-gradient(135deg,var(--primary),var(--accent));
+      color:#0a0a0a;
+      padding:10px 16px;border-radius:12px;font-weight:700;border:none;cursor:pointer
+    }
+    .btn.secondary{
+      background:transparent;color:var(--primary);
+      border:1px solid rgba(212,175,55,.55)
+    }
     .grid{display:grid;gap:16px}
     .projects{grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
-    .card{background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.08);border-radius:18px;overflow:hidden}
+    .card{
+      background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));
+      border:1px solid rgba(212,175,55,.25);
+      border-radius:18px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.4)
+    }
     .card img{width:100%;height:160px;object-fit:cover;display:block}
     .card .content{padding:14px}
-    .tag{display:inline-block;background:#0b1220;border:1px solid rgba(255,255,255,.1);padding:4px 10px;border-radius:999px;font-size:12px;color:#cbd5e1}
+    .tag{
+      display:inline-block;background:rgba(212,175,55,.15);
+      border:1px solid rgba(212,175,55,.4);padding:4px 10px;border-radius:999px;font-size:12px;color:var(--primary)
+    }
     .card h3{margin:10px 0 6px;font-size:18px}
-    .card p{margin:0;color:#a7b0c4;font-size:14px}
+    .card p{margin:0;color:#d0d0d0;font-size:14px}
     section{padding:20px 0}
-    footer{border-top:1px solid rgba(255,255,255,.08);padding:28px 20px;color:#94a3b8}
+    footer{border-top:1px solid rgba(212,175,55,.25);padding:28px 20px;color:#cfcfcf}
 
     /* vignettes pour compétences clés */
     .skill-card{display:flex;flex-direction:column;align-items:center;text-align:center}
@@ -71,7 +106,7 @@
     .progress-btn{
       position:fixed; right:16px; bottom:16px; width:56px; height:56px;
       border-radius:50%; border:none; cursor:pointer; z-index:60;
-      background:linear-gradient(135deg,var(--accent),#22d3ee);
+      background:linear-gradient(135deg,var(--primary),var(--accent));
       display:grid; place-items:center; padding:0; box-shadow:0 10px 30px rgba(0,0,0,.35)
     }
     .progress-btn:hover{filter:brightness(1.06)}
@@ -209,17 +244,16 @@
       </ul>
     </section>
 
-    <section id="contact" class="reveal-init" style="text-align:center; position:relative; padding:80px 20px; background:#0b0f19;">
-      <h2 style="letter-spacing:3px; font-size:14px; color:#94a3b8; margin-bottom:12px;">CONTACTEZ-MOI</h2>
+    <section id="contact" class="reveal-init" style="text-align:center; position:relative; padding:80px 20px; background:
+      linear-gradient(180deg, rgba(255,215,0,.08), rgba(0,0,0,.95)); border-top:1px solid rgba(212,175,55,.25); border-radius:18px;">
+      <h2 style="letter-spacing:3px; font-size:14px; color:var(--primary); margin-bottom:12px;">CONTACTEZ-MOI</h2>
       <h3 style="font-size:clamp(22px,4vw,36px); font-weight:400; line-height:1.4; margin:0 auto; max-width:720px; color:var(--text);">
-        Demande de travail, Opportunités d'emploi ? <br> Envoyez un message.
+        Opportunités d'emploi ? <br> Envoyez un message.
       </h3>
-    
-      <!-- Bouton rond flèche -->
       <div style="margin-top:40px;">
         <a href="https://www.linkedin.com/in/dinh-tgh/" target="_blank" rel="noreferrer"
            style="display:inline-flex; align-items:center; justify-content:center; width:64px; height:64px;
-                  border-radius:50%; background:var(--primary); color:#0b0f19; font-size:28px; font-weight:700;
+                  border-radius:50%; background:linear-gradient(135deg,var(--primary),var(--accent)); color:#0a0a0a; font-size:28px; font-weight:700;
                   text-decoration:none; box-shadow:0 6px 20px rgba(0,0,0,.35); transition:transform .3s ease;">
           →
         </a>
@@ -228,17 +262,17 @@
   </main>
 
   <footer>
-    © <span id="y"></span> Tran Gia Han DINN — Tous droits réservés.
+    © <span id="y"></span> Tran Gia Han DINH — Tous droits réservés.
   </footer>
 
   <!-- Bouton % progression (cercle SVG) -->
   <button id="progressBtn" class="progress-btn" aria-label="Progression de lecture">
     <svg viewBox="0 0 44 44" width="56" height="56">
       <circle cx="22" cy="22" r="19" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="4"/>
-      <circle id="progressCircle" cx="22" cy="22" r="19" fill="none" stroke="#0ea5e9" stroke-width="4"
+      <circle id="progressCircle" cx="22" cy="22" r="19" fill="none" stroke="var(--primary)" stroke-width="4"
               stroke-linecap="round" transform="rotate(-90 22 22)" stroke-dasharray="119.38" stroke-dashoffset="119.38"/>
       <text id="progressText" x="50%" y="52%" dominant-baseline="middle" text-anchor="middle"
-            font-size="11" font-weight="800" fill="#001">0%</text>
+            font-size="11" font-weight="800" fill="#0a0a0a">0%</text>
     </svg>
   </button>
 
@@ -246,7 +280,7 @@
     // année footer
     document.getElementById('y').textContent = new Date().getFullYear();
 
-    // Reveal on scroll (respecte prefers-reduced-motion)
+    // Reveal on scroll
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (!prefersReduced) {
       const observer = new IntersectionObserver((entries)=>{
