@@ -42,16 +42,21 @@
     section{padding:20px 0}
     .two-col{display:grid;grid-template-columns:1fr 1fr;gap:20px}
     footer{border-top:1px solid rgba(255,255,255,.08);padding:28px 20px;color:#94a3b8}
+    /* petites vignettes pour compétences clés */
+    .skill-card{display:flex;flex-direction:column;align-items:center;text-align:center}
+    .skill-card img{width:60px;height:60px;margin-top:16px}
     @media (max-width:900px){.hero{grid-template-columns:1fr}.two-col{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
   <header>
     <nav>
-      <div class="brand">Gia Han DINH · Data</div>
+      <div class="brand">Tran Gia Han DINH · Data</div>
       <ul>
-        <li><a href="#projets">Projets</a></li>
         <li><a href="#skills">Compétences</a></li>
+        <li><a href="#key-skills">Compétences clés</a></li>
+        <li><a href="#projets">Projets</a></li>
+        <li><a href="#experiences">Expériences</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
@@ -61,13 +66,13 @@
     <section class="hero">
       <div>
         <span class="pill">📍 Paris · Data Science for Social Sciences</span>
-        <h1>Bonjour, je suis Gia Han — Data Analyst & Étudiante CMI (D3S)</h1>
-        <p><p>
-  J’explore la data à travers la conception de tableaux de bord Power BI, 
-  l’analyse en R/Python et la modélisation de bases de données, 
-  avec l’ambition d’appliquer ces compétences au secteur financier. 
-  Voici une sélection de projets.
-</p></p>
+        <h1>Bonjour, je suis Gia&nbsp;Han — Data Analyst & Étudiante CMI (D3S)</h1>
+        <p>
+          J’explore la data à travers la conception de tableaux de bord Power BI, 
+          l’analyse en R/Python et la modélisation de bases de données,
+          avec l’ambition d’appliquer ces compétences au secteur financier.
+          Voici une sélection de projets.
+        </p>
         <div class="cta">
           <a class="btn" href="#projets">Voir mes projets</a>
           <a class="btn secondary" href="CV_Han_Dinh.pdf" target="_blank" rel="noreferrer">Télécharger mon CV</a>
@@ -75,17 +80,55 @@
       </div>
       <div>
         <div class="card">
-          <a href="Analyse des ventes.pdf" target="_blank" rel="noopener">
+          <a href="Analyse%20des%20ventes.pdf" target="_blank" rel="noopener">
             <img src="analyse_ventes.png" alt="Aperçu Dashboard Ventes" />
           </a>
           <div class="content">
             <span class="tag">Power BI</span>
-            <h3>Dashboard Analyse Ventes </h3>
+            <h3>Dashboard Analyse Ventes</h3>
             <p>Suivi CA, marge, segmentation clients, rentabilité produits.</p>
-            <p><a href="Analyse des ventes.pdf" target="_blank">Voir le PDF</a></p>
+            <p><a href="Analyse%20des%20ventes.pdf" target="_blank" rel="noopener">📄 Voir le PDF</a></p>
           </div>
         </div>
       </div>
+    </section>
+
+    <!-- COMPÉTENCES CLÉS AVEC IMAGES -->
+    <section id="key-skills">
+      <h2>Compétences clés</h2>
+      <div class="grid" style="grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px;">
+        <div class="card skill-card">
+          <img src="assets/data-analysis.png" alt="Analyse de données">
+          <div class="content">
+            <h3>Analyse de données</h3>
+            <p>R, Python (pandas, matplotlib), SQL</p>
+          </div>
+        </div>
+        <div class="card skill-card">
+          <img src="assets/data-viz.png" alt="Visualisation de données">
+          <div class="content">
+            <h3>Visualisation</h3>
+            <p>Power BI (DAX, Power Query, Deneb), ggplot2</p>
+          </div>
+        </div>
+        <div class="card skill-card">
+          <img src="assets/database.png" alt="Bases de données">
+          <div class="content">
+            <h3>Bases de données</h3>
+            <p>Conception, modélisation, optimisation</p>
+          </div>
+        </div>
+        <div class="card skill-card">
+          <img src="assets/finance.png" alt="Finance & économie">
+          <div class="content">
+            <h3>Finance & économie</h3>
+            <p>Économétrie appliquée, indicateurs financiers, reporting</p>
+          </div>
+        </div>
+      </div>
+      <p style="font-size:13px;color:#9aa7bd;margin-top:8px">
+        Place tes icônes dans <code>/assets/</code> et ajuste les noms de fichiers si besoin.
+      </p>
     </section>
 
     <section id="projets">
@@ -132,7 +175,7 @@
           <li>QGIS (EPSG:2154, géotraitements)</li>
         </ul>
       </div>
-      <div>
+      <div id="experiences">
         <h2>Expériences</h2>
         <ul>
           <li>Data Analyst — Avestar Packaging (2025)</li>
@@ -144,7 +187,7 @@
 
     <section id="contact">
       <h2>Contact</h2>
-      <p>Vous pouvez me joindre via <a href="mailto:dinhtgh59@gmail.com.com">dinhtgh59@gmail.com</a> ou <a href="https://giahann21.github.io/Portfolio/" target="_blank" rel="noreferrer">GitHub</a> / <a href="https://www.linkedin.com/in/dinh-tgh/" target="_blank" rel="noreferrer">LinkedIn</a>.</p>
+      <p>Vous pouvez me joindre via <a href="mailto:dinhtgh59@gmail.com">dinhtgh59@gmail.com</a> ou <a href="https://giahann21.github.io/Portfolio/" target="_blank" rel="noreferrer">GitHub</a> / <a href="https://www.linkedin.com/in/dinh-tgh/" target="_blank" rel="noreferrer">LinkedIn</a>.</p>
       <p style="font-size:13px;color:#9aa7bd">Astuce : pour un formulaire direct sans backend, utilisez un service comme Formspree et placez leur action sur un &lt;form&gt;.</p>
     </section>
   </main>
