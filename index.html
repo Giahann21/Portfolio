@@ -45,8 +45,30 @@
     nav{max-width:1080px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:12px 20px}
     nav .brand{font-weight:800;letter-spacing:.3px}
     nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0}
-    nav a{padding:8px 10px;border-radius:10px;color:var(--text)}
-    nav a:focus, nav a:hover{outline:none;box-shadow:0 0 0 6px var(--ring);color:var(--primary)}
+
+    /* liens de menu + souligné animé */
+    nav ul li a{
+      position:relative;
+      padding:8px 12px;
+      border-radius:8px;
+      color:var(--text);
+      transition:color .2s ease, transform .2s ease;
+    }
+    /* souligné */
+    nav ul li a::after{
+      content:"";
+      position:absolute; left:8px; right:8px; bottom:-6px;
+      height:2px; border-radius:2px;
+      background:linear-gradient(90deg,var(--primary),var(--accent));
+      transform:scaleX(0); transform-origin:left;
+      transition:transform .25s ease;
+    }
+    nav ul li a:hover,
+    nav ul li a:focus{color:var(--primary); outline:none; box-shadow:0 0 0 6px var(--ring)}
+    nav ul li a:hover::after,
+    nav ul li a:focus::after,
+    nav ul li a.active::after{ transform:scaleX(1) }
+
     .container{max-width:1080px;margin:0 auto;padding:40px 20px}
     .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center;padding:48px 0}
     .hero h1{font-size:clamp(28px,4.5vw,50px);line-height:1.1;margin:.2em 0}
@@ -89,6 +111,18 @@
     .skill-card{display:flex;flex-direction:column;align-items:center;text-align:center}
     .skill-card img{width:60px;height:60px;margin-top:16px; filter:drop-shadow(0 8px 18px rgba(0,0,0,.35))}
 
+    /* section centres d’intérêt */
+    .interests{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-top:12px}
+    .chip{
+      display:flex;align-items:center;gap:10px;
+      background:rgba(96,165,250,.08);
+      border:1px solid rgba(96,165,250,.25);
+      padding:12px 14px;border-radius:14px;
+      color:var(--text)
+    }
+    .chip .emoji{font-size:20px}
+    .bio{color:var(--muted);margin-top:12px}
+
     /* Animations reveal + stagger (élégant) */
     .reveal-init{opacity:0; transform:translateY(22px); transition:opacity .7s cubic-bezier(.22,.61,.36,1), transform .7s cubic-bezier(.22,.61,.36,1)}
     .reveal-active{opacity:1; transform:none}
@@ -125,6 +159,7 @@
         <li><a href="#key-skills">Compétences clés</a></li>
         <li><a href="#projets">Projets</a></li>
         <li><a href="#experiences">Expériences</a></li>
+        <li><a href="#interets">Centres d’intérêt</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
@@ -247,6 +282,20 @@
       </ul>
     </section>
 
+    <!-- NOUVELLE SECTION : CENTRES D’INTÉRÊT -->
+    <section id="interets" class="reveal-init">
+      <h2>Centres d’intérêt</h2>
+      <p class="bio">Curieuse et orientée impact, j’aime relier la data à des usages concrets. Voici ce qui me motive au quotidien :</p>
+      <div class="interests reveal-stagger">
+        <div class="chip reveal-init"><span class="emoji">📊</span><span>DataViz & storytelling</span></div>
+        <div class="chip reveal-init"><span class="emoji">🤖</span><span>IA, ML appliqué (prévision, NLP)</span></div>
+        <div class="chip reveal-init"><span class="emoji">💶</span><span>Finance & indicateurs macro</span></div>
+        <div class="chip reveal-init"><span class="emoji">🗺️</span><span>Cartographie & géodonnées</span></div>
+        <div class="chip reveal-init"><span class="emoji">📚</span><span>Économie pour les politiques publiques</span></div>
+        <div class="chip reveal-init"><span class="emoji">🏃‍♀️</span><span>Course & photo urbaine</span></div>
+      </div>
+    </section>
+
     <section id="contact" class="reveal-init" style="text-align:center; position:relative; padding:80px 20px; background:
       radial-gradient(700px 400px at 50% 0%, rgba(34,211,238,.15), transparent 60%),
       linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.00)),
@@ -321,6 +370,25 @@
     updateProgress();
     window.addEventListener('scroll', updateProgress, {passive:true});
     window.addEventListener('resize', updateProgress);
+
+    // Lien de menu actif selon la section visible
+    const sections = [...document.querySelectorAll('main section[id]')];
+    const navLinks = [...document.querySelectorAll('nav a[href^="#"]')];
+    function setActive(){
+      let idx = 0;
+      const offset = window.innerHeight * 0.35;
+      sections.forEach((sec,i)=>{
+        const top = sec.getBoundingClientRect().top;
+        if (top - offset < 0) idx = i;
+      });
+      navLinks.forEach(l=>l.classList.remove('active'));
+      const id = sections[idx]?.id;
+      const link = navLinks.find(l => l.getAttribute('href') === '#' + id);
+      if (link) link.classList.add('active');
+    }
+    setActive();
+    window.addEventListener('scroll', setActive, {passive:true});
+    window.addEventListener('resize', setActive);
 
     // clic = remonter en haut
     btn.addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
