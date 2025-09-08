@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tran Gia Han DINH — Portfolio</title>
+  <meta name="description" content="Portfolio de projets en Data Science, Econométrie, Power BI, R et Python." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b0f19;--card:#121829;--muted:#94a3b8;--text:#e5e7eb;--primary:#6ee7b7;--accent:#60a5fa;--ring:rgba(96,165,250,.35)
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;height:100%}
+    body{font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:radial-gradient(1200px 800px at 10% -10%,#1f2937 0,transparent 60%),radial-gradient(1000px 700px at 110% 10%,#0ea5e9 0,transparent 50%),var(--bg);color:var(--text);line-height:1.6}
+    a{color:var(--primary);text-decoration:none}
+    a:hover{filter:brightness(1.1)}
+    header{position:sticky;top:0;background:rgba(11,15,25,.6);backdrop-filter:saturate(160%) blur(8px);border-bottom:1px solid rgba(255,255,255,.06);z-index:50}
+    nav{max-width:1080px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:12px 20px}
+    nav .brand{font-weight:800;letter-spacing:.3px}
+    nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0}
+    nav a{padding:8px 10px;border-radius:10px}
+    nav a:focus, nav a:hover{outline:none;box-shadow:0 0 0 6px var(--ring)}
+    .container{max-width:1080px;margin:0 auto;padding:40px 20px}
+    .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center;padding:48px 0}
+    .hero h1{font-size:clamp(28px,5vw,54px);line-height:1.1;margin:.2em 0}
+    .hero p{color:var(--muted);font-size:clamp(14px,2.2vw,18px)}
+    .pill{display:inline-flex;gap:8px;align-items:center;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);padding:8px 12px;border-radius:999px;color:#cbd5e1}
+    .cta{display:flex;gap:12px;margin-top:18px}
+    .btn{background:linear-gradient(135deg,var(--accent),#22d3ee);color:#001; padding:10px 16px;border-radius:12px;font-weight:700;border:none;cursor:pointer}
+    .btn.secondary{background:transparent;color:var(--text);border:1px solid rgba(255,255,255,.14)}
+    .grid{display:grid;gap:16px}
+    .projects{grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+    .card{background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.08);border-radius:18px;overflow:hidden}
+    .card img{width:100%;height:160px;object-fit:cover;display:block}
+    .card .content{padding:14px}
+    .tag{display:inline-block;background:#0b1220;border:1px solid rgba(255,255,255,.1);padding:4px 10px;border-radius:999px;font-size:12px;color:#cbd5e1}
+    .card h3{margin:10px 0 6px;font-size:18px}
+    .card p{margin:0;color:#a7b0c4;font-size:14px}
+    section{padding:20px 0}
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+    footer{border-top:1px solid rgba(255,255,255,.08);padding:28px 20px;color:#94a3b8}
+    @media (max-width:900px){.hero{grid-template-columns:1fr}.two-col{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="brand">Gia Han DINH · Data</div>
+      <ul>
+        <li><a href="#projets">Projets</a></li>
+        <li><a href="#skills">Compétences</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <main class="container">
+    <section class="hero">
+      <div>
+        <span class="pill">📍 Paris · Data Science for Social Sciences</span>
+        <h1>Bonjour, je suis Gia Han — Data Analyst & Étudiante CMI (D3S)</h1>
+        <p>Je conçois des tableaux de bord Power BI, j’analyse des données en R/Python et je m’intéresse à la visualisation et à l’économétrie appliquée. Voici une sélection de projets.</p>
+        <div class="cta">
+          <a class="btn" href="#projets">Voir mes projets</a>
+          <a class="btn secondary" href="CV_Han_Dinh.pdf" target="_blank" rel="noreferrer">Télécharger mon CV</a>
+        </div>
+      </div>
+      <div>
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1551281044-8e8d8e3b6af1?q=80&w=1600&auto=format&fit=crop" alt="Data dashboard"/>
+          <div class="content">
+            <span class="tag">Power BI</span>
+            <h3>Dashboard Ventes — Avestar</h3>
+            <p>Suivi CA, marge, segmentation clients, rentabilité produits.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projets">
+      <h2>Projets</h2>
+      <div class="grid projects">
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1600&auto=format&fit=crop" alt="Employment tension"/>
+          <div class="content">
+            <span class="tag">R · Econométrie</span>
+            <h3>Tensions du marché du travail</h3>
+            <p>Modèles linéaires sur taux de tension & caractéristiques métiers (ROME).</p>
+            <p><a href="https://github.com/han-dinh/employment-tension" target="_blank" rel="noreferrer">Code sur GitHub →</a></p>
+          </div>
+        </article>
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1600&auto=format&fit=crop" alt="Land use"/>
+          <div class="content">
+            <span class="tag">R · QGIS</span>
+            <h3>Changements d’occupation du sol & immobilier</h3>
+            <p>CLC 1990–2018 vs prix immobiliers (appartements/maisons).</p>
+            <p><a href="https://github.com/han-dinh/landuse-realestate" target="_blank" rel="noreferrer">Code sur GitHub →</a></p>
+          </div>
+        </article>
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1633419461186-5c3e2b51d3e0?q=80&w=1600&auto=format&fit=crop" alt="Scheduling app"/>
+          <div class="content">
+            <span class="tag">Flask · SQLite</span>
+            <h3>App Emploi du temps</h3>
+            <p>Gestion des cours, salles, groupes TD, enseignants (SQLAlchemy).</p>
+            <p><a href="https://github.com/han-dinh/edt-flask" target="_blank" rel="noreferrer">Repo →</a></p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="skills" class="two-col">
+      <div>
+        <h2>Compétences</h2>
+        <ul>
+          <li>Power BI (DAX, Power Query, Deneb)</li>
+          <li>Python (pandas, matplotlib, Flask)</li>
+          <li>R (dplyr, ggplot2, sf)</li>
+          <li>SQL (SQLite, MySQL, PL/SQL)</li>
+          <li>QGIS (EPSG:2154, géotraitements)</li>
+        </ul>
+      </div>
+      <div>
+        <h2>Expériences</h2>
+        <ul>
+          <li>Data Analyst — Avestar Packaging (2025)</li>
+          <li>Stagiaire Achats — VINCI Construction (2023)</li>
+          <li>Projets universitaires — Paris Nanterre</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>Vous pouvez me joindre via <a href="mailto:contact@example.com">contact@example.com</a> ou <a href="https://github.com/han-dinh" target="_blank" rel="noreferrer">GitHub</a> / <a href="https://www.linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a>.</p>
+      <p style="font-size:13px;color:#9aa7bd">Astuce : pour un formulaire direct sans backend, utilisez un service comme Formspree et placez leur action sur un &lt;form&gt;.</p>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="y"></span> Gia Han DINH — Tous droits réservés.
+  </footer>
+  <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+</body>
+</html>
