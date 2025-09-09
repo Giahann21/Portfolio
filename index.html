@@ -111,7 +111,7 @@
     .contact-btn svg{width:18px;height:18px;fill:#0b0e13}
     .contact-btn:hover{background:#f5f8ff;transform:translateY(-1px)}
 
-    /* Grids & cards (restant) */
+    /* Grids & cards */
     .grid{display:grid;gap:16px}
     .projects{grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
     .card{background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02)); border:1px solid rgba(96,165,250,.25); border-radius:18px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.35)}
@@ -204,15 +204,17 @@
 
         <!-- Contacts pro -->
         <div class="contacts">
-          <!-- Mail obfusqué -->
+          <!-- Email obfusqué -->
           <a class="contact-btn" id="emailLink" data-user="dinhtgh59" data-domain="gmail.com">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4v16h16V4Zm0 2-8 5-8-5"/></svg>
             <span>Email</span>
           </a>
+          <!-- Téléphone -->
           <a class="contact-btn" href="tel:+33618359224">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1.1-.3 1.7.6 3.6.9 5 .9V20a2 2 0 0 1-2 2C10.9 22 2 13.1 2 3a2 2 0 0 1 2-2h2.3c.5 0 .9.3 1 .8.6 1.7.9 3.6.9 5 0 .4-.1.8-.4 1.1L6.6 10.8Z"/></svg>
-            <span>+33 1 23 45 67 89</span>
+            <span>+33 6 18 35 92 24</span>
           </a>
+          <!-- LinkedIn -->
           <a class="contact-btn" href="https://www.linkedin.com/in/dinh-tgh/" target="_blank" rel="noreferrer">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5A2.5 2.5 0 1 1 5 8.5a2.5 2.5 0 0 1-.02-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.05A4.17 4.17 0 0 1 18.6 9c3 0 4.4 1.97 4.4 5.2V21h-4v-5.2c0-1.24-.02-2.84-1.73-2.84-1.73 0-2 1.35-2 2.75V21h-4V9Z"/></svg>
             <span>LinkedIn</span>
@@ -224,11 +226,7 @@
       <div>
         <span class="pill">📍 Paris · Data Science for Social Sciences</span>
         <h1>Bonjour</h1>
-        <p class="quote">« Data really powers everything that we do »</p>
-        <p>
-          Étudiante en Data Science, passionnée par la visualisation, l’analyse en R/Python
-          et Power BI. J’aime transformer la donnée en décisions stratégiques et mesurer l’impact.
-        </p>
+        <p>Étudiante en Data Science, passionnée par la visualisation, l’analyse en R/Python et Power BI. J’aime transformer la donnée en décisions stratégiques et mesurer l’impact.</p>
         <div class="cta">
           <a class="btn" href="#projets">Voir mes projets</a>
           <a class="btn secondary" href="CV_Han_Dinh.pdf" target="_blank" rel="noreferrer">Télécharger mon CV</a>
@@ -281,7 +279,7 @@
           <div class="content">
             <span class="tag">Power BI</span>
             <h3>Dashboard Ventes & Marges</h3>
-            <p>Suivi CA, marge, panier moyen, top clients/produits, périodes comparées et filtres dynamiques.</p>
+            <p>Suivi CA, marge, panier moyen, top clients/produits, comparaisons temporelles, filtres dynamiques.</p>
             <p><a href="Analyse%20des%20ventes.pdf" target="_blank" rel="noreferrer">Présentation PDF →</a></p>
           </div>
         </article>
@@ -395,6 +393,26 @@
       mail.href = 'mailto:' + addr;
       mail.querySelector('span').textContent = addr;
     }
+
+    // Sidebar / hamburger
+    const toggleBtn = document.getElementById('menuToggle');
+    const sidebar = document.getElementById('sidebar');
+    const closeBtn = document.getElementById('closeSidebar');
+    const backdrop = document.getElementById('backdrop');
+    function openSidebar(){
+      sidebar.classList.add('active'); backdrop.classList.add('active'); backdrop.hidden=false;
+      document.body.style.overflow='hidden';
+      toggleBtn.setAttribute('aria-expanded','true'); sidebar.setAttribute('aria-hidden','false');
+    }
+    function closeSidebar(){
+      sidebar.classList.remove('active'); backdrop.classList.remove('active'); backdrop.hidden=true;
+      document.body.style.overflow='';
+      toggleBtn.setAttribute('aria-expanded','false'); sidebar.setAttribute('aria-hidden','true');
+    }
+    if(toggleBtn){ toggleBtn.addEventListener('click', ()=> sidebar.classList.contains('active') ? closeSidebar() : openSidebar()); }
+    if(closeBtn){ closeBtn.addEventListener('click', closeSidebar); }
+    if(backdrop){ backdrop.addEventListener('click', closeSidebar); }
+    window.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeSidebar(); });
 
     // Reveal on scroll
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
