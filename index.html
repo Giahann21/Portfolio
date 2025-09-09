@@ -9,11 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
   <style>
-    :root{
-      --bg:#0b0e13; --bg2:#0a0a0a; --card:#0f172a;
-      --muted:#9fb0c2; --text:#e8eef7;
-      --primary:#60a5fa; --accent:#22d3ee; --ring:rgba(96,165,250,.35);
-    }
+    :root{ --bg:#0b0e13; --bg2:#0a0a0a; --card:#0f172a; --muted:#9fb0c2; --text:#e8eef7; --primary:#60a5fa; --accent:#22d3ee; --ring:rgba(96,165,250,.35) }
     *{box-sizing:border-box}
     html,body{margin:0;height:100%}
     html{scroll-behavior:smooth}
@@ -31,7 +27,7 @@
 
     /* Header / Nav */
     header{
-      position:sticky; top:0; z-index:50;
+      position:sticky; top:0; z-index:70;
       background:linear-gradient(180deg,rgba(10,13,19,.9),rgba(10,13,19,.55));
       backdrop-filter:saturate(160%) blur(8px);
       border-bottom:1px solid rgba(96,165,250,.28);
@@ -56,6 +52,35 @@
       padding:6px 10px; border-radius:10px; cursor:pointer}
     .lang-btn:hover{filter:brightness(1.1)}
 
+    /* Menu hamburger (mobile) */
+    .menu-toggle{font-size:28px;background:none;border:none;color:var(--text);cursor:pointer;display:none}
+    @media (max-width:900px){
+      nav ul{display:none}
+      .menu-toggle{display:inline-block}
+    }
+
+    /* Sidebar */
+    .sidebar{
+      position:fixed; top:0; right:-280px; width:260px; height:100%;
+      background:#0d121b; color:var(--text); transition:right .4s ease;
+      padding:40px 24px; display:flex; flex-direction:column; gap:20px; z-index:80;
+      border-left:1px solid rgba(96,165,250,.28);
+    }
+    .sidebar.active{ right:0 }
+    .sidebar a{ color:var(--text); font-size:18px; text-decoration:none; transition:color .3s ease }
+    .sidebar a:hover{ color:var(--primary) }
+    .close-btn{ align-self:flex-end; font-size:28px; cursor:pointer; background:none; border:none; color:var(--text) }
+    .sidebar hr{border:0; border-top:1px solid rgba(255,255,255,.08)}
+    .side-lang{margin-top:6px}
+    .side-lang a{display:inline-block;border:1px solid rgba(96,165,250,.35); padding:6px 10px; border-radius:10px; margin-right:8px}
+
+    /* Backdrop */
+    .backdrop{
+      content:""; position:fixed; inset:0; background:rgba(0,0,0,.4); backdrop-filter:blur(2px);
+      opacity:0; visibility:hidden; transition:opacity .3s ease; z-index:75;
+    }
+    .backdrop.active{opacity:1; visibility:visible}
+
     .container{max-width:1080px;margin:0 auto;padding:40px 20px}
     .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center;padding:48px 0}
     .hero h1{font-size:clamp(28px,4.5vw,50px);line-height:1.1;margin:.2em 0}
@@ -75,7 +100,7 @@
     section{padding:20px 0}
     footer{border-top:1px solid rgba(96,165,250,.28);padding:28px 20px;color:#b9c8d6}
 
-    /* Skills + Centres d’intérêt */
+    /* Skills + Interests */
     .skill-card{display:flex;flex-direction:column;align-items:center;text-align:center}
     .skill-card img{width:60px;height:60px;margin-top:16px; filter:drop-shadow(0 8px 18px rgba(0,0,0,.35))}
     .interests{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-top:12px}
@@ -97,7 +122,7 @@
     .card.reveal-init{transform:translateY(16px) scale(.985)}
     @media (prefers-reduced-motion: reduce){.reveal-init,.reveal-active{opacity:1; transform:none; transition:none}}
 
-    /* Bouton progression */
+    /* Progress */
     .progress-btn{position:fixed; right:16px; bottom:16px; width:56px; height:56px; border-radius:50%; border:none; cursor:pointer; z-index:60; background:linear-gradient(135deg,var(--primary),var(--accent)); display:grid; place-items:center; padding:0; box-shadow:0 10px 30px rgba(0,0,0,.35)}
     .progress-btn:hover{filter:brightness(1.06)}
     .progress-btn:focus{outline:none; box-shadow:0 0 0 6px var(--ring)}
@@ -107,13 +132,12 @@
 <body>
   <header>
     <nav>
-      <!-- Remplace logo.png par ton fichier -->
+      <!-- Logo -->
       <div class="brand">
-        <a href="#hero" aria-label="Accueil">
-          <img src="logo.png" alt="Logo Tran Gia Han DINH">
-        </a>
+        <a href="#hero" aria-label="Accueil"><img src="logo.png" alt="Logo Tran Gia Han DINH"></a>
       </div>
 
+      <!-- Liens desktop -->
       <ul>
         <li><a href="#key-skills">Compétences clés</a></li>
         <li><a href="#projets">Projets</a></li>
@@ -122,22 +146,36 @@
         <li><a href="#contact">Contact</a></li>
       </ul>
 
-      <!-- Bouton langue -->
-      <button class="lang-btn" onclick="location.href='index_en.html'" aria-label="Switch to English">🇬🇧</button>
+      <!-- Actions à droite -->
+      <div style="display:flex;align-items:center;gap:10px">
+        <button class="lang-btn" onclick="location.href='index_en.html'" aria-label="Switch to English">🇬🇧</button>
+        <button id="menuToggle" class="menu-toggle" aria-label="Ouvrir le menu" aria-expanded="false">☰</button>
+      </div>
     </nav>
   </header>
-  
+
+  <!-- Backdrop + Sidebar -->
+  <div id="backdrop" class="backdrop" hidden></div>
+  <aside id="sidebar" class="sidebar" aria-hidden="true">
+    <button id="closeSidebar" class="close-btn" aria-label="Fermer le menu">✕</button>
+    <a href="#key-skills">Compétences clés</a>
+    <a href="#projets">Projets</a>
+    <a href="#experiences">Expériences</a>
+    <a href="#interets">Centres d’intérêt</a>
+    <a href="#contact">Contact</a>
+    <hr>
+    <div class="side-lang">
+      <a href="index_en.html">🇬🇧 English</a>
+    </div>
+  </aside>
+
   <main class="container">
+    <!-- ====== HERO ====== -->
     <section id="hero" class="hero reveal-init">
       <div>
         <span class="pill">📍 Paris · Data Science for Social Sciences</span>
         <h1>Bonjour, je suis Gia&nbsp;Han — Data Analyst & Étudiante CMI (D3S)</h1>
-        <p>
-          J’explore la data à travers la conception de tableaux de bord Power BI, 
-          l’analyse en R/Python et la modélisation de bases de données,
-          avec l’ambition d’appliquer ces compétences au secteur financier.
-          Voici une sélection de projets.
-        </p>
+        <p>J’explore la data à travers la conception de tableaux de bord Power BI, l’analyse en R/Python et la modélisation de bases de données, avec l’ambition d’appliquer ces compétences au secteur financier. Voici une sélection de projets.</p>
         <div class="cta">
           <a class="btn" href="#projets">Voir mes projets</a>
           <a class="btn secondary" href="CV_Han_Dinh.pdf" target="_blank" rel="noreferrer">Télécharger mon CV</a>
@@ -158,7 +196,7 @@
       </div>
     </section>
 
-    <!-- COMPÉTENCES CLÉS -->
+    <!-- ====== COMPÉTENCES ====== -->
     <section id="key-skills" class="reveal-init">
       <h2>Compétences clés</h2>
       <div class="grid reveal-stagger" style="grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px;">
@@ -166,38 +204,34 @@
           <img src="photo_analyse.png" alt="Analyse de données">
           <div class="content">
             <h3>Analyse de données</h3>
-            <p>R & Python (NumPy, pandas, PySpark, matplotlib, scikit-learn).
-            Collecte, nettoyage, EDA et feature engineering pour faire émerger des insights actionnables.</p>
+            <p>R & Python (NumPy, pandas, PySpark, matplotlib, scikit-learn). Collecte, nettoyage, EDA et feature engineering pour faire émerger des insights actionnables.</p>
           </div>
         </div>
         <div class="card skill-card reveal-init">
           <img src="photo_visualisation.png" alt="Visualisation de données">
           <div class="content">
             <h3>Visualisation & Story telling</h3>
-            <p>Power BI (DAX, Power Query) et ggplot2.
-            Dashboards clairs et interactifs, choix de KPI, mise en récit des résultats (publication & partage) pour accélérer la décision.</p>
+            <p>Power BI (DAX, Power Query) et ggplot2. Dashboards clairs et interactifs, choix de KPI, mise en récit (publication & partage) pour accélérer la décision.</p>
           </div>
         </div>
         <div class="card skill-card reveal-init">
           <img src="photo_database.png" alt="Bases de données">
           <div class="content">
             <h3>Bases de données</h3>
-            <p>Conception de schémas relationnels (MERISE/ER), normalisation.
-            SQL avancé, optimisation (vues, index), et petits pipelines d’alimentation/ETL.</p>
+            <p>Conception relationnelle (MERISE/ER), normalisation. SQL avancé, optimisation (vues, index), petits pipelines ETL.</p>
           </div>
         </div>
         <div class="card skill-card reveal-init">
           <img src="photo_machinelearning.png" alt="Machine Learning et Statistiques">
           <div class="content">
-            <h3>Modélisation statistique & Machine Learning</h3>
-            <p>Statistiques inférentielles (tests, régressions) et ML supervisé/non supervisé
-            (régression, classification, clustering). Validation & métriques, interprétabilité,
-            prévision de tendances et segmentation.</p>
+            <h3>Modélisation statistique & ML</h3>
+            <p>Inférence (tests, régressions) et ML supervisé/non supervisé (régression, classification, clustering). Validation, métriques, interprétabilité, prévision.</p>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- ====== PROJETS ====== -->
     <section id="projets" class="reveal-init">
       <h2>Projets</h2>
       <div class="grid projects reveal-stagger">
@@ -215,11 +249,8 @@
           <div class="content">
             <span class="tag">Python · Data Science</span>
             <h3>Analyse socio-démographique & comportements électoraux</h3>
-            <p>Étude des liens entre caractéristiques socio-démographiques des communes et comportements électoraux dans le département.</p>
-            <p>
-              <a href="https://github.com/han-dinh/electoral-analysis" target="_blank" rel="noreferrer">Repo GitHub →</a> · 
-              <a href="https://electoral-analysis.onrender.com" target="_blank" rel="noreferrer">Voir en ligne →</a>
-            </p>
+            <p>Liens entre caractéristiques socio-démographiques communales et comportements électoraux.</p>
+            <p><a href="https://github.com/han-dinh/electoral-analysis" target="_blank" rel="noreferrer">Repo GitHub →</a> · <a href="https://electoral-analysis.onrender.com" target="_blank" rel="noreferrer">Voir en ligne →</a></p>
           </div>
         </article>
         <article class="card reveal-init">
@@ -228,15 +259,13 @@
             <span class="tag">Flask · SQLite</span>
             <h3>App Emploi du temps</h3>
             <p>Gestion des cours, salles, groupes TD, enseignants (SQLAlchemy).</p>
-            <p>
-              <a href="https://github.com/Giahann21/Emplois-du-temps" target="_blank" rel="noreferrer">Repo GitHub →</a> · 
-              <a href="https://emplois-du-temps.onrender.com" target="_blank" rel="noreferrer">Voir en ligne →</a>
-            </p>
+            <p><a href="https://github.com/Giahann21/Emplois-du-temps" target="_blank" rel="noreferrer">Repo GitHub →</a> · <a href="https://emplois-du-temps.onrender.com" target="_blank" rel="noreferrer">Voir en ligne →</a></p>
           </div>
         </article>
       </div>
     </section>
 
+    <!-- ====== EXPÉRIENCES ====== -->
     <section id="experiences" class="reveal-init">
       <h2>Expériences</h2>
       <ul style="list-style:none; padding:0; margin:0;">
@@ -246,7 +275,7 @@
         </li>
         <li style="display:flex; align-items:center; margin-bottom:24px;">
           <img src="logo-gtm-batiment.png" alt="VINCI Construction" style="width:100px; height:auto; margin-right:16px;">
-          <span>Stagiaire Chargée de consultations (Service Achats) — GTM Bâtiment (VINCI Construction) (Juillet 2023 - Septembre 2023)</span>
+          <span>Stagiaire Chargée de consultations — GTM Bâtiment (VINCI Construction) (Juillet 2023 - Septembre 2023)</span>
         </li>
         <li style="display:flex; align-items:center; margin-bottom:24px;">
           <img src="logo-nanterre.png" alt="Université Paris Nanterre" style="width:100px; height:auto; margin-right:16px;">
@@ -255,19 +284,21 @@
       </ul>
     </section>
 
+    <!-- ====== INTÉRÊTS ====== -->
     <section id="interets" class="reveal-init">
       <h2>Centres d’intérêt</h2>
-      <p class="bio">Curieuse et orientée impact, j’aime relier la data à des usages concrets. Voici ce qui me motive :</p>
+      <p class="bio">Curieuse et orientée impact, j’aime relier la data à des usages concrets.</p>
       <div class="interests reveal-stagger">
         <div class="chip reveal-init"><span class="emoji">📊</span><span>DataViz & storytelling</span></div>
         <div class="chip reveal-init"><span class="emoji">🤖</span><span>IA & ML appliqués (prévision, NLP)</span></div>
-        <div class="chip reveal-init"><span class="emoji">💶</span><span>Finance & indicateurs macro</span></div>
+        <div class="chip reveal-init"><span class="emoji">💶</span><span>Finance & macro</span></div>
         <div class="chip reveal-init"><span class="emoji">🗺️</span><span>Cartographie & géodonnées</span></div>
         <div class="chip reveal-init"><span class="emoji">📚</span><span>Économie publique</span></div>
         <div class="chip reveal-init"><span class="emoji">🏃‍♀️</span><span>Course & photo urbaine</span></div>
       </div>
     </section>
 
+    <!-- ====== CONTACT ====== -->
     <section id="contact" class="reveal-init" style="text-align:center; position:relative; padding:80px 20px; background:
       radial-gradient(700px 400px at 50% 0%, rgba(34,211,238,.15), transparent 60%),
       linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.00)),
@@ -287,11 +318,9 @@
     </section>
   </main>
 
-  <footer>
-    © <span id="y"></span> Tran Gia Han DINH — Tous droits réservés.
-  </footer>
+  <footer>© <span id="y"></span> Tran Gia Han DINH — Tous droits réservés.</footer>
 
-  <!-- Bouton % progression -->
+  <!-- Progress -->
   <button id="progressBtn" class="progress-btn" aria-label="Progression de lecture">
     <svg viewBox="0 0 44 44" width="56" height="56">
       <circle cx="22" cy="22" r="19" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="4"/>
@@ -303,58 +332,67 @@
   </button>
 
   <script>
-    // année footer
+    // année
     document.getElementById('y').textContent = new Date().getFullYear();
 
     // Reveal on scroll
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (!prefersReduced) {
       const observer = new IntersectionObserver((entries)=>{
-        for (const e of entries) {
-          if (e.isIntersecting) { e.target.classList.add('reveal-active'); observer.unobserve(e.target); }
-        }
-      }, {threshold: 0.15});
+        for (const e of entries) if (e.isIntersecting){ e.target.classList.add('reveal-active'); observer.unobserve(e.target); }
+      }, {threshold:0.15});
       document.querySelectorAll('section, .card').forEach(el=>{ el.classList.add('reveal-init'); observer.observe(el); });
-    } else {
-      document.querySelectorAll('section, .card').forEach(el=>el.classList.add('reveal-active'));
-    }
+    } else { document.querySelectorAll('section, .card').forEach(el=>el.classList.add('reveal-active')); }
 
     // Progress circle
     const btn = document.getElementById('progressBtn');
     const circle = document.getElementById('progressCircle');
     const txt = document.getElementById('progressText');
     const CIRCUM = 2 * Math.PI * 19;
-
     function updateProgress(){
-      const doc = document.documentElement;
-      const max = doc.scrollHeight - window.innerHeight;
-      const pct = Math.max(0, Math.min(100, Math.round((window.scrollY / (max || 1)) * 100)));
-      const offset = CIRCUM * (1 - pct/100);
-      circle.style.strokeDashoffset = offset;
+      const doc = document.documentElement, max = doc.scrollHeight - window.innerHeight;
+      const pct = Math.max(0, Math.min(100, Math.round((window.scrollY/(max||1))*100)));
+      circle.style.strokeDashoffset = CIRCUM * (1 - pct/100);
       txt.textContent = pct + '%';
     }
-    updateProgress();
-    window.addEventListener('scroll', updateProgress, {passive:true});
-    window.addEventListener('resize', updateProgress);
+    updateProgress(); window.addEventListener('scroll', updateProgress, {passive:true}); window.addEventListener('resize', updateProgress);
+    btn.addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
 
-    // Lien de menu actif
+    // Active nav link
     const sections = [...document.querySelectorAll('main section[id]')];
     const navLinks = [...document.querySelectorAll('nav a[href^="#"]')];
-    function setActive(){
-      let idx = 0;
-      const offset = window.innerHeight * 0.35;
-      sections.forEach((sec,i)=>{ if (sec.getBoundingClientRect().top - offset < 0) idx = i; });
+    function setActive(){ let idx=0, off=window.innerHeight*.35;
+      sections.forEach((s,i)=>{ if(s.getBoundingClientRect().top-off<0) idx=i; });
       navLinks.forEach(l=>l.classList.remove('active'));
-      const id = sections[idx]?.id;
-      const link = navLinks.find(l => l.getAttribute('href') === '#' + id);
-      if (link) link.classList.add('active');
+      const id = sections[idx]?.id, link = navLinks.find(l=>l.getAttribute('href')==='#'+id);
+      if(link) link.classList.add('active');
     }
-    setActive();
-    window.addEventListener('scroll', setActive, {passive:true});
-    window.addEventListener('resize', setActive);
+    setActive(); window.addEventListener('scroll', setActive, {passive:true}); window.addEventListener('resize', setActive);
 
-    // bouton remonter en haut
-    btn.addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
+    // Sidebar / hamburger
+    const toggleBtn = document.getElementById('menuToggle');
+    const sidebar = document.getElementById('sidebar');
+    const closeBtn = document.getElementById('closeSidebar');
+    const backdrop = document.getElementById('backdrop');
+
+    function openSidebar(){
+      sidebar.classList.add('active'); backdrop.classList.add('active'); backdrop.hidden=false;
+      document.body.style.overflow='hidden';
+      toggleBtn.setAttribute('aria-expanded','true');
+      sidebar.setAttribute('aria-hidden','false');
+    }
+    function closeSidebar(){
+      sidebar.classList.remove('active'); backdrop.classList.remove('active'); backdrop.hidden=true;
+      document.body.style.overflow='';
+      toggleBtn.setAttribute('aria-expanded','false');
+      sidebar.setAttribute('aria-hidden','true');
+    }
+    toggleBtn.addEventListener('click', ()=> sidebar.classList.contains('active') ? closeSidebar() : openSidebar());
+    closeBtn.addEventListener('click', closeSidebar);
+    backdrop.addEventListener('click', closeSidebar);
+    window.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeSidebar(); });
+    // close on link click
+    sidebar.querySelectorAll('a').forEach(a=>a.addEventListener('click', closeSidebar));
   </script>
 </body>
 </html>
