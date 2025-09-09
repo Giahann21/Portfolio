@@ -44,10 +44,15 @@
 
     /* Light Header / Nav */
     header{
-      position:sticky; top:0; z-index:70;
-      background:linear-gradient(180deg, rgba(255,255,255,.95), rgba(253,251,247,.85));
-      backdrop-filter:saturate(160%) blur(8px);
-      border-bottom:1px solid var(--border);
+      position: fixed;      /* was: sticky */
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 70;
+      width: 100%;
+      background: linear-gradient(180deg, rgba(255,255,255,.95), rgba(253,251,247,.85));
+      backdrop-filter: saturate(160%) blur(8px);
+      border-bottom: 1px solid var(--border);
     }
     nav{max-width:1080px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:12px 20px; gap:14px}
     .brand a{display:inline-flex;align-items:center;gap:10px}
