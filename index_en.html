@@ -11,21 +11,9 @@
   <style>
     /* === Pastel Beige Theme ====================================== */
     :root{
-      /* Background & surfaces */
-      --bg:#FDFBF7;
-      --bg2:#FFFFFF;
-      --card:#FFFFFF;
-      --border:#E6D5B8;
-
-      /* Typography */
-      --text:#2C2C2C;
-      --muted:#6F6A61;
-
-      /* Accents */
-      --primary:#E6D5B8;
-      --primary-600:#D4C0A2;
-      --accent:#EBD4CB;
-      --ring:rgba(230,213,184,.4);
+      --bg:#FDFBF7; --bg2:#FFFFFF; --card:#FFFFFF; --border:#E6D5B8;
+      --text:#2C2C2C; --muted:#6F6A61;
+      --primary:#E6D5B8; --primary-600:#D4C0A2; --accent:#EBD4CB; --ring:rgba(230,213,184,.4);
     }
     *{box-sizing:border-box}
     html,body{margin:0;height:100%}
@@ -42,14 +30,9 @@
     a{color:inherit;text-decoration:none}
     a:hover{filter:brightness(1.02)}
 
-    /* Light Header / Nav */
+    /* Header / Nav fixed at top */
     header{
-      position: fixed;      /* was: sticky */
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 70;
-      width: 100%;
+      position: fixed; top: 0; left: 0; right: 0; z-index: 70; width: 100%;
       background: linear-gradient(180deg, rgba(255,255,255,.95), rgba(253,251,247,.85));
       backdrop-filter: saturate(160%) blur(8px);
       border-bottom: 1px solid var(--border);
@@ -59,36 +42,22 @@
     .brand img{height:40px;width:40px;border-radius:50%;display:block}
 
     nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0}
-    nav ul li a{
-      position:relative; padding:8px 12px; border-radius:8px; color:var(--text);
-      transition:color .2s ease;
-    }
+    nav ul li a{position:relative; padding:8px 12px; border-radius:8px; color:var(--text); transition:color .2s ease;}
     nav ul li a::after{
       content:""; position:absolute; left:8px; right:8px; bottom:-6px; height:2px; border-radius:2px;
-      background:linear-gradient(90deg,var(--primary),var(--accent));
-      transform:scaleX(0); transform-origin:left; transition:transform .25s ease;
+      background:linear-gradient(90deg,var(--primary),var(--accent)); transform:scaleX(0); transform-origin:left; transition:transform .25s ease;
     }
     nav ul li a:hover::after, nav ul li a.active::after{transform:scaleX(1)}
-    .lang-btn{
-      border:1px solid var(--border); background:#fff; color:var(--text);
-      padding:6px 10px; border-radius:10px; cursor:pointer; transition:.2s;
-    }
+    .lang-btn{border:1px solid var(--border); background:#fff; color:var(--text); padding:6px 10px; border-radius:10px; cursor:pointer; transition:.2s;}
     .lang-btn:hover{filter:brightness(1.02)}
 
     /* Hamburger (mobile) */
     .menu-toggle{font-size:28px;background:none;border:none;color:var(--text);cursor:pointer;display:none}
-    @media (max-width:900px){
-      nav ul{display:none}
-      .menu-toggle{display:inline-block}
-    }
+    @media (max-width:900px){ nav ul{display:none} .menu-toggle{display:inline-block} }
 
     /* Sidebar */
-    .sidebar{
-      position:fixed; top:0; right:-280px; width:260px; height:100%;
-      background:#fff; color:var(--text); transition:right .4s ease;
-      padding:40px 24px; display:flex; flex-direction:column; gap:20px; z-index:80;
-      border-left:1px solid var(--border);
-    }
+    .sidebar{ position:fixed; top:0; right:-280px; width:260px; height:100%; background:#fff; color:var(--text);
+      transition:right .4s ease; padding:40px 24px; display:flex; flex-direction:column; gap:20px; z-index:80; border-left:1px solid var(--border); }
     .sidebar.active{ right:0 }
     .sidebar a{ color:var(--text); font-size:18px; text-decoration:none; transition:color .2s ease }
     .sidebar a:hover{ color:#4a4946 }
@@ -98,10 +67,8 @@
     .side-lang a{display:inline-block;border:1px solid var(--border); padding:6px 10px; border-radius:10px; margin-right:8px}
 
     /* Backdrop */
-    .backdrop{
-      content:""; position:fixed; inset:0; background:rgba(0,0,0,.15); backdrop-filter:blur(2px);
-      opacity:0; visibility:hidden; transition:opacity .3s ease; z-index:75;
-    }
+    .backdrop{ content:""; position:fixed; inset:0; background:rgba(0,0,0,.15); backdrop-filter:blur(2px);
+      opacity:0; visibility:hidden; transition:opacity .3s ease; z-index:75; }
     .backdrop.active{opacity:1; visibility:visible}
 
     .container{max-width:1080px;margin:0 auto;padding:40px 20px}
@@ -111,15 +78,10 @@
     @media(max-width:900px){.hero{grid-template-columns:1fr}}
     .hero h1{font-size:clamp(36px,7vw,74px);line-height:1.05;margin:.2em 0}
     .hero p{color:var(--muted);font-size:clamp(14px,2.2vw,18px)}
-    .pill{
-      display:inline-flex;gap:8px;align-items:center;
-      background:#F3E9DD;border:1px solid var(--border);
-      padding:8px 12px;border-radius:999px;color:#5A4634
-    }
+    .pill{display:inline-flex;gap:8px;align-items:center;background:#F3E9DD;border:1px solid var(--border);padding:8px 12px;border-radius:999px;color:#5A4634}
     .cta{display:flex;gap:12px;margin-top:18px}
     .btn{
-      background:linear-gradient(135deg,var(--primary),var(--accent));
-      color:#2C2C2C; padding:10px 16px;border-radius:12px;font-weight:700;border:none;cursor:pointer;
+      background:linear-gradient(135deg,var(--primary),var(--accent)); color:#2C2C2C; padding:10px 16px;border-radius:12px;font-weight:700;border:none;cursor:pointer;
       transition:transform .15s ease, filter .15s ease, box-shadow .15s ease;
     }
     .btn:hover{ filter:brightness(1.02); transform:translateY(-1px) }
@@ -127,33 +89,19 @@
     .btn.secondary{background:#fff;color:var(--text); border:1px solid var(--border)}
 
     /* Profile card */
-    .profile-card{
-      background:var(--card);
-      border:1px solid var(--border);
-      border-radius:18px; padding:28px 22px;
-      box-shadow:0 8px 22px rgba(0,0,0,.05);
-      display:flex; flex-direction:column; align-items:center; gap:16px
-    }
+    .profile-card{ background:var(--card); border:1px solid var(--border); border-radius:18px; padding:28px 22px;
+      box-shadow:0 8px 22px rgba(0,0,0,.05); display:flex; flex-direction:column; align-items:center; gap:16px }
     .avatar{width:180px;height:180px;border-radius:50%;border:3px solid #FFF;object-fit:cover;box-shadow:0 6px 18px rgba(0,0,0,.06)}
     .name{text-align:center;margin:6px 0 0;font-weight:800}
     .name strong{display:block}
     .role-chips{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
-    .role-chips span{
-      font-size:14px;padding:6px 10px;border:1px solid var(--border);
-      border-radius:999px;background:#F3E9DD;color:#5A4634
-    }
+    .role-chips span{ font-size:14px;padding:6px 10px;border:1px solid var(--border); border-radius:999px;background:#F3E9DD;color:#5A4634 }
     .role-chips span:nth-child(2){ background:#EBD4CB; color:#5C4A42; border-color:#E3C9C0 }
 
     /* Contact icons */
     .contact-icons{ display:flex; gap:12px; justify-content:center; flex-wrap:wrap; width:100%; margin-top:6px; }
-    .icon-btn{
-      width:44px; height:44px; display:grid; place-items:center;
-      border-radius:12px; background:#fff;
-      border:1px solid var(--border);
-      box-shadow:0 4px 14px rgba(0,0,0,.08);
-      transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
-      text-decoration:none;
-    }
+    .icon-btn{ width:44px; height:44px; display:grid; place-items:center; border-radius:12px; background:#fff;
+      border:1px solid var(--border); box-shadow:0 4px 14px rgba(0,0,0,.08); transition:transform .15s ease, box-shadow .15s ease, background .15s ease; text-decoration:none; }
     .icon-btn:hover{ transform:translateY(-2px); background:#F3E9DD; box-shadow:0 6px 18px rgba(0,0,0,.1); }
     .icon-btn:active{ transform:translateY(0); }
     .icon-btn svg{ width:20px; height:20px; fill:#2C2C2C; }
@@ -162,18 +110,10 @@
     /* Grids & cards */
     .grid{display:grid;gap:16px}
     .projects{grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
-    .card{
-      background:var(--card);
-      border:1px solid var(--border);
-      border-radius:18px;overflow:hidden;
-      box-shadow:0 8px 22px rgba(0,0,0,.05)
-    }
+    .card{ background:var(--card); border:1px solid var(--border); border-radius:18px;overflow:hidden; box-shadow:0 8px 22px rgba(0,0,0,.05) }
     .card img{width:100%;height:160px;object-fit:cover;display:block}
     .card .content{padding:14px}
-    .tag{
-      display:inline-block;background:#F3E9DD; border:1px solid var(--border);
-      padding:4px 10px; border-radius:999px; font-size:12px; color:#5A4634
-    }
+    .tag{ display:inline-block;background:#F3E9DD; border:1px solid var(--border); padding:4px 10px; border-radius:999px; font-size:12px; color:#5A4634 }
     .card h3{margin:10px 0 6px;font-size:18px;color:var(--text)}
     .card p{margin:0;color:var(--muted);font-size:14px}
     section{padding:20px 0}
@@ -183,10 +123,7 @@
     .skill-card{display:flex;flex-direction:column;align-items:center;text-align:center}
     .skill-card img{width:60px;height:60px;margin-top:16px; filter:drop-shadow(0 8px 18px rgba(0,0,0,.06))}
     .interests{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-top:12px}
-    .chip{
-      display:flex;align-items:center;gap:10px;background:#FFF; border:1px solid var(--border);
-      padding:12px 14px; border-radius:14px; color:var(--text); box-shadow:0 6px 16px rgba(0,0,0,.04)
-    }
+    .chip{ display:flex;align-items:center;gap:10px;background:#FFF; border:1px solid var(--border); padding:12px 14px; border-radius:14px; color:var(--text); box-shadow:0 6px 16px rgba(0,0,0,.04) }
     .chip .emoji{font-size:20px}
     .bio{color:var(--muted);margin-top:12px}
 
@@ -196,7 +133,7 @@
     .reveal-stagger > *{transition-delay:var(--stagger)}
     @media (prefers-reduced-motion: reduce){.reveal-init,.reveal-active{opacity:1; transform:none; transition:none}}
 
-    /* Progress button */
+    /* Reading progress button */
     .progress-btn{
       position:fixed; right:16px; bottom:16px; width:56px; height:56px; border-radius:50%; border:none; cursor:pointer; z-index:60;
       background:linear-gradient(135deg,var(--primary),var(--accent)); display:grid; place-items:center; padding:0;
@@ -204,26 +141,53 @@
     }
     .progress-btn:hover{filter:brightness(1.02)}
     .progress-btn:focus{outline:none; box-shadow:0 0 0 6px var(--ring)}
+
+    /* ===== Built-in Splash (fullscreen) ===== */
+    .splash{
+      position:fixed; inset:0; z-index:9999;
+      display:flex; align-items:center; justify-content:center;
+      background:
+        radial-gradient(900px 600px at 50% -10%, rgba(235,212,203,.25), transparent 60%),
+        linear-gradient(180deg, #FFFFFF, #FDFBF7);
+      transition:opacity .25s ease, visibility .25s ease;
+    }
+    .splash.hide{ opacity:0; visibility:hidden; }
+    .splash-inner{
+      display:flex; align-items:center; justify-content:center;
+      width:140px; height:140px; border-radius:28px;
+      background:#fff; border:1px solid var(--border);
+      box-shadow:0 12px 30px rgba(0,0,0,.08);
+      animation: popin .35s cubic-bezier(.22,.9,.24,1);
+    }
+    .splash-logo-text{ font-family:"Playfair Display", serif; font-weight:700; font-size:44px; color:#5A4634; letter-spacing:.5px; }
+    @keyframes popin{ from{transform:scale(.85); opacity:.0;} to{transform:scale(1); opacity:1;} }
+    @media (prefers-reduced-motion: reduce){ .splash, .splash *{ animation:none!important; transition:none!important; } }
   </style>
 </head>
 <body>
+
+  <!-- ===== Splash ===== -->
+  <div id="splash" class="splash" aria-label="Intro screen">
+    <div class="splash-inner">
+      <!-- Replace 'GH' with an image if you prefer -->
+      <!-- <img src="Logo.png" alt="Logo" class="splash-logo-img"> -->
+      <div class="splash-logo-text">GH</div>
+    </div>
+  </div>
+  <!-- ===== /Splash ===== -->
+
   <header>
     <nav>
-      <!-- Logo -->
       <div class="brand">
-        <a href="#hero" aria-label="Home"><img src="Logo.png" alt="Logo Tran Gia Han DINH"></a>
+        <a href="#hero" aria-label="Home"><img src="Logo.png" alt="Tran Gia Han DINH Logo"></a>
       </div>
-
-      <!-- Desktop links -->
       <ul>
-        <li><a href="#key-skills">Key skills</a></li>
+        <li><a href="#key-skills">Key Skills</a></li>
         <li><a href="#projects">Projects</a></li>
-        <li><a href="#experiences">Experience</a></li>
+        <li><a href="#experience">Experience</a></li>
         <li><a href="#interests">Interests</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
-
-      <!-- Right actions -->
       <div style="display:flex;align-items:center;gap:10px">
         <button class="lang-btn" onclick="location.href='index.html'" aria-label="Switch to French">🇫🇷 Version française</button>
         <button id="menuToggle" class="menu-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
@@ -235,79 +199,46 @@
   <div id="backdrop" class="backdrop" hidden></div>
   <aside id="sidebar" class="sidebar" aria-hidden="true">
     <button id="closeSidebar" class="close-btn" aria-label="Close menu">✕</button>
-    <a href="#key-skills">Key skills</a>
+    <a href="#key-skills">Key Skills</a>
     <a href="#projects">Projects</a>
-    <a href="#experiences">Experience</a>
+    <a href="#experience">Experience</a>
     <a href="#interests">Interests</a>
     <a href="#contact">Contact</a>
     <hr>
-    <div class="side-lang">
-      <a href="index.html">🇫🇷 Français</a>
-    </div>
+    <div class="side-lang"><a href="index.html">🇫🇷 French</a></div>
   </aside>
 
   <main class="container">
-    <!-- ====== HERO (card + bio with contact icons) ====== -->
+    <!-- ====== HERO ====== -->
     <section id="hero" class="hero reveal-init">
-      <!-- Profile card -->
       <div class="profile-card">
         <img src="portrait.jpg" alt="Portrait of Tran Gia Han DINH" class="avatar">
         <h3 class="name">Tran Gia Han <strong>DINH</strong></h3>
-        <div class="role-chips">
-          <span>Data Analyst</span><span>Data Scientist</span>
-        </div>
-
-        <!-- Icons only -->
+        <div class="role-chips"><span>Data Analyst</span><span>Data Scientist</span></div>
         <div class="contact-icons">
-          <!-- Email (obfuscated) -->
-          <a class="icon-btn" id="emailIcon"
-             data-user="dinhtgh59" data-domain="gmail.com"
-             aria-label="Send an email" title="Email">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M20 5H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2Zm0 3-8 5-8-5V7l8 5 8-5v1Z"/>
-            </svg>
+          <a class="icon-btn" id="emailIcon" data-user="dinhtgh59" data-domain="gmail.com" aria-label="Send an email" title="Email">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 5H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2Zm0 3-8 5-8-5V7l8 5 8-5v1Z"/></svg>
             <span class="sr-only">Email</span>
           </a>
-
-          <!-- Phone -->
-          <a class="icon-btn" href="tel:+33618359224"
-             aria-label="Call" title="+33 6 18 35 92 24">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1.1-.3 16 16 0 0 0 5 .9V20a2 2 0 0 1-2 2C10.9 22 2 13.1 2 3a2 2 0 0 1 2-2h2.3a1 1 0 0 1 1 .8c.6 1.7.9 3.6.9 5 0 .4-.1.8-.4 1.1L6.6 10.8Z"/>
-            </svg>
+          <a class="icon-btn" href="tel:+33618359224" aria-label="Call" title="+33 6 18 35 92 24">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1.1-.3 16 16 0 0 0 5 .9V20a2 2 0 0 1-2 2C10.9 22 2 13.1 2 3a2 2 0 0 1 2-2h2.3a1 1 0 0 1 1 .8c.6 1.7.9 3.6.9 5 0 .4-.1.8-.4 1.1L6.6 10.8Z"/></svg>
             <span class="sr-only">Phone</span>
           </a>
-
-          <!-- LinkedIn -->
-          <a class="icon-btn" href="https://www.linkedin.com/in/dinh-tgh/"
-             target="_blank" rel="noreferrer"
-             aria-label="Open LinkedIn" title="LinkedIn">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M4.98 3.5A2.5 2.5 0 1 1 5 8.5a2.5 2.5 0 0 1-.02-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.05A4.17 4.17 0 0 1 18.6 9c3 0 4.4 1.97 4.4 5.2V21h-4v-5.2c0-1.24-.02-2.84-1.73-2.84-1.73 0-2 1.35-2 2.75V21h-4V9Z"/>
-            </svg>
+          <a class="icon-btn" href="https://www.linkedin.com/in/dinh-tgh/" target="_blank" rel="noreferrer" aria-label="Open LinkedIn" title="LinkedIn">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5A2.5 2.5 0 1 1 5 8.5a2.5 2.5 0 0 1-.02-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.05A4.17 4.17 0 0 1 18.6 9c3 0 4.4 1.97 4.4 5.2V21h-4v-5.2c0-1.24-.02-2.84-1.73-2.84-1.73 0-2 1.35-2 2.75V21h-4V9Z"/></svg>
             <span class="sr-only">LinkedIn</span>
           </a>
         </div>
-      </div> <!-- /profile-card -->
+      </div>
 
-      <!-- Text + buttons -->
       <div>
         <span class="pill">📍 Paris · Data Science for Social Sciences</span>
         <h1>Hello</h1>
-        <p class="quote">“Data really powers everything that we do.”</p>
-
-        <p>
-          I’m a motivated and energetic Data Science student with a strong interest in
-          digital transformation. I value effectiveness over busyness and keep a
-          disciplined approach to reach my goals.
-        </p>
-        <p>
-          Through internships and student jobs, I adapt quickly to new environments,
-          build trustful relationships, and enjoy turning data into useful decisions.
-        </p>
-
+        <p class="quote">“Data really powers everything that we do”</p>
+        <p>I am a highly motivated and dynamic Data Science student with a passion for digital transformation. I value effectiveness over busyness and take a disciplined approach to achieve my goals.</p>
+        <p>Thanks to my internships and student jobs, I adapt quickly to new environments, build trustful relationships, and enjoy turning data into useful decisions.</p>
         <div class="cta">
-          <a class="btn" href="#projects">View my projects</a>
+          <a class="btn" href="#projects">See my projects</a>
           <a class="btn secondary" href="CV_Han_Dinh.pdf" target="_blank" rel="noreferrer">Download my CV</a>
         </div>
       </div>
@@ -315,36 +246,12 @@
 
     <!-- ====== KEY SKILLS ====== -->
     <section id="key-skills" class="reveal-init">
-      <h2>Key skills</h2>
+      <h2>Key Skills</h2>
       <div class="grid reveal-stagger" style="grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px;">
-        <div class="card skill-card reveal-init">
-          <img src="photo_analyse.png" alt="Data analysis">
-          <div class="content">
-            <h3>Data Analysis</h3>
-            <p>R & Python (NumPy, pandas, PySpark, matplotlib, scikit-learn). EDA, cleaning, feature engineering.</p>
-          </div>
-        </div>
-        <div class="card skill-card reveal-init">
-          <img src="photo_visualisation.png" alt="Data visualization">
-          <div class="content">
-            <h3>Visualization & Storytelling</h3>
-            <p>Power BI (DAX, Power Query), interactive dashboards, KPI selection, narrative & sharing.</p>
-          </div>
-        </div>
-        <div class="card skill-card reveal-init">
-          <img src="photo_database.png" alt="Databases">
-          <div class="content">
-            <h3>Databases</h3>
-            <p>Relational modeling (MERISE/ER), advanced SQL, optimization (indexes, views), small ETL.</p>
-          </div>
-        </div>
-        <div class="card skill-card reveal-init">
-          <img src="photo_machinelearning.png" alt="Machine Learning and Statistics">
-          <div class="content">
-            <h3>Statistical Modeling & ML</h3>
-            <p>Tests, regressions, classification, clustering, validation & metrics, interpretability.</p>
-          </div>
-        </div>
+        <div class="card skill-card reveal-init"><img src="photo_analyse.png" alt="Data analysis"><div class="content"><h3>Data Analysis</h3><p>R & Python (NumPy, pandas, PySpark, matplotlib, scikit-learn). EDA, cleaning, feature engineering.</p></div></div>
+        <div class="card skill-card reveal-init"><img src="photo_visualisation.png" alt="Data visualization"><div class="content"><h3>Visualization & Storytelling</h3><p>Power BI (DAX, Power Query), interactive dashboards, KPI selection, narrative & sharing.</p></div></div>
+        <div class="card skill-card reveal-init"><img src="photo_database.png" alt="Databases"><div class="content"><h3>Databases</h3><p>Relational modeling (MERISE/ER), advanced SQL, optimization (indexes, views), small ETL.</p></div></div>
+        <div class="card skill-card reveal-init"><img src="photo_machinelearning.png" alt="Machine Learning and Statistics"><div class="content"><h3>Stat Modeling & ML</h3><p>Tests, regressions, classification, clustering, validation & metrics, interpretability.</p></div></div>
       </div>
     </section>
 
@@ -352,74 +259,29 @@
     <section id="projects" class="reveal-init">
       <h2>Projects</h2>
       <div class="grid projects reveal-stagger">
-        <!-- Power BI -->
-        <article class="card reveal-init">
-          <img src="analyse_ventes.png" alt="Power BI dashboard - Sales analysis"/>
-          <div class="content">
-            <span class="tag">Power BI</span>
-            <h3>Sales & Margin Dashboard</h3>
-            <p>Track revenue, margin, average basket, top clients/products, time comparisons, dynamic filters.</p>
-            <p><a href="Analyse%20des%20ventes.pdf" target="_blank" rel="noreferrer">PDF presentation →</a></p>
-          </div>
-        </article>
-        <!-- Econometrics (R) -->
-        <article class="card reveal-init">
-          <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1600&auto=format&fit=crop" alt="Labour market tightness"/>
-          <div class="content">
-            <span class="tag">R · Econometrics</span>
-            <h3>Labour Market Tightness</h3>
-            <p>Linear models on tightness rates and job characteristics (ROME).</p>
-            <p><a href="https://github.com/Giahann21/projet-data-r" target="_blank" rel="noreferrer">GitHub code →</a></p>
-          </div>
-        </article>
-        <!-- Python elections -->
-        <article class="card reveal-init">
-          <img src="https://images.unsplash.com/photo-1529101091764-c3526daf38fe?q=80&w=1600&auto=format&fit=crop" alt="Elections and socio-demographics"/>
-          <div class="content">
-            <span class="tag">Python · Data Science</span>
-            <h3>Socio-Demographics & Voting Behaviour</h3>
-            <p>Links between municipal socio-demographic features and voting behaviour.</p>
-            <p><a href="https://github.com/han-dinh/electoral-analysis" target="_blank" rel="noreferrer">GitHub repo →</a></p>
-          </div>
-        </article>
-        <!-- Flask timetable -->
-        <article class="card reveal-init">
-          <img src="photo_emploidutemps.png" alt="Timetable web application"/>
-          <div class="content">
-            <span class="tag">Flask · SQLite</span>
-            <h3>Timetable App</h3>
-            <p>Manage courses, rooms, tutorial groups, lecturers (SQLAlchemy).</p>
-            <p><a href="https://github.com/Giahann21/Emplois-du-temps" target="_blank" rel="noreferrer">GitHub repo →</a> · <a href="https://emplois-du-temps.onrender.com" target="_blank" rel="noreferrer">Live demo →</a></p>
-          </div>
-        </article>
+        <article class="card reveal-init"><img src="analyse_ventes.png" alt="Power BI dashboard — Sales analysis"/><div class="content"><span class="tag">Power BI</span><h3>Sales & Margin Dashboard</h3><p>Track revenue, margin, average basket, top clients/products, time comparisons, dynamic filters.</p><p><a href="Analyse%20des%20ventes.pdf" target="_blank" rel="noreferrer">PDF deck →</a></p></div></article>
+        <article class="card reveal-init"><img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1600&auto=format&fit=crop" alt="Labour market tightness"/><div class="content"><span class="tag">R · Econometrics</span><h3>Labour Market Tightness</h3><p>Linear models on tightness rate & job characteristics (ROME).</p><p><a href="https://github.com/Giahann21/projet-data-r" target="_blank" rel="noreferrer">GitHub code →</a></p></div></article>
+        <article class="card reveal-init"><img src="https://images.unsplash.com/photo-1529101091764-c3526daf38fe?q=80&w=1600&auto=format&fit=crop" alt="Elections and sociodemographics"/><div class="content"><span class="tag">Python · Data Science</span><h3>Sociodemographics & Voting Behaviour</h3><p>Links between municipal features and electoral behaviour.</p><p><a href="https://github.com/han-dinh/electoral-analysis" target="_blank" rel="noreferrer">GitHub repo →</a></p></div></article>
+        <article class="card reveal-init"><img src="photo_emploidutemps.png" alt="Schedule web app"/><div class="content"><span class="tag">Flask · SQLite</span><h3>Schedule App</h3><p>Manage courses, rooms, TD groups, teachers (SQLAlchemy).</p><p><a href="https://github.com/Giahann21/Emplois-du-temps" target="_blank" rel="noreferrer">GitHub repo →</a> · <a href="https://emplois-du-temps.onrender.com" target="_blank" rel="noreferrer">Live demo →</a></p></div></article>
       </div>
     </section>
 
     <!-- ====== EXPERIENCE ====== -->
-    <section id="experiences" class="reveal-init">
+    <section id="experience" class="reveal-init">
       <h2>Experience</h2>
       <ul style="list-style:none; padding:0; margin:0;">
-        <li style="display:flex; align-items:center; margin-bottom:24px;">
-          <img src="logo-avestar.png" alt="Avestar Packaging" style="width:100px; height:auto; margin-right:16px;">
-          <span>Data Analyst Intern — Avestar Packaging Group Joint Stock (June 2025 – August 2025)</span>
-        </li>
-        <li style="display:flex; align-items:center; margin-bottom:24px;">
-          <img src="logo-gtm-batiment.png" alt="VINCI Construction" style="width:100px; height:auto; margin-right:16px;">
-          <span>Tendering Assistant Intern — GTM Bâtiment (VINCI Construction) (July 2023 – September 2023)</span>
-        </li>
-        <li style="display:flex; align-items:center; margin-bottom:24px;">
-          <img src="logo-nanterre.png" alt="Université Paris Nanterre" style="width:100px; height:auto; margin-right:16px;">
-          <span>University projects — Paris Nanterre</span>
-        </li>
+        <li style="display:flex; align-items:center; margin-bottom:24px;"><img src="logo-avestar.png" alt="Avestar Packaging" style="width:100px; height:auto; margin-right:16px;"><span>Data Analyst Intern — Avestar Packaging Group Joint Stock (June 2025 – August 2025)</span></li>
+        <li style="display:flex; align-items:center; margin-bottom:24px;"><img src="logo-gtm-batiment.png" alt="VINCI Construction" style="width:100px; height:auto; margin-right:16px;"><span>Procurement/Consultations Intern — GTM Bâtiment (VINCI Construction) (July 2023 – September 2023)</span></li>
+        <li style="display:flex; align-items:center; margin-bottom:24px;"><img src="logo-nanterre.png" alt="Université Paris Nanterre" style="width:100px; height:auto; margin-right:16px;"><span>University Projects — Paris Nanterre</span></li>
       </ul>
     </section>
 
     <!-- ====== INTERESTS ====== -->
     <section id="interests" class="reveal-init">
       <h2>Interests</h2>
-      <p class="bio">Curious and impact-oriented, I like to connect data with real-world use cases.</p>
+      <p class="bio">Curious and impact-driven, I like to connect data to real-world uses.</p>
       <div class="interests reveal-stagger">
-        <div class="chip reveal-init"><span class="emoji">📊</span><span>Dataviz & storytelling</span></div>
+        <div class="chip reveal-init"><span class="emoji">📊</span><span>DataViz & storytelling</span></div>
         <div class="chip reveal-init"><span class="emoji">🤖</span><span>Applied AI & ML (forecasting, NLP)</span></div>
         <div class="chip reveal-init"><span class="emoji">💶</span><span>Finance & macro</span></div>
         <div class="chip reveal-init"><span class="emoji">🗺️</span><span>Mapping & geodata</span></div>
@@ -433,9 +295,9 @@
       radial-gradient(700px 400px at 50% 0%, rgba(235,212,203,.25), transparent 60%),
       linear-gradient(180deg, rgba(255,255,255,.7), rgba(255,255,255,.3)),
       var(--bg); border-top:1px solid var(--border); border-radius:18px;">
-      <h2 style="letter-spacing:3px; font-size:14px; color:#6F6A61; margin-bottom:12px;">CONTACT ME</h2>
+      <h2 style="letter-spacing:3px; font-size:14px; color:#6F6A61; margin-bottom:12px;">GET IN TOUCH</h2>
       <h3 style="font-size:clamp(22px,4vw,36px); font-weight:600; line-height:1.35; margin:0 auto; max-width:720px; color:var(--text);">
-        Open to opportunities? <br> Send a message.
+        Hiring or collaboration? <br> Send me a message.
       </h3>
       <div style="margin-top:40px;">
         <a href="https://www.linkedin.com/in/dinh-tgh/" target="_blank" rel="noreferrer"
@@ -504,7 +366,6 @@
     } else { document.querySelectorAll('section, .card').forEach(el=>el.classList.add('reveal-active')); }
 
     // Progress circle
-    const btn = document.getElementById('progressBtn');
     const circle = document.getElementById('progressCircle');
     const txt = document.getElementById('progressText');
     const CIRCUM = 2 * Math.PI * 19;
@@ -515,6 +376,34 @@
       txt.textContent = pct + '%';
     }
     updateProgress(); window.addEventListener('scroll', updateProgress, {passive:true}); window.addEventListener('resize', updateProgress);
+
+    // Splash: hide very fast, as soon as DOM is ready
+    (function () {
+      const MIN = 700;       // minimum display duration (ms)
+      const MAX_WAIT = 1200; // safety timeout
+
+      const splash = document.getElementById('splash');
+      if (!splash) return;
+
+      const skip = () => {
+        splash.classList.add('hide');
+        splash.addEventListener('transitionend', () => splash.remove(), { once: true });
+        window.removeEventListener('keydown', skip);
+        splash.removeEventListener('click', skip);
+      };
+      splash.addEventListener('click', skip);
+      window.addEventListener('keydown', skip);
+
+      const start = performance.now();
+
+      document.addEventListener('DOMContentLoaded', () => {
+        const elapsed = performance.now() - start;
+        const remaining = Math.max(0, MIN - elapsed);
+        setTimeout(skip, remaining);
+      });
+
+      setTimeout(skip, MAX_WAIT);
+    })();
   </script>
 </body>
 </html>
