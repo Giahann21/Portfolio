@@ -4,112 +4,512 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Tran Gia Han DINH — Portfolio</title>
-  <meta name="description" content="Portfolio of Data Science projects: Econometrics, Power BI, R and Python." />
+  <meta name="description" content="Portfolio of projects in Data Science, Econometrics, Power BI, R and Python." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
   <style>
-    /* Reuse exactly the same CSS as index.html */
-    :root{ --bg:#0b0e13; --bg2:#0a0a0a; --card:#0f172a; --muted:#9fb0c2; --text:#e8eef7; --primary:#60a5fa; --accent:#22d3ee; --ring:rgba(96,165,250,.35) }
-    *{box-sizing:border-box} html,body{margin:0;height:100%} html{scroll-behavior:smooth}
-    body{font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:
-      radial-gradient(1200px 800px at 10% -10%, #1b263b 0%, transparent 60%),
-      radial-gradient(900px 600px at 110% 10%, #0b1220 0%, transparent 55%),
-      linear-gradient(180deg, var(--bg2), var(--bg)); color:var(--text); line-height:1.6;}
+    /* === Pastel Beige Theme ====================================== */
+    :root{
+      /* Background & surfaces */
+      --bg:#FDFBF7;
+      --bg2:#FFFFFF;
+      --card:#FFFFFF;
+      --border:#E6D5B8;
+
+      /* Typography */
+      --text:#2C2C2C;
+      --muted:#6F6A61;
+
+      /* Accents */
+      --primary:#E6D5B8;
+      --primary-600:#D4C0A2;
+      --accent:#EBD4CB;
+      --ring:rgba(230,213,184,.4);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;height:100%}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      background:
+        radial-gradient(900px 600px at 12% -10%, #F3E9DD 0%, transparent 60%),
+        radial-gradient(800px 500px at 110% 0%, #FDFBF7 0%, transparent 55%),
+        linear-gradient(180deg, var(--bg2), var(--bg));
+      color:var(--text); line-height:1.6;
+    }
     h1,h2,h3{font-family:"Playfair Display", serif; letter-spacing:.2px; color:var(--text)}
-    a{color:var(--primary);text-decoration:none} a:hover{filter:brightness(1.08)}
-    header{position:sticky; top:0; z-index:70;background:linear-gradient(180deg,rgba(10,13,19,.9),rgba(10,13,19,.55));backdrop-filter:saturate(160%) blur(8px);border-bottom:1px solid rgba(96,165,250,.28);}
+    a{color:inherit;text-decoration:none}
+    a:hover{filter:brightness(1.02)}
+
+    /* Light Header / Nav */
+    header{
+      position:sticky; top:0; z-index:70;
+      background:linear-gradient(180deg, rgba(255,255,255,.95), rgba(253,251,247,.85));
+      backdrop-filter:saturate(160%) blur(8px);
+      border-bottom:1px solid var(--border);
+    }
     nav{max-width:1080px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:12px 20px; gap:14px}
-    .brand img{height:40px;width:40px;border-radius:50%}
+    .brand a{display:inline-flex;align-items:center;gap:10px}
+    .brand img{height:40px;width:40px;border-radius:50%;display:block}
+
     nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0}
-    nav ul li a{position:relative; padding:8px 12px; border-radius:8px; color:var(--text)}
-    nav ul li a::after{content:""; position:absolute; left:8px; right:8px; bottom:-6px; height:2px; border-radius:2px;background:linear-gradient(90deg,var(--primary),var(--accent));transform:scaleX(0); transform-origin:left; transition:transform .25s ease;}
+    nav ul li a{
+      position:relative; padding:8px 12px; border-radius:8px; color:var(--text);
+      transition:color .2s ease;
+    }
+    nav ul li a::after{
+      content:""; position:absolute; left:8px; right:8px; bottom:-6px; height:2px; border-radius:2px;
+      background:linear-gradient(90deg,var(--primary),var(--accent));
+      transform:scaleX(0); transform-origin:left; transition:transform .25s ease;
+    }
     nav ul li a:hover::after, nav ul li a.active::after{transform:scaleX(1)}
-    .lang-btn{border:1px solid rgba(96,165,250,.35); background:rgba(96,165,250,.1); color:var(--text); padding:6px 10px; border-radius:10px; cursor:pointer}
+    .lang-btn{
+      border:1px solid var(--border); background:#fff; color:var(--text);
+      padding:6px 10px; border-radius:10px; cursor:pointer; transition:.2s;
+    }
+    .lang-btn:hover{filter:brightness(1.02)}
+
+    /* Hamburger (mobile) */
+    .menu-toggle{font-size:28px;background:none;border:none;color:var(--text);cursor:pointer;display:none}
+    @media (max-width:900px){
+      nav ul{display:none}
+      .menu-toggle{display:inline-block}
+    }
+
+    /* Sidebar */
+    .sidebar{
+      position:fixed; top:0; right:-280px; width:260px; height:100%;
+      background:#fff; color:var(--text); transition:right .4s ease;
+      padding:40px 24px; display:flex; flex-direction:column; gap:20px; z-index:80;
+      border-left:1px solid var(--border);
+    }
+    .sidebar.active{ right:0 }
+    .sidebar a{ color:var(--text); font-size:18px; text-decoration:none; transition:color .2s ease }
+    .sidebar a:hover{ color:#4a4946 }
+    .close-btn{ align-self:flex-end; font-size:28px; cursor:pointer; background:none; border:none; color:var(--text) }
+    .sidebar hr{border:0; border-top:1px solid #EFE8DA}
+    .side-lang{margin-top:6px}
+    .side-lang a{display:inline-block;border:1px solid var(--border); padding:6px 10px; border-radius:10px; margin-right:8px}
+
+    /* Backdrop */
+    .backdrop{
+      content:""; position:fixed; inset:0; background:rgba(0,0,0,.15); backdrop-filter:blur(2px);
+      opacity:0; visibility:hidden; transition:opacity .3s ease; z-index:75;
+    }
+    .backdrop.active{opacity:1; visibility:visible}
+
     .container{max-width:1080px;margin:0 auto;padding:40px 20px}
+
+    /* —— HERO split (card + bio) —— */
     .hero{display:grid;grid-template-columns:0.9fr 1.1fr;gap:36px;align-items:center;padding:48px 0}
     @media(max-width:900px){.hero{grid-template-columns:1fr}}
-    .profile-card{background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.02)); border:1px solid rgba(96,165,250,.25); border-radius:18px; padding:28px 22px; box-shadow:0 10px 30px rgba(0,0,0,.35); display:flex; flex-direction:column; align-items:center; gap:16px}
-    .avatar{width:180px;height:180px;border-radius:50%;border:3px solid rgba(255,255,255,.85);object-fit:cover}
-    .name{text-align:center;margin:6px 0 0;font-weight:800} .name strong{display:block}
-    .role-chips{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
-    .role-chips span{font-size:14px;padding:6px 10px;border:1px solid rgba(96,165,250,.35);border-radius:999px;background:rgba(96,165,250,.08)}
-    .contacts{display:flex;flex-direction:column;gap:10px;margin-top:12px;width:100%}
-    .contact-btn{display:flex;align-items:center;gap:10px;background:#ffffff;border-radius:12px;padding:10px 12px;text-decoration:none;color:#0b0e13;font-weight:600;transition:.2s; border:1px solid rgba(0,0,0,.06)}
-    .contact-btn svg{width:18px;height:18px;fill:#0b0e13} .contact-btn:hover{background:#f5f8ff;transform:translateY(-1px)}
-    .pill{display:inline-flex;gap:8px;align-items:center;background:rgba(96,165,250,.12);border:1px solid rgba(96,165,250,.28);padding:8px 12px;border-radius:999px;color:#d6e8ff}
+    .hero h1{font-size:clamp(36px,7vw,74px);line-height:1.05;margin:.2em 0}
+    .hero p{color:var(--muted);font-size:clamp(14px,2.2vw,18px)}
+    .pill{
+      display:inline-flex;gap:8px;align-items:center;
+      background:#F3E9DD;border:1px solid var(--border);
+      padding:8px 12px;border-radius:999px;color:#5A4634
+    }
     .cta{display:flex;gap:12px;margin-top:18px}
-    .btn{background:linear-gradient(135deg,var(--primary),var(--accent)); color:#06121f; padding:10px 16px;border-radius:12px;font-weight:700;border:none;cursor:pointer}
-    .btn.secondary{background:transparent;color:var(--text); border:1px solid rgba(255,255,255,.14)}
-    .grid{display:grid;gap:16px} .projects{grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
-    .card{background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02)); border:1px solid rgba(96,165,250,.25); border-radius:18px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.35)}
-    .card img{width:100%;height:160px;object-fit:cover;display:block} .card .content{padding:14px}
-    .tag{display:inline-block;background:rgba(96,165,250,.15); border:1px solid rgba(96,165,250,.4); padding:4px 10px; border-radius:999px; font-size:12px; color:var(--primary)}
-    .card h3{margin:10px 0 6px;font-size:18px} .card p{margin:0;color:#c9d6e2;font-size:14px}
-    section{padding:20px 0} footer{border-top:1px solid rgba(96,165,250,.28);padding:28px 20px;color:#b9c8d6}
+    .btn{
+      background:linear-gradient(135deg,var(--primary),var(--accent));
+      color:#2C2C2C; padding:10px 16px;border-radius:12px;font-weight:700;border:none;cursor:pointer;
+      transition:transform .15s ease, filter .15s ease, box-shadow .15s ease;
+    }
+    .btn:hover{ filter:brightness(1.02); transform:translateY(-1px) }
+    .btn:focus{ outline:none; box-shadow:0 0 0 3px var(--ring) }
+    .btn.secondary{background:#fff;color:var(--text); border:1px solid var(--border)}
+
+    /* Profile card */
+    .profile-card{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:18px; padding:28px 22px;
+      box-shadow:0 8px 22px rgba(0,0,0,.05);
+      display:flex; flex-direction:column; align-items:center; gap:16px
+    }
+    .avatar{width:180px;height:180px;border-radius:50%;border:3px solid #FFF;object-fit:cover;box-shadow:0 6px 18px rgba(0,0,0,.06)}
+    .name{text-align:center;margin:6px 0 0;font-weight:800}
+    .name strong{display:block}
+    .role-chips{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+    .role-chips span{
+      font-size:14px;padding:6px 10px;border:1px solid var(--border);
+      border-radius:999px;background:#F3E9DD;color:#5A4634
+    }
+    .role-chips span:nth-child(2){ background:#EBD4CB; color:#5C4A42; border-color:#E3C9C0 }
+
+    /* Contact icons */
+    .contact-icons{ display:flex; gap:12px; justify-content:center; flex-wrap:wrap; width:100%; margin-top:6px; }
+    .icon-btn{
+      width:44px; height:44px; display:grid; place-items:center;
+      border-radius:12px; background:#fff;
+      border:1px solid var(--border);
+      box-shadow:0 4px 14px rgba(0,0,0,.08);
+      transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+      text-decoration:none;
+    }
+    .icon-btn:hover{ transform:translateY(-2px); background:#F3E9DD; box-shadow:0 6px 18px rgba(0,0,0,.1); }
+    .icon-btn:active{ transform:translateY(0); }
+    .icon-btn svg{ width:20px; height:20px; fill:#2C2C2C; }
+    .sr-only{ position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+
+    /* Grids & cards */
+    .grid{display:grid;gap:16px}
+    .projects{grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+    .card{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:18px;overflow:hidden;
+      box-shadow:0 8px 22px rgba(0,0,0,.05)
+    }
+    .card img{width:100%;height:160px;object-fit:cover;display:block}
+    .card .content{padding:14px}
+    .tag{
+      display:inline-block;background:#F3E9DD; border:1px solid var(--border);
+      padding:4px 10px; border-radius:999px; font-size:12px; color:#5A4634
+    }
+    .card h3{margin:10px 0 6px;font-size:18px;color:var(--text)}
+    .card p{margin:0;color:var(--muted);font-size:14px}
+    section{padding:20px 0}
+    footer{border-top:1px solid var(--border);padding:28px 20px;color:#6F6A61;background:linear-gradient(180deg, #FFF, #FDFBF7)}
+
+    /* Skills + Interests */
+    .skill-card{display:flex;flex-direction:column;align-items:center;text-align:center}
+    .skill-card img{width:60px;height:60px;margin-top:16px; filter:drop-shadow(0 8px 18px rgba(0,0,0,.06))}
+    .interests{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-top:12px}
+    .chip{
+      display:flex;align-items:center;gap:10px;background:#FFF; border:1px solid var(--border);
+      padding:12px 14px; border-radius:14px; color:var(--text); box-shadow:0 6px 16px rgba(0,0,0,.04)
+    }
+    .chip .emoji{font-size:20px}
+    .bio{color:var(--muted);margin-top:12px}
+
+    /* Animations */
+    .reveal-init{opacity:0; transform:translateY(22px); transition:opacity .7s cubic-bezier(.22,.61,.36,1), transform .7s cubic-bezier(.22,.61,.36,1)}
+    .reveal-active{opacity:1; transform:none}
+    .reveal-stagger > *{transition-delay:var(--stagger)}
+    @media (prefers-reduced-motion: reduce){.reveal-init,.reveal-active{opacity:1; transform:none; transition:none}}
+
+    /* Progress button */
+    .progress-btn{
+      position:fixed; right:16px; bottom:16px; width:56px; height:56px; border-radius:50%; border:none; cursor:pointer; z-index:60;
+      background:linear-gradient(135deg,var(--primary),var(--accent)); display:grid; place-items:center; padding:0;
+      box-shadow:0 10px 30px rgba(0,0,0,.08)
+    }
+    .progress-btn:hover{filter:brightness(1.02)}
+    .progress-btn:focus{outline:none; box-shadow:0 0 0 6px var(--ring)}
   </style>
 </head>
 <body>
   <header>
     <nav>
-      <div class="brand"><a href="#hero"><img src="Logo.png" alt="Logo"></a></div>
+      <!-- Logo -->
+      <div class="brand">
+        <a href="#hero" aria-label="Home"><img src="Logo.png" alt="Logo Tran Gia Han DINH"></a>
+      </div>
+
+      <!-- Desktop links -->
       <ul>
-        <li><a href="#key-skills">Key Skills</a></li>
+        <li><a href="#key-skills">Key skills</a></li>
         <li><a href="#projects">Projects</a></li>
-        <li><a href="#experiences">Experiences</a></li>
+        <li><a href="#experiences">Experience</a></li>
+        <li><a href="#interests">Interests</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
-      <button class="lang-btn" onclick="location.href='index.html'">🇫🇷</button>
+
+      <!-- Right actions -->
+      <div style="display:flex;align-items:center;gap:10px">
+        <button class="lang-btn" onclick="location.href='index.html'" aria-label="Switch to French">🇫🇷</button>
+        <button id="menuToggle" class="menu-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
+      </div>
     </nav>
   </header>
 
-  <main class="container">
-    <!-- HERO -->
-    <section id="hero" class="hero">
-      <div class="profile-card">
-        <img src="portrait.jpg" alt="Portrait" class="avatar">
-        <h3 class="name">Tran Gia Han <strong>DINH</strong></h3>
-        <div class="role-chips"><span>Data Analyst</span><span>Data Scientist</span></div>
+  <!-- Backdrop + Sidebar -->
+  <div id="backdrop" class="backdrop" hidden></div>
+  <aside id="sidebar" class="sidebar" aria-hidden="true">
+    <button id="closeSidebar" class="close-btn" aria-label="Close menu">✕</button>
+    <a href="#key-skills">Key skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#experiences">Experience</a>
+    <a href="#interests">Interests</a>
+    <a href="#contact">Contact</a>
+    <hr>
+    <div class="side-lang">
+      <a href="index.html">🇫🇷 Français</a>
+    </div>
+  </aside>
 
-        <div class="contacts">
-          <a class="contact-btn" id="emailLink" data-user="dinhtgh59" data-domain="gmail.com">
-            <svg viewBox="0 0 24 24"><path d="M20 4H4v16h16V4Zm0 2-8 5-8-5"/></svg>
-            <span>Email</span>
+  <main class="container">
+    <!-- ====== HERO (card + bio with contact icons) ====== -->
+    <section id="hero" class="hero reveal-init">
+      <!-- Profile card -->
+      <div class="profile-card">
+        <img src="portrait.jpg" alt="Portrait of Tran Gia Han DINH" class="avatar">
+        <h3 class="name">Tran Gia Han <strong>DINH</strong></h3>
+        <div class="role-chips">
+          <span>Data Analyst</span><span>Data Scientist</span>
+        </div>
+
+        <!-- Icons only -->
+        <div class="contact-icons">
+          <!-- Email (obfuscated) -->
+          <a class="icon-btn" id="emailIcon"
+             data-user="dinhtgh59" data-domain="gmail.com"
+             aria-label="Send an email" title="Email">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M20 5H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2Zm0 3-8 5-8-5V7l8 5 8-5v1Z"/>
+            </svg>
+            <span class="sr-only">Email</span>
           </a>
-          <a class="contact-btn" href="tel:+33618359224">
-            <svg viewBox="0 0 24 24"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1.1-.3 1.7.6 3.6.9 5 .9V20a2 2 0 0 1-2 2C10.9 22 2 13.1 2 3a2 2 0 0 1 2-2h2.3c.5 0 .9.3 1 .8.6 1.7.9 3.6.9 5 0 .4-.1.8-.4 1.1L6.6 10.8Z"/></svg>
-            <span>+33 1 23 45 67 89</span>
+
+          <!-- Phone -->
+          <a class="icon-btn" href="tel:+33618359224"
+             aria-label="Call" title="+33 6 18 35 92 24">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1.1-.3 16 16 0 0 0 5 .9V20a2 2 0 0 1-2 2C10.9 22 2 13.1 2 3a2 2 0 0 1 2-2h2.3a1 1 0 0 1 1 .8c.6 1.7.9 3.6.9 5 0 .4-.1.8-.4 1.1L6.6 10.8Z"/>
+            </svg>
+            <span class="sr-only">Phone</span>
           </a>
-          <a class="contact-btn" href="https://www.linkedin.com/in/dinh-tgh/" target="_blank" rel="noreferrer">
-            <svg viewBox="0 0 24 24"><path d="M4.98 3.5A2.5 2.5 0 1 1 5 8.5a2.5 2.5 0 0 1-.02-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.05A4.17 4.17 0 0 1 18.6 9c3 0 4.4 1.97 4.4 5.2V21h-4v-5.2c0-1.24-.02-2.84-1.73-2.84-1.73 0-2 1.35-2 2.75V21h-4V9Z"/></svg>
-            <span>LinkedIn</span>
+
+          <!-- LinkedIn -->
+          <a class="icon-btn" href="https://www.linkedin.com/in/dinh-tgh/"
+             target="_blank" rel="noreferrer"
+             aria-label="Open LinkedIn" title="LinkedIn">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4.98 3.5A2.5 2.5 0 1 1 5 8.5a2.5 2.5 0 0 1-.02-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.05A4.17 4.17 0 0 1 18.6 9c3 0 4.4 1.97 4.4 5.2V21h-4v-5.2c0-1.24-.02-2.84-1.73-2.84-1.73 0-2 1.35-2 2.75V21h-4V9Z"/>
+            </svg>
+            <span class="sr-only">LinkedIn</span>
           </a>
         </div>
-      </div>
+      </div> <!-- /profile-card -->
 
+      <!-- Text + buttons -->
       <div>
         <span class="pill">📍 Paris · Data Science for Social Sciences</span>
         <h1>Hello</h1>
-        <p class="quote">“Data really powers everything that we do”</p>
-        <p>I’m a Data Science student focused on R/Python analytics, visualization, and Power BI — turning data into clear, actionable decisions.</p>
+        <p class="quote">“Data really powers everything that we do.”</p>
+
+        <p>
+          I’m a motivated and energetic Data Science student with a strong interest in
+          digital transformation. I value effectiveness over busyness and keep a
+          disciplined approach to reach my goals.
+        </p>
+        <p>
+          Through internships and student jobs, I adapt quickly to new environments,
+          build trustful relationships, and enjoy turning data into useful decisions.
+        </p>
+
         <div class="cta">
-          <a class="btn" href="#projects">See my projects</a>
+          <a class="btn" href="#projects">View my projects</a>
           <a class="btn secondary" href="CV_Han_Dinh.pdf" target="_blank" rel="noreferrer">Download my CV</a>
         </div>
+      </div>
+    </section>
+
+    <!-- ====== KEY SKILLS ====== -->
+    <section id="key-skills" class="reveal-init">
+      <h2>Key skills</h2>
+      <div class="grid reveal-stagger" style="grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px;">
+        <div class="card skill-card reveal-init">
+          <img src="photo_analyse.png" alt="Data analysis">
+          <div class="content">
+            <h3>Data Analysis</h3>
+            <p>R & Python (NumPy, pandas, PySpark, matplotlib, scikit-learn). EDA, cleaning, feature engineering.</p>
+          </div>
+        </div>
+        <div class="card skill-card reveal-init">
+          <img src="photo_visualisation.png" alt="Data visualization">
+          <div class="content">
+            <h3>Visualization & Storytelling</h3>
+            <p>Power BI (DAX, Power Query), interactive dashboards, KPI selection, narrative & sharing.</p>
+          </div>
+        </div>
+        <div class="card skill-card reveal-init">
+          <img src="photo_database.png" alt="Databases">
+          <div class="content">
+            <h3>Databases</h3>
+            <p>Relational modeling (MERISE/ER), advanced SQL, optimization (indexes, views), small ETL.</p>
+          </div>
+        </div>
+        <div class="card skill-card reveal-init">
+          <img src="photo_machinelearning.png" alt="Machine Learning and Statistics">
+          <div class="content">
+            <h3>Statistical Modeling & ML</h3>
+            <p>Tests, regressions, classification, clustering, validation & metrics, interpretability.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== PROJECTS ====== -->
+    <section id="projects" class="reveal-init">
+      <h2>Projects</h2>
+      <div class="grid projects reveal-stagger">
+        <!-- Power BI -->
+        <article class="card reveal-init">
+          <img src="analyse_ventes.png" alt="Power BI dashboard - Sales analysis"/>
+          <div class="content">
+            <span class="tag">Power BI</span>
+            <h3>Sales & Margin Dashboard</h3>
+            <p>Track revenue, margin, average basket, top clients/products, time comparisons, dynamic filters.</p>
+            <p><a href="Analyse%20des%20ventes.pdf" target="_blank" rel="noreferrer">PDF presentation →</a></p>
+          </div>
+        </article>
+        <!-- Econometrics (R) -->
+        <article class="card reveal-init">
+          <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1600&auto=format&fit=crop" alt="Labour market tightness"/>
+          <div class="content">
+            <span class="tag">R · Econometrics</span>
+            <h3>Labour Market Tightness</h3>
+            <p>Linear models on tightness rates and job characteristics (ROME).</p>
+            <p><a href="https://github.com/Giahann21/projet-data-r" target="_blank" rel="noreferrer">GitHub code →</a></p>
+          </div>
+        </article>
+        <!-- Python elections -->
+        <article class="card reveal-init">
+          <img src="https://images.unsplash.com/photo-1529101091764-c3526daf38fe?q=80&w=1600&auto=format&fit=crop" alt="Elections and socio-demographics"/>
+          <div class="content">
+            <span class="tag">Python · Data Science</span>
+            <h3>Socio-Demographics & Voting Behaviour</h3>
+            <p>Links between municipal socio-demographic features and voting behaviour.</p>
+            <p><a href="https://github.com/han-dinh/electoral-analysis" target="_blank" rel="noreferrer">GitHub repo →</a></p>
+          </div>
+        </article>
+        <!-- Flask timetable -->
+        <article class="card reveal-init">
+          <img src="photo_emploidutemps.png" alt="Timetable web application"/>
+          <div class="content">
+            <span class="tag">Flask · SQLite</span>
+            <h3>Timetable App</h3>
+            <p>Manage courses, rooms, tutorial groups, lecturers (SQLAlchemy).</p>
+            <p><a href="https://github.com/Giahann21/Emplois-du-temps" target="_blank" rel="noreferrer">GitHub repo →</a> · <a href="https://emplois-du-temps.onrender.com" target="_blank" rel="noreferrer">Live demo →</a></p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ====== EXPERIENCE ====== -->
+    <section id="experiences" class="reveal-init">
+      <h2>Experience</h2>
+      <ul style="list-style:none; padding:0; margin:0;">
+        <li style="display:flex; align-items:center; margin-bottom:24px;">
+          <img src="logo-avestar.png" alt="Avestar Packaging" style="width:100px; height:auto; margin-right:16px;">
+          <span>Data Analyst Intern — Avestar Packaging Group Joint Stock (June 2025 – August 2025)</span>
+        </li>
+        <li style="display:flex; align-items:center; margin-bottom:24px;">
+          <img src="logo-gtm-batiment.png" alt="VINCI Construction" style="width:100px; height:auto; margin-right:16px;">
+          <span>Tendering Assistant Intern — GTM Bâtiment (VINCI Construction) (July 2023 – September 2023)</span>
+        </li>
+        <li style="display:flex; align-items:center; margin-bottom:24px;">
+          <img src="logo-nanterre.png" alt="Université Paris Nanterre" style="width:100px; height:auto; margin-right:16px;">
+          <span>University projects — Paris Nanterre</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ====== INTERESTS ====== -->
+    <section id="interests" class="reveal-init">
+      <h2>Interests</h2>
+      <p class="bio">Curious and impact-oriented, I like to connect data with real-world use cases.</p>
+      <div class="interests reveal-stagger">
+        <div class="chip reveal-init"><span class="emoji">📊</span><span>Dataviz & storytelling</span></div>
+        <div class="chip reveal-init"><span class="emoji">🤖</span><span>Applied AI & ML (forecasting, NLP)</span></div>
+        <div class="chip reveal-init"><span class="emoji">💶</span><span>Finance & macro</span></div>
+        <div class="chip reveal-init"><span class="emoji">🗺️</span><span>Mapping & geodata</span></div>
+        <div class="chip reveal-init"><span class="emoji">📚</span><span>Public economics</span></div>
+        <div class="chip reveal-init"><span class="emoji">🏃‍♀️</span><span>Running & urban photography</span></div>
+      </div>
+    </section>
+
+    <!-- ====== CONTACT ====== -->
+    <section id="contact" class="reveal-init" style="text-align:center; position:relative; padding:80px 20px; background:
+      radial-gradient(700px 400px at 50% 0%, rgba(235,212,203,.25), transparent 60%),
+      linear-gradient(180deg, rgba(255,255,255,.7), rgba(255,255,255,.3)),
+      var(--bg); border-top:1px solid var(--border); border-radius:18px;">
+      <h2 style="letter-spacing:3px; font-size:14px; color:#6F6A61; margin-bottom:12px;">CONTACT ME</h2>
+      <h3 style="font-size:clamp(22px,4vw,36px); font-weight:600; line-height:1.35; margin:0 auto; max-width:720px; color:var(--text);">
+        Open to opportunities? <br> Send a message.
+      </h3>
+      <div style="margin-top:40px;">
+        <a href="https://www.linkedin.com/in/dinh-tgh/" target="_blank" rel="noreferrer"
+           style="display:inline-flex; align-items:center; justify-content:center; width:64px; height:64px;
+                  border-radius:50%; background:linear-gradient(135deg,var(--primary),var(--accent)); color:#2C2C2C; font-size:28px; font-weight:700;
+                  text-decoration:none; box-shadow:0 6px 20px rgba(0,0,0,.06); transition:transform .3s ease;">
+          →
+        </a>
       </div>
     </section>
   </main>
 
   <footer>© <span id="y"></span> Tran Gia Han DINH — All rights reserved.</footer>
 
+  <!-- Progress -->
+  <button id="progressBtn" class="progress-btn" aria-label="Reading progress">
+    <svg viewBox="0 0 44 44" width="56" height="56">
+      <circle cx="22" cy="22" r="19" fill="none" stroke="rgba(0,0,0,.08)" stroke-width="4"/>
+      <circle id="progressCircle" cx="22" cy="22" r="19" fill="none" stroke="var(--primary-600)" stroke-width="4"
+              stroke-linecap="round" transform="rotate(-90 22 22)" stroke-dasharray="119.38" stroke-dashoffset="119.38"/>
+      <text id="progressText" x="50%" y="52%" dominant-baseline="middle" text-anchor="middle"
+            font-size="11" font-weight="800" fill="#2C2C2C">0%</text>
+    </svg>
+  </button>
+
   <script>
+    // year
     document.getElementById('y').textContent = new Date().getFullYear();
-    const mail = document.getElementById('emailLink');
-    if(mail){
-      const addr = mail.dataset.user + '@' + mail.dataset.domain;
-      mail.href = 'mailto:' + addr;
-      mail.querySelector('span').textContent = addr;
+
+    // Obfuscated email -> build mailto on load
+    const emailIcon = document.getElementById('emailIcon');
+    if (emailIcon) {
+      const addr = `${emailIcon.dataset.user}@${emailIcon.dataset.domain}`;
+      emailIcon.href = `mailto:${addr}`;
+      emailIcon.title = addr;
+      emailIcon.setAttribute('aria-label', `Send an email to ${addr}`);
     }
+
+    // Sidebar / hamburger
+    const toggleBtn = document.getElementById('menuToggle');
+    const sidebar = document.getElementById('sidebar');
+    const closeBtn = document.getElementById('closeSidebar');
+    const backdrop = document.getElementById('backdrop');
+    function openSidebar(){
+      sidebar.classList.add('active'); backdrop.classList.add('active'); backdrop.hidden=false;
+      document.body.style.overflow='hidden';
+      toggleBtn.setAttribute('aria-expanded','true'); sidebar.setAttribute('aria-hidden','false');
+    }
+    function closeSidebar(){
+      sidebar.classList.remove('active'); backdrop.classList.remove('active'); backdrop.hidden=true;
+      document.body.style.overflow='';
+      toggleBtn.setAttribute('aria-expanded','false'); sidebar.setAttribute('aria-hidden','true');
+    }
+    if(toggleBtn){ toggleBtn.addEventListener('click', ()=> sidebar.classList.contains('active') ? closeSidebar() : openSidebar()); }
+    if(closeBtn){ closeBtn.addEventListener('click', closeSidebar); }
+    if(backdrop){ backdrop.addEventListener('click', closeSidebar); }
+    window.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeSidebar(); });
+
+    // Reveal on scroll
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!prefersReduced) {
+      const observer = new IntersectionObserver((entries)=>{
+        for (const e of entries) if (e.isIntersecting){ e.target.classList.add('reveal-active'); observer.unobserve(e.target); }
+      }, {threshold:0.15});
+      document.querySelectorAll('section, .card').forEach(el=>{ el.classList.add('reveal-init'); observer.observe(el); });
+    } else { document.querySelectorAll('section, .card').forEach(el=>el.classList.add('reveal-active')); }
+
+    // Progress circle
+    const btn = document.getElementById('progressBtn');
+    const circle = document.getElementById('progressCircle');
+    const txt = document.getElementById('progressText');
+    const CIRCUM = 2 * Math.PI * 19;
+    function updateProgress(){
+      const doc = document.documentElement, max = doc.scrollHeight - window.innerHeight;
+      const pct = Math.max(0, Math.min(100, Math.round((window.scrollY/(max||1))*100)));
+      circle.style.strokeDashoffset = CIRCUM * (1 - pct/100);
+      txt.textContent = pct + '%';
+    }
+    updateProgress(); window.addEventListener('scroll', updateProgress, {passive:true}); window.addEventListener('resize', updateProgress);
   </script>
 </body>
 </html>
