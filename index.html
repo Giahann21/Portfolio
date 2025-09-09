@@ -82,13 +82,42 @@
     .backdrop.active{opacity:1; visibility:visible}
 
     .container{max-width:1080px;margin:0 auto;padding:40px 20px}
-    .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center;padding:48px 0}
-    .hero h1{font-size:clamp(28px,4.5vw,50px);line-height:1.1;margin:.2em 0}
+
+    /* —— HERO split (carte + bio) —— */
+    .hero{display:grid;grid-template-columns:0.9fr 1.1fr;gap:36px;align-items:center;padding:48px 0}
+    @media(max-width:900px){.hero{grid-template-columns:1fr}}
+    .hero h1{font-size:clamp(36px,7vw,74px);line-height:1.05;margin:.2em 0}
     .hero p{color:var(--muted);font-size:clamp(14px,2.2vw,18px)}
+    .quote{font-style:italic;color:var(--muted)}
+
+    /* Carte profil */
+    .profile-card{
+      background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.02));
+      border:1px solid rgba(96,165,250,.25);
+      border-radius:18px; padding:28px 22px;
+      box-shadow:0 10px 30px rgba(0,0,0,.35);
+      display:flex; flex-direction:column; align-items:center; gap:16px
+    }
+    .avatar-wrap{
+      padding:6px; border-radius:999px;
+      background:radial-gradient(120px at 30% 30%, var(--accent), transparent 60%),
+                 radial-gradient(120px at 70% 70%, var(--primary), transparent 60%);
+      border:1px solid rgba(255,255,255,.12)
+    }
+    .avatar{width:180px;height:180px;border-radius:50%;border:3px solid rgba(255,255,255,.85);object-fit:cover}
+    .name{text-align:center;margin:6px 0 0;font-weight:800}
+    .name strong{display:block}
+    .name-divider{width:72px;height:3px;margin:8px auto;border-radius:3px;background:linear-gradient(90deg,var(--primary),var(--accent))}
+    .role-chips{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+    .role-chips span{font-size:14px;padding:6px 10px;border:1px solid rgba(96,165,250,.35);border-radius:999px;background:rgba(96,165,250,.08)}
+    .socials{margin-top:10px;display:flex;gap:10px;background:#fff;border-radius:10px;padding:8px 10px}
+    .icon{width:36px;height:28px;display:grid;place-items:center;border-radius:6px;text-decoration:none;color:#0b0e13;font-weight:800}
+
     .pill{display:inline-flex;gap:8px;align-items:center;background:rgba(96,165,250,.12);border:1px solid rgba(96,165,250,.28);padding:8px 12px;border-radius:999px;color:#d6e8ff}
     .cta{display:flex;gap:12px;margin-top:18px}
     .btn{background:linear-gradient(135deg,var(--primary),var(--accent)); color:#06121f; padding:10px 16px;border-radius:12px;font-weight:700;border:none;cursor:pointer}
     .btn.secondary{background:transparent;color:var(--text); border:1px solid rgba(255,255,255,.14)}
+
     .grid{display:grid;gap:16px}
     .projects{grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
     .card{background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02)); border:1px solid rgba(96,165,250,.25); border-radius:18px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.35)}
@@ -170,28 +199,44 @@
   </aside>
 
   <main class="container">
-    <!-- ====== HERO ====== -->
+    <!-- ====== HERO (nouvelle mise en page) ====== -->
     <section id="hero" class="hero reveal-init">
+      <!-- Carte profil à gauche -->
+      <div class="profile-card">
+        <div class="avatar-wrap">
+          <img src="portrait.jpg" alt="Portrait de Tran Gia Han DINH" class="avatar">
+        </div>
+        <h3 class="name">Tran Gia Han <strong>DINH</strong></h3>
+        <div class="name-divider"></div>
+        <div class="role-chips">
+          <span>Data Analyst</span><span>Data Scientist</span>
+        </div>
+        <div class="socials">
+          <a class="icon" href="https://facebook.com/" target="_blank" rel="noreferrer">f</a>
+          <a class="icon" href="https://instagram.com/" target="_blank" rel="noreferrer">ig</a>
+          <a class="icon" href="https://www.linkedin.com/in/dinh-tgh/" target="_blank" rel="noreferrer">in</a>
+        </div>
+      </div>
+
+      <!-- Texte + boutons à droite -->
       <div>
         <span class="pill">📍 Paris · Data Science for Social Sciences</span>
-        <h1>Bonjour, je suis Gia&nbsp;Han — Data Analyst & Étudiante CMI (D3S)</h1>
-        <p>J’explore la data à travers la conception de tableaux de bord Power BI, l’analyse en R/Python et la modélisation de bases de données, avec l’ambition d’appliquer ces compétences au secteur financier. Voici une sélection de projets.</p>
+        <h1>Bonjour</h1>
+        <p class="quote">“Data really powers everything that we do”</p>
+
+        <p>
+          Je suis une étudiante en Data Science, très motivée et dynamique, avec une passion pour la
+          transformation digitale. Je privilégie l’efficacité plutôt que l’occupation et j’adopte une
+          approche disciplinée pour atteindre mes objectifs.
+        </p>
+        <p>
+          Grâce à mes expériences (stages & jobs étudiants), je m’adapte vite aux environnements,
+          je construis des relations de confiance et j’aime transformer la donnée en décisions utiles.
+        </p>
+
         <div class="cta">
           <a class="btn" href="#projets">Voir mes projets</a>
           <a class="btn secondary" href="CV_Han_Dinh.pdf" target="_blank" rel="noreferrer">Télécharger mon CV</a>
-        </div>
-      </div>
-      <div>
-        <div class="card reveal-init">
-          <a href="Analyse%20des%20ventes.pdf" target="_blank" rel="noopener">
-            <img src="analyse_ventes.png" alt="Aperçu Dashboard Ventes" />
-          </a>
-          <div class="content">
-            <span class="tag">Power BI</span>
-            <h3>Dashboard Analyse Ventes</h3>
-            <p>Suivi CA, marge, segmentation clients, rentabilité produits.</p>
-            <p><a href="Analyse%20des%20ventes.pdf" target="_blank" rel="noopener">📄 Voir le PDF</a></p>
-          </div>
         </div>
       </div>
     </section>
