@@ -9,37 +9,39 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
   <style>
-    :root{
-      --bg:#0b0e13; --bg2:#0a0a0a; --card:#0f172a;
-      --muted:#9fb0c2; --text:#e8eef7;
-      --primary:#60a5fa; --accent:#22d3ee; --ring:rgba(96,165,250,.35);
-    }
-    *{box-sizing:border-box}
-    html,body{margin:0;height:100%}
-    html{scroll-behavior:smooth}
-    body{
-      font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
-      background:
-        radial-gradient(1200px 800px at 10% -10%, #1b263b 0%, transparent 60%),
-        radial-gradient(900px 600px at 110% 10%, #0b1220 0%, transparent 55%),
-        linear-gradient(180deg, var(--bg2), var(--bg));
-      color:var(--text); line-height:1.6;
-    }
+    /* mêmes variables/couleurs */
+    :root{ --bg:#0b0e13; --bg2:#0a0a0a; --card:#0f172a; --muted:#9fb0c2; --text:#e8eef7; --primary:#60a5fa; --accent:#22d3ee; --ring:rgba(96,165,250,.35) }
+    *{box-sizing:border-box} html,body{margin:0;height:100%} html{scroll-behavior:smooth}
+    body{font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:
+      radial-gradient(1200px 800px at 10% -10%, #1b263b 0%, transparent 60%),
+      radial-gradient(900px 600px at 110% 10%, #0b1220 0%, transparent 55%),
+      linear-gradient(180deg, var(--bg2), var(--bg)); color:var(--text); line-height:1.6;}
     h1,h2,h3{font-family:"Playfair Display", serif; letter-spacing:.2px; color:var(--text)}
-    a{color:var(--primary);text-decoration:none}
-    a:hover{filter:brightness(1.08)}
+    a{color:var(--primary);text-decoration:none} a:hover{filter:brightness(1.08)}
 
-    header{position:sticky; top:0; z-index:50; background:linear-gradient(180deg,rgba(10,13,19,.9),rgba(10,13,19,.55)); backdrop-filter:saturate(160%) blur(8px); border-bottom:1px solid rgba(96,165,250,.28)}
+    header{position:sticky; top:0; z-index:70; background:linear-gradient(180deg,rgba(10,13,19,.9),rgba(10,13,19,.55)); backdrop-filter:saturate(160%) blur(8px); border-bottom:1px solid rgba(96,165,250,.28)}
     nav{max-width:1080px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:12px 20px; gap:14px}
-    .brand a{display:inline-flex;align-items:center;gap:10px}
-    .brand img{height:40px;width:40px;border-radius:50%}
+    .brand a{display:inline-flex;align-items:center;gap:10px}.brand img{height:40px;width:40px;border-radius:50%}
     nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0}
     nav ul li a{position:relative;padding:8px 12px;border-radius:8px;color:var(--text);transition:color .2s ease}
     nav ul li a::after{content:"";position:absolute;left:8px;right:8px;bottom:-6px;height:2px;border-radius:2px;background:linear-gradient(90deg,var(--primary),var(--accent));transform:scaleX(0);transform-origin:left;transition:transform .25s ease}
-    nav ul li a:hover, nav ul li a:focus{color:var(--primary);outline:none;box-shadow:0 0 0 6px var(--ring)}
-    nav ul li a:hover::after, nav ul li a:focus::after, nav ul li a.active::after{transform:scaleX(1)}
+    nav ul li a:hover,nav ul li a:focus{color:var(--primary);outline:none;box-shadow:0 0 0 6px var(--ring)}
+    nav ul li a:hover::after,nav ul li a:focus::after,nav ul li a.active::after{transform:scaleX(1)}
     .lang-btn{border:1px solid rgba(96,165,250,.35); background:rgba(96,165,250,.1); color:var(--text); padding:6px 10px; border-radius:10px; cursor:pointer}
     .lang-btn:hover{filter:brightness(1.1)}
+    .menu-toggle{font-size:28px;background:none;border:none;color:var(--text);cursor:pointer;display:none}
+    @media (max-width:900px){nav ul{display:none}.menu-toggle{display:inline-block}}
+
+    .sidebar{position:fixed; top:0; right:-280px; width:260px; height:100%; background:#0d121b; color:var(--text); transition:right .4s ease; padding:40px 24px; display:flex; flex-direction:column; gap:20px; z-index:80; border-left:1px solid rgba(96,165,250,.28)}
+    .sidebar.active{right:0}
+    .sidebar a{color:var(--text);font-size:18px;text-decoration:none;transition:color .3s ease}
+    .sidebar a:hover{color:var(--primary)}
+    .close-btn{align-self:flex-end;font-size:28px;cursor:pointer;background:none;border:none;color:var(--text)}
+    .sidebar hr{border:0;border-top:1px solid rgba(255,255,255,.08)}
+    .side-lang a{display:inline-block;border:1px solid rgba(96,165,250,.35); padding:6px 10px; border-radius:10px; margin-right:8px}
+
+    .backdrop{position:fixed; inset:0; background:rgba(0,0,0,.4); backdrop-filter:blur(2px); opacity:0; visibility:hidden; transition:opacity .3s ease; z-index:75}
+    .backdrop.active{opacity:1; visibility:visible}
 
     .container{max-width:1080px;margin:0 auto;padding:40px 20px}
     .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center;padding:48px 0}
@@ -89,11 +91,7 @@
 <body>
   <header>
     <nav>
-      <div class="brand">
-        <a href="#hero" aria-label="Home">
-          <img src="logo.png" alt="Tran Gia Han DINH logo">
-        </a>
-      </div>
+      <div class="brand"><a href="#hero" aria-label="Home"><img src="logo.png" alt="Logo"></a></div>
 
       <ul>
         <li><a href="#key-skills">Key skills</a></li>
@@ -103,19 +101,31 @@
         <li><a href="#contact">Contact</a></li>
       </ul>
 
-      <button class="lang-btn" onclick="location.href='index.html'" aria-label="Basculer en français">🇫🇷</button>
+      <div style="display:flex;align-items:center;gap:10px">
+        <button class="lang-btn" onclick="location.href='index.html'" aria-label="Basculer en français">🇫🇷</button>
+        <button id="menuToggle" class="menu-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
+      </div>
     </nav>
   </header>
-  
+
+  <div id="backdrop" class="backdrop" hidden></div>
+  <aside id="sidebar" class="sidebar" aria-hidden="true">
+    <button id="closeSidebar" class="close-btn" aria-label="Close menu">✕</button>
+    <a href="#key-skills">Key skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#experience">Experience</a>
+    <a href="#interests">Interests</a>
+    <a href="#contact">Contact</a>
+    <hr>
+    <div class="side-lang"><a href="index.html">🇫🇷 Français</a></div>
+  </aside>
+
   <main class="container">
     <section id="hero" class="hero reveal-init">
       <div>
         <span class="pill">📍 Paris · Data Science for Social Sciences</span>
         <h1>Hi, I’m Gia Han — Data Analyst & CMI (D3S) student</h1>
-        <p>
-          I explore data through Power BI dashboards, analysis in R/Python and database modeling,
-          with a strong interest in applying these skills to finance. Here’s a selection of projects.
-        </p>
+        <p>I explore data through Power BI dashboards, analysis in R/Python and database modeling, with a strong interest in finance. Here’s a selection of projects.</p>
         <div class="cta">
           <a class="btn" href="#projects">View projects</a>
           <a class="btn secondary" href="CV_Han_Dinh.pdf" target="_blank" rel="noreferrer">Download my résumé</a>
@@ -129,14 +139,13 @@
           <div class="content">
             <span class="tag">Power BI</span>
             <h3>Sales Analysis Dashboard</h3>
-            <p>Track revenue, margin, customer segments and product profitability.</p>
+            <p>Track revenue, margin, segments and product profitability.</p>
             <p><a href="Analyse%20des%20ventes.pdf" target="_blank" rel="noopener">📄 Open PDF</a></p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- KEY SKILLS -->
     <section id="key-skills" class="reveal-init">
       <h2>Key skills</h2>
       <div class="grid reveal-stagger" style="grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px;">
@@ -144,31 +153,28 @@
           <img src="photo_analyse.png" alt="Data analysis">
           <div class="content">
             <h3>Data analysis</h3>
-            <p>R & Python (NumPy, pandas, PySpark, matplotlib, scikit-learn).
-            Data collection/cleaning, EDA and feature engineering to derive actionable insights.</p>
+            <p>R & Python (NumPy, pandas, PySpark, matplotlib, scikit-learn). Cleaning, EDA and feature engineering for actionable insights.</p>
           </div>
         </div>
         <div class="card skill-card reveal-init">
-          <img src="photo_visualisation.png" alt="Data visualization">
+          <img src="photo_visualisation.png" alt="Visualization">
           <div class="content">
             <h3>Visualization & storytelling</h3>
-            <p>Power BI (DAX, Power Query) and ggplot2.
-            Clear interactive dashboards, KPI selection and narrative communication for faster decisions.</p>
+            <p>Power BI (DAX, Power Query) and ggplot2. Clear interactive dashboards, KPI selection and narrative communication.</p>
           </div>
         </div>
         <div class="card skill-card reveal-init">
           <img src="photo_database.png" alt="Databases">
           <div class="content">
             <h3>Databases</h3>
-            <p>Relational design (ER), normalization, advanced SQL & optimization (views, indexes), light ETL pipelines.</p>
+            <p>Relational design (ER), normalization. Advanced SQL, optimization (views, indexes), light ETL pipelines.</p>
           </div>
         </div>
         <div class="card skill-card reveal-init">
-          <img src="photo_machinelearning.png" alt="ML & statistics">
+          <img src="photo_machinelearning.png" alt="ML & Statistics">
           <div class="content">
             <h3>Statistical modeling & ML</h3>
-            <p>Inference (tests, regressions) and supervised/unsupervised ML (regression, classification, clustering).
-            Validation & metrics, interpretability, trend forecasting and segmentation.</p>
+            <p>Inference (tests, regressions) and supervised/unsupervised ML. Validation, metrics, interpretability, and forecasting.</p>
           </div>
         </div>
       </div>
@@ -182,7 +188,7 @@
           <div class="content">
             <span class="tag">R · Econometrics</span>
             <h3>Labour market tensions</h3>
-            <p>Linear models on tension rates vs. occupation characteristics (ROME).</p>
+            <p>Linear models on tension rates vs occupation characteristics (ROME).</p>
             <p><a href="https://github.com/Giahann21/projet-data-r" target="_blank" rel="noreferrer">GitHub repo →</a></p>
           </div>
         </article>
@@ -191,11 +197,8 @@
           <div class="content">
             <span class="tag">Python · Data Science</span>
             <h3>Sociodemographics & voting behaviour</h3>
-            <p>Links between municipal sociodemographic features and electoral behaviour in the department.</p>
-            <p>
-              <a href="https://github.com/han-dinh/electoral-analysis" target="_blank" rel="noreferrer">GitHub repo →</a> · 
-              <a href="https://electoral-analysis.onrender.com" target="_blank" rel="noreferrer">Live demo →</a>
-            </p>
+            <p>Links between municipal sociodemographic features and electoral behaviour.</p>
+            <p><a href="https://github.com/han-dinh/electoral-analysis" target="_blank" rel="noreferrer">GitHub repo →</a> · <a href="https://electoral-analysis.onrender.com" target="_blank" rel="noreferrer">Live demo →</a></p>
           </div>
         </article>
         <article class="card reveal-init">
@@ -204,10 +207,7 @@
             <span class="tag">Flask · SQLite</span>
             <h3>Timetable app</h3>
             <p>Manage courses, rooms, tutorial groups and teachers (SQLAlchemy).</p>
-            <p>
-              <a href="https://github.com/Giahann21/Emplois-du-temps" target="_blank" rel="noreferrer">GitHub repo →</a> · 
-              <a href="https://emplois-du-temps.onrender.com" target="_blank" rel="noreferrer">Live demo →</a>
-            </p>
+            <p><a href="https://github.com/Giahann21/Emplois-du-temps" target="_blank" rel="noreferrer">GitHub repo →</a> · <a href="https://emplois-du-temps.onrender.com" target="_blank" rel="noreferrer">Live demo →</a></p>
           </div>
         </article>
       </div>
@@ -222,7 +222,7 @@
         </li>
         <li style="display:flex; align-items:center; margin-bottom:24px;">
           <img src="logo-gtm-batiment.png" alt="VINCI Construction" style="width:100px; height:auto; margin-right:16px;">
-          <span>Sourcing/Procurement Intern — GTM Bâtiment (VINCI Construction) (Jul 2023 – Sep 2023)</span>
+          <span>Procurement Intern — GTM Bâtiment (VINCI Construction) (Jul 2023 – Sep 2023)</span>
         </li>
         <li style="display:flex; align-items:center; margin-bottom:24px;">
           <img src="logo-nanterre.png" alt="Université Paris Nanterre" style="width:100px; height:auto; margin-right:16px;">
@@ -263,9 +263,7 @@
     </section>
   </main>
 
-  <footer>
-    © <span id="y"></span> Tran Gia Han DINH — All rights reserved.
-  </footer>
+  <footer>© <span id="y"></span> Tran Gia Han DINH — All rights reserved.</footer>
 
   <button id="progressBtn" class="progress-btn" aria-label="Reading progress">
     <svg viewBox="0 0 44 44" width="56" height="56">
@@ -283,43 +281,48 @@
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (!prefersReduced) {
       const observer = new IntersectionObserver((entries)=>{
-        for (const e of entries) { if (e.isIntersecting) { e.target.classList.add('reveal-active'); observer.unobserve(e.target);} }
-      }, {threshold: 0.15});
+        for (const e of entries) if (e.isIntersecting){ e.target.classList.add('reveal-active'); observer.unobserve(e.target); }
+      }, {threshold:0.15});
       document.querySelectorAll('section, .card').forEach(el=>{ el.classList.add('reveal-init'); observer.observe(el); });
-    } else {
-      document.querySelectorAll('section, .card').forEach(el=>el.classList.add('reveal-active'));
-    }
+    } else { document.querySelectorAll('section, .card').forEach(el=>el.classList.add('reveal-active')); }
 
     const btn = document.getElementById('progressBtn');
     const circle = document.getElementById('progressCircle');
     const txt = document.getElementById('progressText');
     const CIRCUM = 2 * Math.PI * 19;
     function updateProgress(){
-      const doc = document.documentElement;
-      const max = doc.scrollHeight - window.innerHeight;
-      const pct = Math.max(0, Math.min(100, Math.round((window.scrollY / (max || 1)) * 100)));
+      const doc = document.documentElement, max = doc.scrollHeight - window.innerHeight;
+      const pct = Math.max(0, Math.min(100, Math.round((window.scrollY/(max||1))*100)));
       circle.style.strokeDashoffset = CIRCUM * (1 - pct/100);
       txt.textContent = pct + '%';
     }
-    updateProgress();
-    window.addEventListener('scroll', updateProgress, {passive:true});
-    window.addEventListener('resize', updateProgress);
+    updateProgress(); window.addEventListener('scroll', updateProgress, {passive:true}); window.addEventListener('resize', updateProgress);
+    btn.addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
 
     const sections = [...document.querySelectorAll('main section[id]')];
     const navLinks = [...document.querySelectorAll('nav a[href^="#"]')];
-    function setActive(){
-      let idx = 0; const offset = window.innerHeight * 0.35;
-      sections.forEach((sec,i)=>{ if (sec.getBoundingClientRect().top - offset < 0) idx = i; });
+    function setActive(){ let idx=0, off=window.innerHeight*.35;
+      sections.forEach((s,i)=>{ if(s.getBoundingClientRect().top-off<0) idx=i; });
       navLinks.forEach(l=>l.classList.remove('active'));
-      const id = sections[idx]?.id;
-      const link = navLinks.find(l => l.getAttribute('href') === '#' + id);
-      if (link) link.classList.add('active');
+      const id=sections[idx]?.id, link=navLinks.find(l=>l.getAttribute('href')==='#'+id);
+      if(link) link.classList.add('active');
     }
-    setActive();
-    window.addEventListener('scroll', setActive, {passive:true});
-    window.addEventListener('resize', setActive);
+    setActive(); window.addEventListener('scroll', setActive, {passive:true}); window.addEventListener('resize', setActive);
 
-    btn.addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
+    // Sidebar behaviour
+    const toggleBtn = document.getElementById('menuToggle');
+    const sidebar = document.getElementById('sidebar');
+    const closeBtn = document.getElementById('closeSidebar');
+    const backdrop = document.getElementById('backdrop');
+
+    function openSidebar(){ sidebar.classList.add('active'); backdrop.classList.add('active'); backdrop.hidden=false; document.body.style.overflow='hidden'; toggleBtn.setAttribute('aria-expanded','true'); sidebar.setAttribute('aria-hidden','false'); }
+    function closeSidebar(){ sidebar.classList.remove('active'); backdrop.classList.remove('active'); backdrop.hidden=true; document.body.style.overflow=''; toggleBtn.setAttribute('aria-expanded','false'); sidebar.setAttribute('aria-hidden','true'); }
+
+    toggleBtn.addEventListener('click', ()=> sidebar.classList.contains('active') ? closeSidebar() : openSidebar());
+    closeBtn.addEventListener('click', closeSidebar);
+    backdrop.addEventListener('click', closeSidebar);
+    window.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeSidebar(); });
+    sidebar.querySelectorAll('a').forEach(a=>a.addEventListener('click', closeSidebar));
   </script>
 </body>
 </html>
