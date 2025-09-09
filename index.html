@@ -7,19 +7,12 @@
   <meta name="description" content="Portfolio de projets en Data Science, Econométrie, Power BI, R et Python." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <!-- Inter + Playfair Display pour un rendu plus élégant -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
   <style>
     :root{
-      /* Palette noir & bleu élégant */
-      --bg:#0b0e13;          /* noir bleuté profond */
-      --bg2:#0a0a0a;         /* noir anthracite */
-      --card:#0f172a;        /* bleu nuit (cartes) */
-      --muted:#9fb0c2;       /* gris bleuté doux */
-      --text:#e8eef7;        /* blanc bleuté */
-      --primary:#60a5fa;     /* bleu */
-      --accent:#22d3ee;      /* cyan */
-      --ring:rgba(96,165,250,.35); /* halo bleu */
+      --bg:#0b0e13; --bg2:#0a0a0a; --card:#0f172a;
+      --muted:#9fb0c2; --text:#e8eef7;
+      --primary:#60a5fa; --accent:#22d3ee; --ring:rgba(96,165,250,.35);
     }
     *{box-sizing:border-box}
     html,body{margin:0;height:100%}
@@ -30,100 +23,67 @@
         radial-gradient(1200px 800px at 10% -10%, #1b263b 0%, transparent 60%),
         radial-gradient(900px 600px at 110% 10%, #0b1220 0%, transparent 55%),
         linear-gradient(180deg, var(--bg2), var(--bg));
-      color:var(--text);
-      line-height:1.6;
+      color:var(--text); line-height:1.6;
     }
     h1,h2,h3{font-family:"Playfair Display", serif; letter-spacing:.2px; color:var(--text)}
     a{color:var(--primary);text-decoration:none}
     a:hover{filter:brightness(1.08)}
+
+    /* Header / Nav */
     header{
-      position:sticky;top:0;z-index:50;
+      position:sticky; top:0; z-index:50;
       background:linear-gradient(180deg,rgba(10,13,19,.9),rgba(10,13,19,.55));
       backdrop-filter:saturate(160%) blur(8px);
       border-bottom:1px solid rgba(96,165,250,.28);
     }
-    nav{max-width:1080px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:12px 20px}
-    nav .brand{font-weight:800;letter-spacing:.3px}
-    nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0}
+    nav{max-width:1080px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:12px 20px; gap:14px}
+    .brand a{display:inline-flex;align-items:center;gap:10px}
+    .brand img{height:40px;width:40px;border-radius:50%;display:block}
 
-    /* liens de menu + souligné animé */
+    nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0}
     nav ul li a{
-      position:relative;
-      padding:8px 12px;
-      border-radius:8px;
-      color:var(--text);
+      position:relative; padding:8px 12px; border-radius:8px; color:var(--text);
       transition:color .2s ease, transform .2s ease;
     }
-    /* souligné */
     nav ul li a::after{
-      content:"";
-      position:absolute; left:8px; right:8px; bottom:-6px;
-      height:2px; border-radius:2px;
+      content:""; position:absolute; left:8px; right:8px; bottom:-6px; height:2px; border-radius:2px;
       background:linear-gradient(90deg,var(--primary),var(--accent));
-      transform:scaleX(0); transform-origin:left;
-      transition:transform .25s ease;
+      transform:scaleX(0); transform-origin:left; transition:transform .25s ease;
     }
-    nav ul li a:hover,
-    nav ul li a:focus{color:var(--primary); outline:none; box-shadow:0 0 0 6px var(--ring)}
-    nav ul li a:hover::after,
-    nav ul li a:focus::after,
-    nav ul li a.active::after{ transform:scaleX(1) }
+    nav ul li a:hover, nav ul li a:focus{color:var(--primary); outline:none; box-shadow:0 0 0 6px var(--ring)}
+    nav ul li a:hover::after, nav ul li a:focus::after, nav ul li a.active::after{transform:scaleX(1)}
+    .lang-btn{border:1px solid rgba(96,165,250,.35); background:rgba(96,165,250,.1); color:var(--text);
+      padding:6px 10px; border-radius:10px; cursor:pointer}
+    .lang-btn:hover{filter:brightness(1.1)}
 
     .container{max-width:1080px;margin:0 auto;padding:40px 20px}
     .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center;padding:48px 0}
     .hero h1{font-size:clamp(28px,4.5vw,50px);line-height:1.1;margin:.2em 0}
     .hero p{color:var(--muted);font-size:clamp(14px,2.2vw,18px)}
-    .pill{
-      display:inline-flex;gap:8px;align-items:center;
-      background:rgba(96,165,250,.12);
-      border:1px solid rgba(96,165,250,.28);
-      padding:8px 12px;border-radius:999px;color:#d6e8ff
-    }
+    .pill{display:inline-flex;gap:8px;align-items:center;background:rgba(96,165,250,.12);border:1px solid rgba(96,165,250,.28);padding:8px 12px;border-radius:999px;color:#d6e8ff}
     .cta{display:flex;gap:12px;margin-top:18px}
-    .btn{
-      background:linear-gradient(135deg,var(--primary),var(--accent));
-      color:#06121f;
-      padding:10px 16px;border-radius:12px;font-weight:700;border:none;cursor:pointer
-    }
-    .btn.secondary{
-      background:transparent;color:var(--text);
-      border:1px solid rgba(255,255,255,.14)
-    }
+    .btn{background:linear-gradient(135deg,var(--primary),var(--accent)); color:#06121f; padding:10px 16px;border-radius:12px;font-weight:700;border:none;cursor:pointer}
+    .btn.secondary{background:transparent;color:var(--text); border:1px solid rgba(255,255,255,.14)}
     .grid{display:grid;gap:16px}
     .projects{grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
-    .card{
-      background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));
-      border:1px solid rgba(96,165,250,.25);
-      border-radius:18px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.35)
-    }
+    .card{background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02)); border:1px solid rgba(96,165,250,.25); border-radius:18px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.35)}
     .card img{width:100%;height:160px;object-fit:cover;display:block}
     .card .content{padding:14px}
-    .tag{
-      display:inline-block;background:rgba(96,165,250,.15);
-      border:1px solid rgba(96,165,250,.4);padding:4px 10px;border-radius:999px;font-size:12px;color:var(--primary)
-    }
+    .tag{display:inline-block;background:rgba(96,165,250,.15); border:1px solid rgba(96,165,250,.4); padding:4px 10px; border-radius:999px; font-size:12px; color:var(--primary)}
     .card h3{margin:10px 0 6px;font-size:18px}
     .card p{margin:0;color:#c9d6e2;font-size:14px}
     section{padding:20px 0}
     footer{border-top:1px solid rgba(96,165,250,.28);padding:28px 20px;color:#b9c8d6}
 
-    /* vignettes pour compétences clés */
+    /* Skills + Centres d’intérêt */
     .skill-card{display:flex;flex-direction:column;align-items:center;text-align:center}
     .skill-card img{width:60px;height:60px;margin-top:16px; filter:drop-shadow(0 8px 18px rgba(0,0,0,.35))}
-
-    /* section centres d’intérêt */
     .interests{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-top:12px}
-    .chip{
-      display:flex;align-items:center;gap:10px;
-      background:rgba(96,165,250,.08);
-      border:1px solid rgba(96,165,250,.25);
-      padding:12px 14px;border-radius:14px;
-      color:var(--text)
-    }
+    .chip{display:flex;align-items:center;gap:10px;background:rgba(96,165,250,.08); border:1px solid rgba(96,165,250,.25); padding:12px 14px; border-radius:14px; color:var(--text)}
     .chip .emoji{font-size:20px}
     .bio{color:var(--muted);margin-top:12px}
 
-    /* Animations reveal + stagger (élégant) */
+    /* Animations */
     .reveal-init{opacity:0; transform:translateY(22px); transition:opacity .7s cubic-bezier(.22,.61,.36,1), transform .7s cubic-bezier(.22,.61,.36,1)}
     .reveal-active{opacity:1; transform:none}
     .reveal-stagger > *{--stagger:0}
@@ -135,17 +95,10 @@
     .reveal-stagger > *:nth-child(6){--stagger:.34s}
     .reveal-stagger > *{transition-delay:var(--stagger)}
     .card.reveal-init{transform:translateY(16px) scale(.985)}
-    @media (prefers-reduced-motion: reduce){
-      .reveal-init,.reveal-active{opacity:1; transform:none; transition:none}
-    }
+    @media (prefers-reduced-motion: reduce){.reveal-init,.reveal-active{opacity:1; transform:none; transition:none}}
 
-    /* Bouton circulaire de progression */
-    .progress-btn{
-      position:fixed; right:16px; bottom:16px; width:56px; height:56px;
-      border-radius:50%; border:none; cursor:pointer; z-index:60;
-      background:linear-gradient(135deg,var(--primary),var(--accent));
-      display:grid; place-items:center; padding:0; box-shadow:0 10px 30px rgba(0,0,0,.35)
-    }
+    /* Bouton progression */
+    .progress-btn{position:fixed; right:16px; bottom:16px; width:56px; height:56px; border-radius:50%; border:none; cursor:pointer; z-index:60; background:linear-gradient(135deg,var(--primary),var(--accent)); display:grid; place-items:center; padding:0; box-shadow:0 10px 30px rgba(0,0,0,.35)}
     .progress-btn:hover{filter:brightness(1.06)}
     .progress-btn:focus{outline:none; box-shadow:0 0 0 6px var(--ring)}
     @media (max-width:900px){.hero{grid-template-columns:1fr}}
@@ -154,7 +107,13 @@
 <body>
   <header>
     <nav>
-      <div class="brand">Tran Gia Han DINH · Data</div>
+      <!-- Remplace logo.png par ton fichier -->
+      <div class="brand">
+        <a href="#hero" aria-label="Accueil">
+          <img src="logo.png" alt="Logo Tran Gia Han DINH">
+        </a>
+      </div>
+
       <ul>
         <li><a href="#key-skills">Compétences clés</a></li>
         <li><a href="#projets">Projets</a></li>
@@ -162,11 +121,14 @@
         <li><a href="#interets">Centres d’intérêt</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
+
+      <!-- Bouton langue -->
+      <button class="lang-btn" onclick="location.href='index_en.html'" aria-label="Switch to English">🇬🇧</button>
     </nav>
   </header>
   
   <main class="container">
-    <section class="hero reveal-init">
+    <section id="hero" class="hero reveal-init">
       <div>
         <span class="pill">📍 Paris · Data Science for Social Sciences</span>
         <h1>Bonjour, je suis Gia&nbsp;Han — Data Analyst & Étudiante CMI (D3S)</h1>
@@ -240,7 +202,7 @@
       <h2>Projets</h2>
       <div class="grid projects reveal-stagger">
         <article class="card reveal-init">
-          <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1600&auto=format&fit=crop" alt="Employment tension"/>
+          <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1600&auto=format&fit=crop" alt="Tensions du marché du travail"/>
           <div class="content">
             <span class="tag">R · Econométrie</span>
             <h3>Tensions du marché du travail</h3>
@@ -255,20 +217,21 @@
             <h3>Analyse socio-démographique & comportements électoraux</h3>
             <p>Étude des liens entre caractéristiques socio-démographiques des communes et comportements électoraux dans le département.</p>
             <p>
-              <a href="https://github.com/han-dinh/electoral-analysis" target="_blank" rel="noreferrer">Repo GitHub →</a>
-              · 
+              <a href="https://github.com/han-dinh/electoral-analysis" target="_blank" rel="noreferrer">Repo GitHub →</a> · 
               <a href="https://electoral-analysis.onrender.com" target="_blank" rel="noreferrer">Voir en ligne →</a>
             </p>
           </div>
         </article>
         <article class="card reveal-init">
-          <img src="photo_emploidutemps.png" alt="Scheduling app"/>
+          <img src="photo_emploidutemps.png" alt="Application Emploi du temps"/>
           <div class="content">
             <span class="tag">Flask · SQLite</span>
             <h3>App Emploi du temps</h3>
             <p>Gestion des cours, salles, groupes TD, enseignants (SQLAlchemy).</p>
-            <p><a href="https://github.com/Giahann21/Emplois-du-temps" target="_blank" rel="noreferrer">Repo →</a></p>
-            <a href="https://emplois-du-temps.onrender.com" target="_blank" rel="noreferrer">Voir en ligne →</a>
+            <p>
+              <a href="https://github.com/Giahann21/Emplois-du-temps" target="_blank" rel="noreferrer">Repo GitHub →</a> · 
+              <a href="https://emplois-du-temps.onrender.com" target="_blank" rel="noreferrer">Voir en ligne →</a>
+            </p>
           </div>
         </article>
       </div>
@@ -292,16 +255,15 @@
       </ul>
     </section>
 
-    <!-- NOUVELLE SECTION : CENTRES D’INTÉRÊT -->
     <section id="interets" class="reveal-init">
       <h2>Centres d’intérêt</h2>
-      <p class="bio">Curieuse et orientée impact, j’aime relier la data à des usages concrets. Voici ce qui me motive au quotidien :</p>
+      <p class="bio">Curieuse et orientée impact, j’aime relier la data à des usages concrets. Voici ce qui me motive :</p>
       <div class="interests reveal-stagger">
         <div class="chip reveal-init"><span class="emoji">📊</span><span>DataViz & storytelling</span></div>
-        <div class="chip reveal-init"><span class="emoji">🤖</span><span>IA, ML appliqué (prévision, NLP)</span></div>
+        <div class="chip reveal-init"><span class="emoji">🤖</span><span>IA & ML appliqués (prévision, NLP)</span></div>
         <div class="chip reveal-init"><span class="emoji">💶</span><span>Finance & indicateurs macro</span></div>
         <div class="chip reveal-init"><span class="emoji">🗺️</span><span>Cartographie & géodonnées</span></div>
-        <div class="chip reveal-init"><span class="emoji">📚</span><span>Économie pour les politiques publiques</span></div>
+        <div class="chip reveal-init"><span class="emoji">📚</span><span>Économie publique</span></div>
         <div class="chip reveal-init"><span class="emoji">🏃‍♀️</span><span>Course & photo urbaine</span></div>
       </div>
     </section>
@@ -329,7 +291,7 @@
     © <span id="y"></span> Tran Gia Han DINH — Tous droits réservés.
   </footer>
 
-  <!-- Bouton % progression (cercle SVG) -->
+  <!-- Bouton % progression -->
   <button id="progressBtn" class="progress-btn" aria-label="Progression de lecture">
     <svg viewBox="0 0 44 44" width="56" height="56">
       <circle cx="22" cy="22" r="19" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="4"/>
@@ -349,16 +311,10 @@
     if (!prefersReduced) {
       const observer = new IntersectionObserver((entries)=>{
         for (const e of entries) {
-          if (e.isIntersecting) {
-            e.target.classList.add('reveal-active');
-            observer.unobserve(e.target);
-          }
+          if (e.isIntersecting) { e.target.classList.add('reveal-active'); observer.unobserve(e.target); }
         }
       }, {threshold: 0.15});
-      document.querySelectorAll('section, .card').forEach(el=>{
-        el.classList.add('reveal-init');
-        observer.observe(el);
-      });
+      document.querySelectorAll('section, .card').forEach(el=>{ el.classList.add('reveal-init'); observer.observe(el); });
     } else {
       document.querySelectorAll('section, .card').forEach(el=>el.classList.add('reveal-active'));
     }
@@ -367,7 +323,7 @@
     const btn = document.getElementById('progressBtn');
     const circle = document.getElementById('progressCircle');
     const txt = document.getElementById('progressText');
-    const CIRCUM = 2 * Math.PI * 19; // ~119.38
+    const CIRCUM = 2 * Math.PI * 19;
 
     function updateProgress(){
       const doc = document.documentElement;
@@ -381,16 +337,13 @@
     window.addEventListener('scroll', updateProgress, {passive:true});
     window.addEventListener('resize', updateProgress);
 
-    // Lien de menu actif selon la section visible
+    // Lien de menu actif
     const sections = [...document.querySelectorAll('main section[id]')];
     const navLinks = [...document.querySelectorAll('nav a[href^="#"]')];
     function setActive(){
       let idx = 0;
       const offset = window.innerHeight * 0.35;
-      sections.forEach((sec,i)=>{
-        const top = sec.getBoundingClientRect().top;
-        if (top - offset < 0) idx = i;
-      });
+      sections.forEach((sec,i)=>{ if (sec.getBoundingClientRect().top - offset < 0) idx = i; });
       navLinks.forEach(l=>l.classList.remove('active'));
       const id = sections[idx]?.id;
       const link = navLinks.find(l => l.getAttribute('href') === '#' + id);
@@ -400,7 +353,7 @@
     window.addEventListener('scroll', setActive, {passive:true});
     window.addEventListener('resize', setActive);
 
-    // clic = remonter en haut
+    // bouton remonter en haut
     btn.addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
   </script>
 </body>
