@@ -381,7 +381,7 @@
     // ===== Splash : disparition après chargement + délai minimum =====
     window.addEventListener('load', () => {
       const splash = document.getElementById('splash');
-      const MIN = 200; // ms
+      const MIN = 50; // ms
       setTimeout(() => {
         if (!splash) return;
         splash.classList.add('hide');
