@@ -149,7 +149,7 @@
       background:
         radial-gradient(900px 600px at 50% -10%, rgba(235,212,203,.25), transparent 60%),
         linear-gradient(180deg, #FFFFFF, #FDFBF7);
-      transition:opacity .5s ease, visibility .5s ease;
+      transition:opacity .25s ease, visibility .25s ease;
     }
     .splash.hide{ opacity:0; visibility:hidden; }
     .splash-inner{
@@ -157,7 +157,7 @@
       width:140px; height:140px; border-radius:28px;
       background:#fff; border:1px solid var(--border);
       box-shadow:0 12px 30px rgba(0,0,0,.08);
-      animation: popin .9s cubic-bezier(.22,.9,.24,1);
+      animation: popin .35s cubic-bezier(.22,.9,.24,1);
     }
     .splash-logo-text{ font-family:"Playfair Display", serif; font-weight:700; font-size:44px; color:#5A4634; letter-spacing:.5px; }
     @keyframes popin{ from{transform:scale(.85); opacity:.0;} to{transform:scale(1); opacity:1;} }
@@ -378,16 +378,36 @@
     }
     updateProgress(); window.addEventListener('scroll', updateProgress, {passive:true}); window.addEventListener('resize', updateProgress);
 
-    // ===== Splash : disparition après chargement + délai minimum =====
-    window.addEventListener('load', () => {
+    // Splash : disparaît très vite, dès que le DOM est prêt
+    (function () {
+      const MIN = 200;            // durée minimale d’affichage (ms)
+      const MAX_WAIT = 1200;      // filet de sécurité si la page met du temps
+  
       const splash = document.getElementById('splash');
-      const MIN = 10; // ms
-      setTimeout(() => {
-        if (!splash) return;
+      if (!splash) return;
+  
+      // Permettre de passer le splash tout de suite (clic ou touche)
+      const skip = () => {
         splash.classList.add('hide');
-        splash.addEventListener('transitionend', () => splash.remove(), { once:true });
-      }, MIN);
-    });
+        splash.addEventListener('transitionend', () => splash.remove(), { once: true });
+        window.removeEventListener('keydown', skip);
+        splash.removeEventListener('click', skip);
+      };
+      splash.addEventListener('click', skip);
+      window.addEventListener('keydown', skip);
+  
+      const start = performance.now();
+  
+      // Dès que le DOM est prêt (plus rapide que 'load')
+      document.addEventListener('DOMContentLoaded', () => {
+        const elapsed = performance.now() - start;
+        const remaining = Math.max(0, MIN - elapsed);
+        setTimeout(skip, remaining);
+      });
+  
+      // Filet de sécu : quoi qu’il arrive, on cache au bout de MAX_WAIT
+      setTimeout(skip, MAX_WAIT);
+    })();
   </script>
 </body>
 </html>
