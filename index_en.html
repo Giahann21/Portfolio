@@ -4,57 +4,124 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Tran Gia Han DINH — Portfolio</title>
-  <meta name="description" content="Data Science, Econometrics, Power BI, R and Python projects." />
+  <meta name="description" content="Data Science & Analytics portfolio: Power BI dashboards, R/Python, econometrics and databases." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
   <style>
-    /* mêmes variables/couleurs */
     :root{ --bg:#0b0e13; --bg2:#0a0a0a; --card:#0f172a; --muted:#9fb0c2; --text:#e8eef7; --primary:#60a5fa; --accent:#22d3ee; --ring:rgba(96,165,250,.35) }
-    *{box-sizing:border-box} html,body{margin:0;height:100%} html{scroll-behavior:smooth}
-    body{font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:
-      radial-gradient(1200px 800px at 10% -10%, #1b263b 0%, transparent 60%),
-      radial-gradient(900px 600px at 110% 10%, #0b1220 0%, transparent 55%),
-      linear-gradient(180deg, var(--bg2), var(--bg)); color:var(--text); line-height:1.6;}
+    *{box-sizing:border-box}
+    html,body{margin:0;height:100%}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      background:
+        radial-gradient(1200px 800px at 10% -10%, #1b263b 0%, transparent 60%),
+        radial-gradient(900px 600px at 110% 10%, #0b1220 0%, transparent 55%),
+        linear-gradient(180deg, var(--bg2), var(--bg));
+      color:var(--text); line-height:1.6;
+    }
     h1,h2,h3{font-family:"Playfair Display", serif; letter-spacing:.2px; color:var(--text)}
-    a{color:var(--primary);text-decoration:none} a:hover{filter:brightness(1.08)}
+    a{color:var(--primary);text-decoration:none}
+    a:hover{filter:brightness(1.08)}
 
-    header{position:sticky; top:0; z-index:70; background:linear-gradient(180deg,rgba(10,13,19,.9),rgba(10,13,19,.55)); backdrop-filter:saturate(160%) blur(8px); border-bottom:1px solid rgba(96,165,250,.28)}
+    /* Header / Nav */
+    header{
+      position:sticky; top:0; z-index:70;
+      background:linear-gradient(180deg,rgba(10,13,19,.9),rgba(10,13,19,.55));
+      backdrop-filter:saturate(160%) blur(8px);
+      border-bottom:1px solid rgba(96,165,250,.28);
+    }
     nav{max-width:1080px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:12px 20px; gap:14px}
-    .brand a{display:inline-flex;align-items:center;gap:10px}.brand img{height:40px;width:40px;border-radius:50%}
-    nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0}
-    nav ul li a{position:relative;padding:8px 12px;border-radius:8px;color:var(--text);transition:color .2s ease}
-    nav ul li a::after{content:"";position:absolute;left:8px;right:8px;bottom:-6px;height:2px;border-radius:2px;background:linear-gradient(90deg,var(--primary),var(--accent));transform:scaleX(0);transform-origin:left;transition:transform .25s ease}
-    nav ul li a:hover,nav ul li a:focus{color:var(--primary);outline:none;box-shadow:0 0 0 6px var(--ring)}
-    nav ul li a:hover::after,nav ul li a:focus::after,nav ul li a.active::after{transform:scaleX(1)}
-    .lang-btn{border:1px solid rgba(96,165,250,.35); background:rgba(96,165,250,.1); color:var(--text); padding:6px 10px; border-radius:10px; cursor:pointer}
-    .lang-btn:hover{filter:brightness(1.1)}
-    .menu-toggle{font-size:28px;background:none;border:none;color:var(--text);cursor:pointer;display:none}
-    @media (max-width:900px){nav ul{display:none}.menu-toggle{display:inline-block}}
+    .brand a{display:inline-flex;align-items:center;gap:10px}
+    .brand img{height:40px;width:40px;border-radius:50%;display:block}
 
-    .sidebar{position:fixed; top:0; right:-280px; width:260px; height:100%; background:#0d121b; color:var(--text); transition:right .4s ease; padding:40px 24px; display:flex; flex-direction:column; gap:20px; z-index:80; border-left:1px solid rgba(96,165,250,.28)}
-    .sidebar.active{right:0}
-    .sidebar a{color:var(--text);font-size:18px;text-decoration:none;transition:color .3s ease}
-    .sidebar a:hover{color:var(--primary)}
-    .close-btn{align-self:flex-end;font-size:28px;cursor:pointer;background:none;border:none;color:var(--text)}
-    .sidebar hr{border:0;border-top:1px solid rgba(255,255,255,.08)}
+    nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0}
+    nav ul li a{
+      position:relative; padding:8px 12px; border-radius:8px; color:var(--text);
+      transition:color .2s ease, transform .2s ease;
+    }
+    nav ul li a::after{
+      content:""; position:absolute; left:8px; right:8px; bottom:-6px; height:2px; border-radius:2px;
+      background:linear-gradient(90deg,var(--primary),var(--accent));
+      transform:scaleX(0); transform-origin:left; transition:transform .25s ease;
+    }
+    nav ul li a:hover, nav ul li a:focus{color:var(--primary); outline:none; box-shadow:0 0 0 6px var(--ring)}
+    nav ul li a:hover::after, nav ul li a:focus::after, nav ul li a.active::after{transform:scaleX(1)}
+    .lang-btn{border:1px solid rgba(96,165,250,.35); background:rgba(96,165,250,.1); color:var(--text);
+      padding:6px 10px; border-radius:10px; cursor:pointer}
+    .lang-btn:hover{filter:brightness(1.1)}
+
+    /* Menu hamburger (mobile) */
+    .menu-toggle{font-size:28px;background:none;border:none;color:var(--text);cursor:pointer;display:none}
+    @media (max-width:900px){
+      nav ul{display:none}
+      .menu-toggle{display:inline-block}
+    }
+
+    /* Sidebar */
+    .sidebar{
+      position:fixed; top:0; right:-280px; width:260px; height:100%;
+      background:#0d121b; color:var(--text); transition:right .4s ease;
+      padding:40px 24px; display:flex; flex-direction:column; gap:20px; z-index:80;
+      border-left:1px solid rgba(96,165,250,.28);
+    }
+    .sidebar.active{ right:0 }
+    .sidebar a{ color:var(--text); font-size:18px; text-decoration:none; transition:color .3s ease }
+    .sidebar a:hover{ color:var(--primary) }
+    .close-btn{ align-self:flex-end; font-size:28px; cursor:pointer; background:none; border:none; color:var(--text) }
+    .sidebar hr{border:0; border-top:1px solid rgba(255,255,255,.08)}
+    .side-lang{margin-top:6px}
     .side-lang a{display:inline-block;border:1px solid rgba(96,165,250,.35); padding:6px 10px; border-radius:10px; margin-right:8px}
 
-    .backdrop{position:fixed; inset:0; background:rgba(0,0,0,.4); backdrop-filter:blur(2px); opacity:0; visibility:hidden; transition:opacity .3s ease; z-index:75}
+    /* Backdrop */
+    .backdrop{
+      content:""; position:fixed; inset:0; background:rgba(0,0,0,.4); backdrop-filter:blur(2px);
+      opacity:0; visibility:hidden; transition:opacity .3s ease; z-index:75;
+    }
     .backdrop.active{opacity:1; visibility:visible}
 
     .container{max-width:1080px;margin:0 auto;padding:40px 20px}
-    .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center;padding:48px 0}
-    .hero h1{font-size:clamp(28px,4.5vw,50px);line-height:1.1;margin:.2em 0}
+
+    /* —— HERO split (card + bio) —— */
+    .hero{display:grid;grid-template-columns:0.9fr 1.1fr;gap:36px;align-items:center;padding:48px 0}
+    @media(max-width:900px){.hero{grid-template-columns:1fr}}
+    .hero h1{font-size:clamp(36px,7vw,74px);line-height:1.05;margin:.2em 0}
     .hero p{color:var(--muted);font-size:clamp(14px,2.2vw,18px)}
+    .quote{font-style:italic;color:var(--muted)}
+
+    /* Profile card */
+    .profile-card{
+      background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.02));
+      border:1px solid rgba(96,165,250,.25);
+      border-radius:18px; padding:28px 22px;
+      box-shadow:0 10px 30px rgba(0,0,0,.35);
+      display:flex; flex-direction:column; align-items:center; gap:16px
+    }
+    .avatar-wrap{
+      padding:6px; border-radius:999px;
+      background:radial-gradient(120px at 30% 30%, var(--accent), transparent 60%),
+                 radial-gradient(120px at 70% 70%, var(--primary), transparent 60%);
+      border:1px solid rgba(255,255,255,.12)
+    }
+    .avatar{width:180px;height:180px;border-radius:50%;border:3px solid rgba(255,255,255,.85);object-fit:cover}
+    .name{text-align:center;margin:6px 0 0;font-weight:800}
+    .name strong{display:block}
+    .name-divider{width:72px;height:3px;margin:8px auto;border-radius:3px;background:linear-gradient(90deg,var(--primary),var(--accent))}
+    .role-chips{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+    .role-chips span{font-size:14px;padding:6px 10px;border:1px solid rgba(96,165,250,.35);border-radius:999px;background:rgba(96,165,250,.08)}
+    .socials{margin-top:10px;display:flex;gap:10px;background:#fff;border-radius:10px;padding:8px 10px}
+    .icon{width:36px;height:28px;display:grid;place-items:center;border-radius:6px;text-decoration:none;color:#0b0e13;font-weight:800}
+
     .pill{display:inline-flex;gap:8px;align-items:center;background:rgba(96,165,250,.12);border:1px solid rgba(96,165,250,.28);padding:8px 12px;border-radius:999px;color:#d6e8ff}
     .cta{display:flex;gap:12px;margin-top:18px}
     .btn{background:linear-gradient(135deg,var(--primary),var(--accent)); color:#06121f; padding:10px 16px;border-radius:12px;font-weight:700;border:none;cursor:pointer}
     .btn.secondary{background:transparent;color:var(--text); border:1px solid rgba(255,255,255,.14)}
+
     .grid{display:grid;gap:16px}
     .projects{grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
     .card{background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02)); border:1px solid rgba(96,165,250,.25); border-radius:18px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.35)}
-    .card img{width:100%;height:160px;object-fit:cover}
+    .card img{width:100%;height:160px;object-fit:cover;display:block}
     .card .content{padding:14px}
     .tag{display:inline-block;background:rgba(96,165,250,.15); border:1px solid rgba(96,165,250,.4); padding:4px 10px; border-radius:999px; font-size:12px; color:var(--primary)}
     .card h3{margin:10px 0 6px;font-size:18px}
@@ -62,6 +129,7 @@
     section{padding:20px 0}
     footer{border-top:1px solid rgba(96,165,250,.28);padding:28px 20px;color:#b9c8d6}
 
+    /* Skills + Interests */
     .skill-card{display:flex;flex-direction:column;align-items:center;text-align:center}
     .skill-card img{width:60px;height:60px;margin-top:16px; filter:drop-shadow(0 8px 18px rgba(0,0,0,.35))}
     .interests{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-top:12px}
@@ -69,6 +137,7 @@
     .chip .emoji{font-size:20px}
     .bio{color:var(--muted);margin-top:12px}
 
+    /* Animations */
     .reveal-init{opacity:0; transform:translateY(22px); transition:opacity .7s cubic-bezier(.22,.61,.36,1), transform .7s cubic-bezier(.22,.61,.36,1)}
     .reveal-active{opacity:1; transform:none}
     .reveal-stagger > *{--stagger:0}
@@ -82,6 +151,7 @@
     .card.reveal-init{transform:translateY(16px) scale(.985)}
     @media (prefers-reduced-motion: reduce){.reveal-init,.reveal-active{opacity:1; transform:none; transition:none}}
 
+    /* Progress */
     .progress-btn{position:fixed; right:16px; bottom:16px; width:56px; height:56px; border-radius:50%; border:none; cursor:pointer; z-index:60; background:linear-gradient(135deg,var(--primary),var(--accent)); display:grid; place-items:center; padding:0; box-shadow:0 10px 30px rgba(0,0,0,.35)}
     .progress-btn:hover{filter:brightness(1.06)}
     .progress-btn:focus{outline:none; box-shadow:0 0 0 6px var(--ring)}
@@ -91,8 +161,12 @@
 <body>
   <header>
     <nav>
-      <div class="brand"><a href="#hero" aria-label="Home"><img src="Logo.png" alt="Logo"></a></div>
+      <!-- Logo -->
+      <div class="brand">
+        <a href="#hero" aria-label="Home"><img src="Logo.png" alt="Tran Gia Han DINH logo"></a>
+      </div>
 
+      <!-- Desktop links -->
       <ul>
         <li><a href="#key-skills">Key skills</a></li>
         <li><a href="#projects">Projects</a></li>
@@ -101,6 +175,7 @@
         <li><a href="#contact">Contact</a></li>
       </ul>
 
+      <!-- Right actions -->
       <div style="display:flex;align-items:center;gap:10px">
         <button class="lang-btn" onclick="location.href='index.html'" aria-label="Basculer en français">🇫🇷</button>
         <button id="menuToggle" class="menu-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
@@ -108,6 +183,7 @@
     </nav>
   </header>
 
+  <!-- Backdrop + Sidebar -->
   <div id="backdrop" class="backdrop" hidden></div>
   <aside id="sidebar" class="sidebar" aria-hidden="true">
     <button id="closeSidebar" class="close-btn" aria-label="Close menu">✕</button>
@@ -117,35 +193,54 @@
     <a href="#interests">Interests</a>
     <a href="#contact">Contact</a>
     <hr>
-    <div class="side-lang"><a href="index.html">🇫🇷 Français</a></div>
+    <div class="side-lang">
+      <a href="index.html">🇫🇷 Français</a>
+    </div>
   </aside>
 
   <main class="container">
+    <!-- ====== HERO (same layout) ====== -->
     <section id="hero" class="hero reveal-init">
-      <div>
-        <span class="pill">📍 Paris · Data Science for Social Sciences</span>
-        <h1>Hi, I’m Gia Han — Data Analyst & CMI (D3S) student</h1>
-        <p>I explore data through Power BI dashboards, analysis in R/Python and database modeling, with a strong interest in finance. Here’s a selection of projects.</p>
-        <div class="cta">
-          <a class="btn" href="#projects">View projects</a>
-          <a class="btn secondary" href="CV_Han_Dinh.pdf" target="_blank" rel="noreferrer">Download my résumé</a>
+      <!-- Profile card -->
+      <div class="profile-card">
+        <div class="avatar-wrap">
+          <img src="portrait.jpg" alt="Portrait of Tran Gia Han DINH" class="avatar">
+        </div>
+        <h3 class="name">Tran Gia Han <strong>DINH</strong></h3>
+        <div class="name-divider"></div>
+        <div class="role-chips">
+          <span>Data Analyst</span><span>Data Scientist</span>
+        </div>
+        <div class="socials">
+          <a class="icon" href="https://facebook.com/" target="_blank" rel="noreferrer">f</a>
+          <a class="icon" href="https://instagram.com/" target="_blank" rel="noreferrer">ig</a>
+          <a class="icon" href="https://www.linkedin.com/in/dinh-tgh/" target="_blank" rel="noreferrer">in</a>
         </div>
       </div>
+
+      <!-- Text + buttons -->
       <div>
-        <div class="card reveal-init">
-          <a href="Analyse%20des%20ventes.pdf" target="_blank" rel="noopener">
-            <img src="analyse_ventes.png" alt="Sales dashboard preview" />
-          </a>
-          <div class="content">
-            <span class="tag">Power BI</span>
-            <h3>Sales Analysis Dashboard</h3>
-            <p>Track revenue, margin, segments and product profitability.</p>
-            <p><a href="Analyse%20des%20ventes.pdf" target="_blank" rel="noopener">📄 Open PDF</a></p>
-          </div>
+        <span class="pill">📍 Paris · Data Science for Social Sciences</span>
+        <h1>Hello</h1>
+        <p class="quote">“Data really powers everything that we do”</p>
+
+        <p>
+          I’m a motivated Data Science student with a strong interest in digital transformation.
+          I value being productive over being busy and use a disciplined approach to reach my goals.
+        </p>
+        <p>
+          Thanks to internships and student jobs, I adapt quickly to new environments, build trust with
+          teams, and love turning data into clear, useful decisions.
+        </p>
+
+        <div class="cta">
+          <a class="btn" href="#projects">View my projects</a>
+          <a class="btn secondary" href="CV_Han_Dinh.pdf" target="_blank" rel="noreferrer">Download my CV</a>
         </div>
       </div>
     </section>
 
+    <!-- ====== KEY SKILLS ====== -->
     <section id="key-skills" class="reveal-init">
       <h2>Key skills</h2>
       <div class="grid reveal-stagger" style="grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px;">
@@ -153,66 +248,68 @@
           <img src="photo_analyse.png" alt="Data analysis">
           <div class="content">
             <h3>Data analysis</h3>
-            <p>R & Python (NumPy, pandas, PySpark, matplotlib, scikit-learn). Cleaning, EDA and feature engineering for actionable insights.</p>
+            <p>R & Python (NumPy, pandas, PySpark, matplotlib, scikit-learn). Collection, cleaning, EDA & feature engineering to surface actionable insights.</p>
           </div>
         </div>
         <div class="card skill-card reveal-init">
-          <img src="photo_visualisation.png" alt="Visualization">
+          <img src="photo_visualisation.png" alt="Data visualisation">
           <div class="content">
-            <h3>Visualization & storytelling</h3>
-            <p>Power BI (DAX, Power Query) and ggplot2. Clear interactive dashboards, KPI selection and narrative communication.</p>
+            <h3>Visualisation & storytelling</h3>
+            <p>Power BI (DAX, Power Query) & ggplot2. Clear interactive dashboards, KPI choices and narratives (publish & share) to speed up decisions.</p>
           </div>
         </div>
         <div class="card skill-card reveal-init">
           <img src="photo_database.png" alt="Databases">
           <div class="content">
             <h3>Databases</h3>
-            <p>Relational design (ER), normalization. Advanced SQL, optimization (views, indexes), light ETL pipelines.</p>
+            <p>Relational design (ER/MERISE), normalisation. Advanced SQL, optimisation (views, indexes), lightweight ETL pipelines.</p>
           </div>
         </div>
         <div class="card skill-card reveal-init">
-          <img src="photo_machinelearning.png" alt="ML & Statistics">
+          <img src="photo_machinelearning.png" alt="Machine Learning and Statistics">
           <div class="content">
-            <h3>Statistical modeling & ML</h3>
-            <p>Inference (tests, regressions) and supervised/unsupervised ML. Validation, metrics, interpretability, and forecasting.</p>
+            <h3>Statistical modelling & ML</h3>
+            <p>Inference (tests, regressions) and supervised/unsupervised ML (regression, classification, clustering). Validation, metrics, interpretability, forecasting.</p>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- ====== PROJECTS ====== -->
     <section id="projects" class="reveal-init">
       <h2>Projects</h2>
       <div class="grid projects reveal-stagger">
         <article class="card reveal-init">
-          <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1600&auto=format&fit=crop" alt="Labour market tensions"/>
+          <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1600&auto=format&fit=crop" alt="Labour market tension"/>
           <div class="content">
             <span class="tag">R · Econometrics</span>
             <h3>Labour market tensions</h3>
-            <p>Linear models on tension rates vs occupation characteristics (ROME).</p>
-            <p><a href="https://github.com/Giahann21/projet-data-r" target="_blank" rel="noreferrer">GitHub repo →</a></p>
+            <p>Linear models on tension rates vs job characteristics (ROME taxonomy).</p>
+            <p><a href="https://github.com/Giahann21/projet-data-r" target="_blank" rel="noreferrer">GitHub code →</a></p>
           </div>
         </article>
         <article class="card reveal-init">
-          <img src="https://images.unsplash.com/photo-1529101091764-c3526daf38fe?q=80&w=1600&auto=format&fit=crop" alt="Elections & sociodemographics"/>
+          <img src="https://images.unsplash.com/photo-1529101091764-c3526daf38fe?q=80&w=1600&auto=format&fit=crop" alt="Elections & socio-demographics"/>
           <div class="content">
             <span class="tag">Python · Data Science</span>
-            <h3>Sociodemographics & voting behaviour</h3>
-            <p>Links between municipal sociodemographic features and electoral behaviour.</p>
+            <h3>Socio-demographics & electoral behaviour</h3>
+            <p>Links between municipal socio-demographic features and voting behaviour.</p>
             <p><a href="https://github.com/han-dinh/electoral-analysis" target="_blank" rel="noreferrer">GitHub repo →</a> · <a href="https://electoral-analysis.onrender.com" target="_blank" rel="noreferrer">Live demo →</a></p>
           </div>
         </article>
         <article class="card reveal-init">
-          <img src="photo_emploidutemps.png" alt="Timetable app"/>
+          <img src="photo_emploidutemps.png" alt="Timetable web app"/>
           <div class="content">
             <span class="tag">Flask · SQLite</span>
             <h3>Timetable app</h3>
-            <p>Manage courses, rooms, tutorial groups and teachers (SQLAlchemy).</p>
+            <p>Manage courses, rooms, TD groups and teachers (SQLAlchemy).</p>
             <p><a href="https://github.com/Giahann21/Emplois-du-temps" target="_blank" rel="noreferrer">GitHub repo →</a> · <a href="https://emplois-du-temps.onrender.com" target="_blank" rel="noreferrer">Live demo →</a></p>
           </div>
         </article>
       </div>
     </section>
 
+    <!-- ====== EXPERIENCE ====== -->
     <section id="experience" class="reveal-init">
       <h2>Experience</h2>
       <ul style="list-style:none; padding:0; margin:0;">
@@ -231,26 +328,28 @@
       </ul>
     </section>
 
+    <!-- ====== INTERESTS ====== -->
     <section id="interests" class="reveal-init">
       <h2>Interests</h2>
-      <p class="bio">Curious and impact-driven: I love turning data into useful products.</p>
+      <p class="bio">Curious and impact-oriented, I love connecting data with real-world uses.</p>
       <div class="interests reveal-stagger">
         <div class="chip reveal-init"><span class="emoji">📊</span><span>DataViz & storytelling</span></div>
-        <div class="chip reveal-init"><span class="emoji">🤖</span><span>Applied AI/ML (forecasting, NLP)</span></div>
+        <div class="chip reveal-init"><span class="emoji">🤖</span><span>Applied AI & ML (forecasting, NLP)</span></div>
         <div class="chip reveal-init"><span class="emoji">💶</span><span>Finance & macro indicators</span></div>
         <div class="chip reveal-init"><span class="emoji">🗺️</span><span>Mapping & geodata</span></div>
-        <div class="chip reveal-init"><span class="emoji">📚</span><span>Public economics</span></div>
+        <div class="chip reveal-init"><span class="emoji">📚</span><span>Public policy economics</span></div>
         <div class="chip reveal-init"><span class="emoji">🏃‍♀️</span><span>Running & street photography</span></div>
       </div>
     </section>
 
+    <!-- ====== CONTACT ====== -->
     <section id="contact" class="reveal-init" style="text-align:center; position:relative; padding:80px 20px; background:
       radial-gradient(700px 400px at 50% 0%, rgba(34,211,238,.15), transparent 60%),
       linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.00)),
       var(--bg); border-top:1px solid rgba(96,165,250,.28); border-radius:18px;">
       <h2 style="letter-spacing:3px; font-size:14px; color:var(--primary); margin-bottom:12px;">GET IN TOUCH</h2>
       <h3 style="font-size:clamp(22px,4vw,36px); font-weight:600; line-height:1.35; margin:0 auto; max-width:720px; color:var(--text);">
-        Job opportunities? <br> Let’s talk.
+        Hiring or project opportunity? <br> Send a message.
       </h3>
       <div style="margin-top:40px;">
         <a href="https://www.linkedin.com/in/dinh-tgh/" target="_blank" rel="noreferrer"
@@ -265,6 +364,7 @@
 
   <footer>© <span id="y"></span> Tran Gia Han DINH — All rights reserved.</footer>
 
+  <!-- Progress -->
   <button id="progressBtn" class="progress-btn" aria-label="Reading progress">
     <svg viewBox="0 0 44 44" width="56" height="56">
       <circle cx="22" cy="22" r="19" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="4"/>
@@ -276,8 +376,10 @@
   </button>
 
   <script>
+    // year
     document.getElementById('y').textContent = new Date().getFullYear();
 
+    // Reveal on scroll
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (!prefersReduced) {
       const observer = new IntersectionObserver((entries)=>{
@@ -286,6 +388,7 @@
       document.querySelectorAll('section, .card').forEach(el=>{ el.classList.add('reveal-init'); observer.observe(el); });
     } else { document.querySelectorAll('section, .card').forEach(el=>el.classList.add('reveal-active')); }
 
+    // Progress circle
     const btn = document.getElementById('progressBtn');
     const circle = document.getElementById('progressCircle');
     const txt = document.getElementById('progressText');
@@ -299,29 +402,40 @@
     updateProgress(); window.addEventListener('scroll', updateProgress, {passive:true}); window.addEventListener('resize', updateProgress);
     btn.addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
 
+    // Active nav link
     const sections = [...document.querySelectorAll('main section[id]')];
     const navLinks = [...document.querySelectorAll('nav a[href^="#"]')];
     function setActive(){ let idx=0, off=window.innerHeight*.35;
       sections.forEach((s,i)=>{ if(s.getBoundingClientRect().top-off<0) idx=i; });
       navLinks.forEach(l=>l.classList.remove('active'));
-      const id=sections[idx]?.id, link=navLinks.find(l=>l.getAttribute('href')==='#'+id);
+      const id = sections[idx]?.id, link = navLinks.find(l=>l.getAttribute('href')==='#'+id);
       if(link) link.classList.add('active');
     }
     setActive(); window.addEventListener('scroll', setActive, {passive:true}); window.addEventListener('resize', setActive);
 
-    // Sidebar behaviour
+    // Sidebar / hamburger
     const toggleBtn = document.getElementById('menuToggle');
     const sidebar = document.getElementById('sidebar');
     const closeBtn = document.getElementById('closeSidebar');
     const backdrop = document.getElementById('backdrop');
 
-    function openSidebar(){ sidebar.classList.add('active'); backdrop.classList.add('active'); backdrop.hidden=false; document.body.style.overflow='hidden'; toggleBtn.setAttribute('aria-expanded','true'); sidebar.setAttribute('aria-hidden','false'); }
-    function closeSidebar(){ sidebar.classList.remove('active'); backdrop.classList.remove('active'); backdrop.hidden=true; document.body.style.overflow=''; toggleBtn.setAttribute('aria-expanded','false'); sidebar.setAttribute('aria-hidden','true'); }
-
+    function openSidebar(){
+      sidebar.classList.add('active'); backdrop.classList.add('active'); backdrop.hidden=false;
+      document.body.style.overflow='hidden';
+      toggleBtn.setAttribute('aria-expanded','true');
+      sidebar.setAttribute('aria-hidden','false');
+    }
+    function closeSidebar(){
+      sidebar.classList.remove('active'); backdrop.classList.remove('active'); backdrop.hidden=true;
+      document.body.style.overflow='';
+      toggleBtn.setAttribute('aria-expanded','false');
+      sidebar.setAttribute('aria-hidden','true');
+    }
     toggleBtn.addEventListener('click', ()=> sidebar.classList.contains('active') ? closeSidebar() : openSidebar());
     closeBtn.addEventListener('click', closeSidebar);
     backdrop.addEventListener('click', closeSidebar);
     window.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeSidebar(); });
+    // close on link click
     sidebar.querySelectorAll('a').forEach(a=>a.addEventListener('click', closeSidebar));
   </script>
 </body>
