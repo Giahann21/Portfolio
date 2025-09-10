@@ -11,7 +11,7 @@
 - Visualisation (Power BI, QGIS, PowerPoint), storytelling de données
 
 #### Machine Learning & Statistiques
-- Régression linéaire, clustering, arbres de décision  
+- Segmentation, Scoring, Séries Temporelles, modèles de prévisions des ventes  
 - Tests statistiques, ACP, modèles économétriques
 
 #### Bureautique & Programmation
