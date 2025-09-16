@@ -14,6 +14,12 @@
       --bg:#FDFBF7; --bg2:#FFFFFF; --card:#FFFFFF; --border:#E6D5B8;
       --text:#2C2C2C; --muted:#6F6A61;
       --primary:#E6D5B8; --primary-600:#D4C0A2; --accent:#EBD4CB; --ring:rgba(230,213,184,.4);
+
+      /* === Couleurs boutons projets === */
+      --powerbi:#F7E2A7;       --powerbi-600:#E8CF86;   /* jaune pastel */
+      --r-econo:#CFE8D6;       --r-econo-600:#B8D9C3;   /* vert sauge */
+      --python:#CFE1F6;        --python-600:#B8D1EE;    /* bleu pastel */
+      --flask:#E5D4F5;         --flask-600:#D3BFEE;     /* lavande */
     }
     *{box-sizing:border-box}
     html,body{margin:0;height:100%}
@@ -162,6 +168,27 @@
     .splash-logo-text{ font-family:"Playfair Display", serif; font-weight:700; font-size:44px; color:#5A4634; letter-spacing:.5px; }
     @keyframes popin{ from{transform:scale(.85); opacity:.0;} to{transform:scale(1); opacity:1;} }
     @media (prefers-reduced-motion: reduce){ .splash, .splash *{ animation:none!important; transition:none!important; } }
+  
+    /* ===== Boutons des cartes Projets ===== */
+      .card .actions{ display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
+      .card-btn{
+        display:inline-flex; align-items:center; gap:8px;
+        padding:8px 12px; border-radius:999px; font-size:14px; font-weight:600;
+        border:1px solid var(--border);
+        box-shadow:0 4px 10px rgba(0,0,0,.05);
+        transition:transform .15s ease, filter .15s ease, background .15s ease, border-color .15s ease;
+        text-decoration:none; color:#2C2C2C;
+      }
+      .card-btn:hover{ transform:translateY(-1px); filter:brightness(1.02); }
+      .card-btn:active{ transform:translateY(0); }
+      .btn-powerbi{ background:var(--powerbi); border-color:var(--powerbi-600); }
+      .btn-recono{  background:var(--r-econo);  border-color:var(--r-econo-600); }
+      .btn-python{  background:var(--python);   border-color:var(--python-600); }
+      .btn-flask{   background:var(--flask);    border-color:var(--flask-600); }
+      .card-btn.is-clicked{
+        filter:brightness(0.96);
+        box-shadow:0 6px 14px rgba(0,0,0,.08) inset;
+      }
   </style>
 </head>
 <body>
@@ -255,14 +282,64 @@
       </div>
     </section>
 
-    <!-- ====== PROJETS ====== -->
+     <!-- ====== PROJETS ====== -->
     <section id="projets" class="reveal-init">
       <h2>Projets</h2>
       <div class="grid projects reveal-stagger">
-        <article class="card reveal-init"><img src="analyse_ventes.png" alt="Dashboard Power BI - Analyse des ventes"/><div class="content"><span class="tag">Power BI</span><h3>Dashboard Ventes & Marges</h3><p>Suivi CA, marge, panier moyen, top clients/produits, comparaisons temporelles, filtres dynamiques.</p><p><a href="Analyse%20des%20ventes.pdf" target="_blank" rel="noreferrer">Présentation PDF →</a></p></div></article>
-        <article class="card reveal-init"><img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1600&auto=format&fit=crop" alt="Tensions du marché du travail"/><div class="content"><span class="tag">R · Econométrie</span><h3>Tensions du marché du travail</h3><p>Modèles linéaires sur taux de tension & caractéristiques métiers (ROME).</p><p><a href="https://github.com/Giahann21/projet-data-r" target="_blank" rel="noreferrer">Code sur GitHub →</a></p></div></article>
-        <article class="card reveal-init"><img src="https://images.unsplash.com/photo-1529101091764-c3526daf38fe?q=80&w=1600&auto=format&fit=crop" alt="Élections et socio-démographie"/><div class="content"><span class="tag">Python · Data Science</span><h3>Analyse socio-démographique & comportements électoraux</h3><p>Liens entre caractéristiques communales et comportements électoraux.</p><p><a href="https://github.com/han-dinh/electoral-analysis" target="_blank" rel="noreferrer">Repo GitHub →</a></p></div></article>
-        <article class="card reveal-init"><img src="photo_emploidutemps.png" alt="Application Emploi du temps"/><div class="content"><span class="tag">Flask · SQLite</span><h3>App Emploi du temps</h3><p>Gestion des cours, salles, groupes TD, enseignants (SQLAlchemy).</p><p><a href="https://github.com/Giahann21/Emplois-du-temps" target="_blank" rel="noreferrer">Repo GitHub →</a> · <a href="https://emplois-du-temps.onrender.com" target="_blank" rel="noreferrer">Voir en ligne →</a></p></div></article>
+
+        <!-- Power BI -->
+        <article class="card reveal-init">
+          <img src="analyse_ventes.png" alt="Dashboard Power BI - Analyse des ventes"/>
+          <div class="content">
+            <span class="tag">Power BI</span>
+            <h3>Dashboard Ventes & Marges</h3>
+            <p>Suivi CA, marge, panier moyen, top clients/produits, comparaisons temporelles, filtres dynamiques.</p>
+            <div class="actions">
+              <a class="card-btn btn-powerbi" href="Analyse%20des%20ventes.pdf" target="_blank" rel="noreferrer">Présentation PDF →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- R · Econométrie -->
+        <article class="card reveal-init">
+          <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1600&auto=format&fit=crop" alt="Tensions du marché du travail"/>
+          <div class="content">
+            <span class="tag">R · Econométrie</span>
+            <h3>Tensions du marché du travail</h3>
+            <p>Modèles linéaires sur taux de tension & caractéristiques métiers (ROME).</p>
+            <div class="actions">
+              <a class="card-btn btn-recono" href="https://github.com/Giahann21/projet-data-r" target="_blank" rel="noreferrer">Code sur GitHub →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Python élections -->
+        <article class="card reveal-init">
+          <img src="https://images.unsplash.com/photo-1529101091764-c3526daf38fe?q=80&w=1600&auto=format&fit=crop" alt="Élections et socio-démographie"/>
+          <div class="content">
+            <span class="tag">Python · Data Science</span>
+            <h3>Analyse socio-démographique & comportements électoraux</h3>
+            <p>Liens entre caractéristiques communales et comportements électoraux.</p>
+            <div class="actions">
+              <a class="card-btn btn-python" href="https://github.com/han-dinh/electoral-analysis" target="_blank" rel="noreferrer">Repo GitHub →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Flask EDT -->
+        <article class="card reveal-init">
+          <img src="photo_emploidutemps.png" alt="Application Emploi du temps"/>
+          <div class="content">
+            <span class="tag">Flask · SQLite</span>
+            <h3>App Emploi du temps</h3>
+            <p>Gestion des cours, salles, groupes TD, enseignants (SQLAlchemy).</p>
+            <div class="actions">
+              <a class="card-btn btn-flask" href="https://github.com/Giahann21/Emplois-du-temps" target="_blank" rel="noreferrer">Repo GitHub →</a>
+              <a class="card-btn btn-flask" href="https://emplois-du-temps.onrender.com" target="_blank" rel="noreferrer">Voir en ligne →</a>
+            </div>
+          </div>
+        </article>
+
       </div>
     </section>
 
