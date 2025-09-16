@@ -14,7 +14,14 @@
       --bg:#FDFBF7; --bg2:#FFFFFF; --card:#FFFFFF; --border:#E6D5B8;
       --text:#2C2C2C; --muted:#6F6A61;
       --primary:#E6D5B8; --primary-600:#D4C0A2; --accent:#EBD4CB; --ring:rgba(230,213,184,.4);
+
+      /* Project button colors */
+      --powerbi:#F7E2A7;       --powerbi-600:#E8CF86;
+      --r-econo:#CFE8D6;       --r-econo-600:#B8D9C3;
+      --python:#CFE1F6;        --python-600:#B8D1EE;
+      --flask:#E5D4F5;         --flask-600:#D3BFEE;
     }
+
     *{box-sizing:border-box}
     html,body{margin:0;height:100%}
     html{scroll-behavior:smooth}
@@ -162,6 +169,27 @@
     .splash-logo-text{ font-family:"Playfair Display", serif; font-weight:700; font-size:44px; color:#5A4634; letter-spacing:.5px; }
     @keyframes popin{ from{transform:scale(.85); opacity:.0;} to{transform:scale(1); opacity:1;} }
     @media (prefers-reduced-motion: reduce){ .splash, .splash *{ animation:none!important; transition:none!important; } }
+  
+    /* Project card buttons */
+      .card .actions{ display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
+      .card-btn{
+        display:inline-flex; align-items:center; gap:8px;
+        padding:8px 12px; border-radius:999px; font-size:14px; font-weight:600;
+        border:1px solid var(--border);
+        box-shadow:0 4px 10px rgba(0,0,0,.05);
+        transition:transform .15s ease, filter .15s ease, background .15s ease, border-color .15s ease;
+        text-decoration:none; color:#2C2C2C;
+      }
+      .card-btn:hover{ transform:translateY(-1px); filter:brightness(1.02); }
+      .card-btn:active{ transform:translateY(0); }
+      .btn-powerbi{ background:var(--powerbi); border-color:var(--powerbi-600); }
+      .btn-recono{  background:var(--r-econo);  border-color:var(--r-econo-600); }
+      .btn-python{  background:var(--python);   border-color:var(--python-600); }
+      .btn-flask{   background:var(--flask);    border-color:var(--flask-600); }
+      .card-btn.is-clicked{
+        filter:brightness(0.96);
+        box-shadow:0 6px 14px rgba(0,0,0,.08) inset;
+      }
   </style>
 </head>
 <body>
@@ -256,13 +284,59 @@
     </section>
 
     <!-- ====== PROJECTS ====== -->
-    <section id="projects" class="reveal-init">
+    <section id="projets" class="reveal-init">
       <h2>Projects</h2>
       <div class="grid projects reveal-stagger">
-        <article class="card reveal-init"><img src="analyse_ventes.png" alt="Power BI dashboard — Sales analysis"/><div class="content"><span class="tag">Power BI</span><h3>Sales & Margin Dashboard</h3><p>Track revenue, margin, average basket, top clients/products, time comparisons, dynamic filters.</p><p><a href="Analyse%20des%20ventes.pdf" target="_blank" rel="noreferrer">PDF deck →</a></p></div></article>
-        <article class="card reveal-init"><img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1600&auto=format&fit=crop" alt="Labour market tightness"/><div class="content"><span class="tag">R · Econometrics</span><h3>Labour Market Tightness</h3><p>Linear models on tightness rate & job characteristics (ROME).</p><p><a href="https://github.com/Giahann21/projet-data-r" target="_blank" rel="noreferrer">GitHub code →</a></p></div></article>
-        <article class="card reveal-init"><img src="https://images.unsplash.com/photo-1529101091764-c3526daf38fe?q=80&w=1600&auto=format&fit=crop" alt="Elections and sociodemographics"/><div class="content"><span class="tag">Python · Data Science</span><h3>Sociodemographics & Voting Behaviour</h3><p>Links between municipal features and electoral behaviour.</p><p><a href="https://github.com/han-dinh/electoral-analysis" target="_blank" rel="noreferrer">GitHub repo →</a></p></div></article>
-        <article class="card reveal-init"><img src="photo_emploidutemps.png" alt="Schedule web app"/><div class="content"><span class="tag">Flask · SQLite</span><h3>Schedule App</h3><p>Manage courses, rooms, TD groups, teachers (SQLAlchemy).</p><p><a href="https://github.com/Giahann21/Emplois-du-temps" target="_blank" rel="noreferrer">GitHub repo →</a> · <a href="https://emplois-du-temps.onrender.com" target="_blank" rel="noreferrer">Live demo →</a></p></div></article>
+
+        <article class="card reveal-init">
+          <img src="analyse_ventes.png" alt="Power BI sales dashboard"/>
+          <div class="content">
+            <span class="tag">Power BI</span>
+            <h3>Sales & Margin Dashboard</h3>
+            <p>Track revenue, margin, basket size, top clients/products, time comparisons, dynamic filters.</p>
+            <div class="actions">
+              <a class="card-btn btn-powerbi" href="Analyse%20des%20ventes.pdf" target="_blank" rel="noreferrer">PDF deck →</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card reveal-init">
+          <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1600&auto=format&fit=crop" alt="Labour market tension"/>
+          <div class="content">
+            <span class="tag">R · Econometrics</span>
+            <h3>Labour Market Tensions</h3>
+            <p>Linear models on tension rate & job characteristics (ROME taxonomy).</p>
+            <div class="actions">
+              <a class="card-btn btn-recono" href="https://github.com/Giahann21/projet-data-r" target="_blank" rel="noreferrer">GitHub repo →</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card reveal-init">
+          <img src="https://images.unsplash.com/photo-1529101091764-c3526daf38fe?q=80&w=1600&auto=format&fit=crop" alt="Elections & socio-demographics"/>
+          <div class="content">
+            <span class="tag">Python · Data Science</span>
+            <h3>Socio-demographics & Voting Behaviour</h3>
+            <p>Links between municipal characteristics and electoral behaviour.</p>
+            <div class="actions">
+              <a class="card-btn btn-python" href="https://github.com/han-dinh/electoral-analysis" target="_blank" rel="noreferrer">GitHub repo →</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card reveal-init">
+          <img src="photo_emploidutemps.png" alt="Timetable application"/>
+          <div class="content">
+            <span class="tag">Flask · SQLite</span>
+            <h3>Timetable App</h3>
+            <p>Manage courses, rooms, tutorial groups, teachers (SQLAlchemy).</p>
+            <div class="actions">
+              <a class="card-btn btn-flask" href="https://github.com/Giahann21/Emplois-du-temps" target="_blank" rel="noreferrer">GitHub repo →</a>
+              <a class="card-btn btn-flask" href="https://emplois-du-temps.onrender.com" target="_blank" rel="noreferrer">View live →</a>
+            </div>
+          </div>
+        </article>
+
       </div>
     </section>
 
