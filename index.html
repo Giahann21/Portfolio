@@ -133,12 +133,33 @@
     .chip .emoji{font-size:20px}
     .bio{color:var(--muted);margin-top:12px}
 
+    /* Chips */
+    .interests{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-top:12px}
+    .chip{ display:flex;align-items:center;gap:10px;background:#FFF; border:1px solid var(--border); padding:12px 14px; border-radius:14px; color:var(--text); box-shadow:0 6px 16px rgba(0,0,0,.04) }
+    .chip .emoji{font-size:20px}
+    .bio{color:var(--muted);margin-top:12px}
+
+    /* --- Mini galerie pour intérêts --- */
+    .mini-gallery{
+      display:grid;
+      grid-template-columns:repeat(auto-fill, minmax(140px,1fr));
+      gap:10px;
+      margin-top:10px;
+    }
+    .mini-gallery img{
+      width:100%; height:120px; object-fit:cover;
+      border-radius:12px; border:1px solid var(--border);
+      box-shadow:0 6px 16px rgba(0,0,0,.05);
+      transition:transform .2s ease, filter .2s ease;
+    }
+    .mini-gallery img:hover{ transform:translateY(-2px); filter:brightness(1.03); }
+
     /* Animations */
     .reveal-init{opacity:0; transform:translateY(22px); transition:opacity .7s cubic-bezier(.22,.61,.36,1), transform .7s cubic-bezier(.22,.61,.36,1)}
     .reveal-active{opacity:1; transform:none}
     .reveal-stagger > *{transition-delay:var(--stagger)}
     @media (prefers-reduced-motion: reduce){.reveal-init,.reveal-active{opacity:1; transform:none; transition:none}}
-
+    
     /* Bouton de progression (clair) */
     .progress-btn{
       position:fixed; right:16px; bottom:16px; width:56px; height:56px; border-radius:50%; border:none; cursor:pointer; z-index:60;
@@ -356,14 +377,33 @@
     <!-- ====== INTÉRÊTS ====== -->
     <section id="interets" class="reveal-init">
       <h2>Centres d’intérêt</h2>
-      <p class="bio">Curieuse et orientée impact, j’aime relier la data à des usages concrets.</p>
-      <div class="interests reveal-stagger">
-        <div class="chip reveal-init"><span class="emoji">📊</span><span>DataViz & storytelling</span></div>
-        <div class="chip reveal-init"><span class="emoji">🤖</span><span>IA & ML appliqués (prévision, NLP)</span></div>
-        <div class="chip reveal-init"><span class="emoji">💶</span><span>Finance & macro</span></div>
-        <div class="chip reveal-init"><span class="emoji">🗺️</span><span>Cartographie & géodonnées</span></div>
-        <div class="chip reveal-init"><span class="emoji">📚</span><span>Économie publique</span></div>
-        <div class="chip reveal-init"><span class="emoji">🏃‍♀️</span><span>Course & photo urbaine</span></div>
+      <p class="bio">
+        Curieuse et orientée impact, j’aime explorer de nouvelles technologies data,
+        capturer des instants en photo et expérimenter en cuisine.
+      </p>
+    
+      <!-- 1) J’adore apprendre de nouvelles technos data -->
+      <div class="card" style="padding:14px;">
+        <span class="tag">Apprentissage · Data</span>
+        <h3 style="margin:10px 0 6px;">Nouvelles technologies & outils</h3>
+        <p class="bio" style="margin:6px 0;">
+          J’explore régulièrement de nouveaux frameworks et librairies (ex. PySpark, dbt, DuckDB, LLMs, LangChain, Power BI avancé).
+        </p>
+      </div>
+    
+      <!-- 2) Photographie -->
+      <div class="chip reveal-init" style="margin-top:12px;">
+        <span class="emoji">📷</span><span>Photographie — capter le moment</span>
+        <!-- Mini galerie : mets tes vraies images -->
+        <div class="mini-gallery">
+          <img src="learning1.jpg" alt="Exploration d’un nouveau framework data">
+          <img src="learning2.jpg" alt="Notebook avec expérimentation ML">
+        </div>
+      </div>
+    
+      <!-- 3) Cuisine -->
+      <div class="chip reveal-init" style="margin-top:8px;">
+        <span class="emoji">🍳</span><span>Cuisine — tester et partager de nouvelles recettes</span>
       </div>
     </section>
 
