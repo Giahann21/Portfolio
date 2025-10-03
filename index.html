@@ -117,6 +117,23 @@
     section{padding:20px 0}
     footer{border-top:1px solid var(--border);padding:28px 20px;color:#6F6A61;background:linear-gradient(180deg, #FFF, #FDFBF7)}
 
+    /* Taille réduite des images dans les cartes Compétences */
+    :root{
+      --skill-img-h: clamp(90px, 18vw, 120px); /* min 90px, max 120px */
+    }
+    
+    .skill-card img{
+      height: var(--skill-img-h) !important; /* écrase la règle .card img */
+      object-fit: contain;                    /* évite le recadrage */
+      padding: 10px;                          /* un peu d’air autour de l’icône */
+      background: #000;                       /* optionnel: garde le fond noir propre */
+      border-bottom: 1px solid var(--border); /* séparation propre image/texte */
+    }
+    
+    /* (optionnel) réduire légèrement le titre pour harmoniser */
+    .skill-card h3{
+      font-size: clamp(16px, 2.2vw, 20px);
+    }
     /* Animations */
     .reveal-init{opacity:0; transform:translateY(22px); transition:opacity .7s cubic-bezier(.22,.61,.36,1), transform .7s cubic-bezier(.22,.61,.36,1)}
     .reveal-active{opacity:1; transform:none}
