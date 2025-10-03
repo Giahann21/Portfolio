@@ -14,12 +14,8 @@
       --bg:#FDFBF7; --bg2:#FFFFFF; --card:#FFFFFF; --border:#E6D5B8;
       --text:#2C2C2C; --muted:#6F6A61;
       --primary:#E6D5B8; --primary-600:#D4C0A2; --accent:#EBD4CB; --ring:rgba(230,213,184,.4);
-
-      /* Couleurs boutons projets */
-      --powerbi:#F7E2A7; --powerbi-600:#E8CF86;
-      --r-econo:#CFE8D6; --r-econo-600:#B8D9C3;
-      --python:#CFE1F6; --python-600:#B8D1EE;
-      --flask:#E5D4F5; --flask-600:#D3BFEE;
+      --powerbi:#F7E2A7; --powerbi-600:#E8CF86; --r-econo:#CFE8D6; --r-econo-600:#B8D9C3;
+      --python:#CFE1F6; --python-600:#B8D1EE; --flask:#E5D4F5; --flask-600:#D3BFEE;
     }
     *{box-sizing:border-box}
     html,body{margin:0;height:100%}
@@ -67,7 +63,6 @@
     .sidebar a:hover{ color:#4a4946 }
     .close-btn{ align-self:flex-end; font-size:28px; cursor:pointer; background:none; border:none; color:var(--text) }
     .sidebar hr{border:0; border-top:1px solid #EFE8DA}
-    .side-lang{margin-top:6px}
     .side-lang a{display:inline-block;border:1px solid var(--border); padding:6px 10px; border-radius:10px; margin-right:8px}
 
     /* Backdrop */
@@ -149,10 +144,8 @@
     .splash.hide{ opacity:0; visibility:hidden; }
     .splash-inner{
       display:flex; align-items:center; justify-content:center;
-      width:140px; height:140px; border-radius:28px;
-      background:#fff; border:1px solid var(--border);
-      box-shadow:0 12px 30px rgba(0,0,0,.08);
-      animation: popin .35s cubic-bezier(.22,.9,.24,1);
+      width:140px; height:140px; border-radius:28px; background:#fff; border:1px solid var(--border);
+      box-shadow:0 12px 30px rgba(0,0,0,.08); animation: popin .35s cubic-bezier(.22,.9,.24,1);
     }
     .splash-logo-text{ font-family:"Playfair Display", serif; font-weight:700; font-size:44px; color:#5A4634; letter-spacing:.5px; }
     @keyframes popin{ from{transform:scale(.85); opacity:.0;} to{transform:scale(1); opacity:1;} }
@@ -161,11 +154,8 @@
     /* Boutons cartes Projets */
     .card .actions{ display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
     .card-btn{
-      display:inline-flex; align-items:center; gap:8px;
-      padding:8px 12px; border-radius:999px; font-size:14px; font-weight:600;
-      border:1px solid var(--border);
-      box-shadow:0 4px 10px rgba(0,0,0,.05);
-      transition:transform .15s ease, filter .15s ease, background .15s ease, border-color .15s ease;
+      display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:999px; font-size:14px; font-weight:600;
+      border:1px solid var(--border); box-shadow:0 4px 10px rgba(0,0,0,.05); transition:transform .15s ease, filter .15s ease, background .15s ease, border-color .15s ease;
       text-decoration:none; color:#2C2C2C;
     }
     .card-btn:hover{ transform:translateY(-1px); filter:brightness(1.02); }
@@ -182,13 +172,7 @@
     .cert-card .content{padding:14px}
     .cert-card h3{margin:8px 0 6px;font-size:18px;color:var(--text)}
     .cert-card p{margin:0;color:var(--muted);font-size:14px}
-    .cert-thumb{width:100%; height:180px; display:block; border:0;}
-    .cert-fallback{
-      display:grid; place-items:center; height:180px;
-      background:#F3E9DD; color:#5A4634; text-align:center; padding:10px;
-      font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
-    }
-    .cert-fallback strong{display:block; margin-bottom:6px}
+    .cert-thumb{width:100%; height:180px; object-fit:cover; display:block; border:0;}
   </style>
 </head>
 <body>
@@ -277,10 +261,11 @@
       </div>
     </section>
 
-    <!-- PROJETS -->
+     <!-- PROJETS -->
     <section id="projets" class="reveal-init">
       <h2>Projets</h2>
       <div class="grid projects reveal-stagger">
+
         <article class="card reveal-init">
           <img src="analyse_ventes.png" alt="Dashboard Power BI - Analyse des ventes"/>
           <div class="content">
@@ -329,6 +314,7 @@
             </div>
           </div>
         </article>
+
       </div>
     </section>
 
@@ -342,25 +328,25 @@
       </ul>
     </section>
 
-    <!-- CERTIFICATIONS -->
+    <!-- ====== CERTIFICATIONS ====== -->
     <section id="certifications" class="reveal-init">
       <h2>Certifications</h2>
-      <p class="bio" style="color:var(--muted);margin-top:12px">Mes certificats Power BI attestent de mes compétences en modélisation, DAX et data storytelling.</p>
+      <p class="bio" style="color:var(--muted);margin-top:12px">
+        Mes certificats Power BI attestent de mes compétences en modélisation, DAX et data storytelling.
+      </p>
 
       <div class="cert-grid reveal-stagger">
         <!-- Power BI Essentiel -->
         <article class="cert-card reveal-init">
           <a href="cert_powerbi_essentiel.pdf" target="_blank" rel="noreferrer"
              aria-label="Ouvrir le PDF du certificat Power BI Essentiel">
-            <!-- Essaye d'afficher l'aperçu JPG ; sinon fallback interne s'affiche -->
-            <object data="cert_powerbi_essentiel.png" type="image/png" class="cert-thumb">
-              <div class="cert-fallback">
-                <div>
-                  <strong>Aperçu indisponible</strong>
-                  <span>Cliquez pour ouvrir le PDF</span>
-                </div>
-              </div>
-            </object>
+            <img
+              class="cert-thumb"
+              alt="Certification Power BI Essentiel — bases, modélisation et partage de rapports"
+              loading="lazy" decoding="async"
+              src=""
+              data-src="cert_powerbi_essentiel.png"
+              data-fallback='data:image/svg+xml;utf8,<?xml version="1.0" encoding="UTF-8"?><svg xmlns="http://www.w3.org/2000/svg" width="800" height="450"><rect width="100%" height="100%" fill="#F3E9DD"/><text x="50%" y="46%" font-size="28" font-family="Inter, Arial" fill="#5A4634" text-anchor="middle">Aperçu indisponible</text><text x="50%" y="58%" font-size="18" font-family="Inter, Arial" fill="#6F6A61" text-anchor="middle">Cliquez pour ouvrir le PDF</text></svg>'>
           </a>
           <div class="content">
             <span class="tag">Power BI</span>
@@ -376,14 +362,13 @@
         <article class="cert-card reveal-init">
           <a href="cert_powerbi_avance_dax.pdf" target="_blank" rel="noreferrer"
              aria-label="Ouvrir le PDF du certificat Power BI Avancé DAX">
-            <object data="cert_powerbi_avance_dax.png" type="image/png" class="cert-thumb">
-              <div class="cert-fallback" style="background:#EBD4CB; color:#5C4A42">
-                <div>
-                  <strong>Aperçu indisponible</strong>
-                  <span>Cliquez pour ouvrir le PDF</span>
-                </div>
-              </div>
-            </object>
+            <img
+              class="cert-thumb"
+              alt="Certification Power BI Avancé — Visualiser des données avec le langage DAX"
+              loading="lazy" decoding="async"
+              src=""
+              data-src="cert_powerbi_avance_dax.png"
+              data-fallback='data:image/svg+xml;utf8,<?xml version="1.0" encoding="UTF-8"?><svg xmlns="http://www.w3.org/2000/svg" width="800" height="450"><rect width="100%" height="100%" fill="#EBD4CB"/><text x="50%" y="46%" font-size="28" font-family="Inter, Arial" fill="#5C4A42" text-anchor="middle">Aperçu indisponible</text><text x="50%" y="58%" font-size="18" font-family="Inter, Arial" fill="#6F6A61" text-anchor="middle">Cliquez pour ouvrir le PDF</text></svg>'>
           </a>
           <div class="content">
             <span class="tag">Power BI · DAX</span>
@@ -485,7 +470,7 @@
     }
     updateProgress(); window.addEventListener('scroll', updateProgress, {passive:true}); window.addEventListener('resize', updateProgress);
 
-    // Splash : disparaît très vite
+    // Splash auto-hide
     (function () {
       const MIN = 700; const MAX_WAIT = 1200;
       const splash = document.getElementById('splash');
@@ -505,6 +490,23 @@
         setTimeout(skip, remaining);
       });
       setTimeout(skip, MAX_WAIT);
+    })();
+
+    // ===== Chargement robuste des vignettes de certificats =====
+    (function () {
+      const thumbs = document.querySelectorAll('img.cert-thumb[data-src][data-fallback]');
+      thumbs.forEach(img => {
+        const src = img.getAttribute('data-src');
+        const fallback = img.getAttribute('data-fallback');
+        // Affiche d'abord le fallback (évite l’icône cassée)
+        img.src = fallback;
+
+        // Teste l'image réelle hors DOM
+        const tester = new Image();
+        tester.onload = () => { img.src = src; };
+        tester.onerror = () => { img.src = fallback; };
+        tester.src = src;
+      });
     })();
   </script>
 </body>
