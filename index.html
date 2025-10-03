@@ -94,7 +94,7 @@
     .btn:focus{ outline:none; box-shadow:0 0 0 3px var(--ring) }
     .btn.secondary{background:#fff;color:var(--text); border:1px solid var(--border)}
 
-       /* Carte profil */
+    /* Carte profil */
     .profile-card{ background:var(--card); border:1px solid var(--border); border-radius:18px; padding:28px 22px;
       box-shadow:0 8px 22px rgba(0,0,0,.05); display:flex; flex-direction:column; align-items:center; gap:16px }
     .avatar{width:180px;height:180px;border-radius:50%;border:3px solid #FFF;object-fit:cover;box-shadow:0 6px 18px rgba(0,0,0,.06)}
@@ -125,28 +125,25 @@
     section{padding:20px 0}
     footer{border-top:1px solid var(--border);padding:28px 20px;color:#6F6A61;background:linear-gradient(180deg, #FFF, #FDFBF7)}
 
-    /* Skills + Interests */
+    /* Skills */
     .skill-card{display:flex;flex-direction:column;align-items:center;text-align:center}
     .skill-card img{width:60px;height:60px;margin-top:16px; filter:drop-shadow(0 8px 18px rgba(0,0,0,.06))}
-    .interests{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-top:12px}
-    .chip{ display:flex;align-items:center;gap:10px;background:#FFF; border:1px solid var(--border); padding:12px 14px; border-radius:14px; color:var(--text); box-shadow:0 6px 16px rgba(0,0,0,.04) }
-    .chip .emoji{font-size:20px}
-    .bio{color:var(--muted);margin-top:12px}
 
-    /* Chips */
-    .interests{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-top:12px}
-    .chip{ display:flex;align-items:center;gap:10px;background:#FFF; border:1px solid var(--border); padding:12px 14px; border-radius:14px; color:var(--text); box-shadow:0 6px 16px rgba(0,0,0,.04) }
-    .chip .emoji{font-size:20px}
-    .bio{color:var(--muted);margin-top:12px}
+    /* --- Mini galerie (si besoin dans d'autres sections) --- */
+    .mini-gallery{
+      display:grid;
+      grid-template-columns:repeat(auto-fill, minmax(140px,1fr));
+      gap:10px;
+      margin-top:10px;
+    }
+    .mini-gallery img{
+      width:100%; height:120px; object-fit:cover;
+      border-radius:12px; border:1px solid var(--border);
+      box-shadow:0 6px 16px rgba(0,0,0,.05);
+      transition:transform .2s ease, filter .2s ease;
+    }
+    .mini-gallery img:hover{ transform:translateY(-2px); filter:brightness(1.03); }
 
-   /* ===== Certifications ===== */
-    .cert-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
-    .cert-card{background:var(--card);border:1px solid var(--border);border-radius:18px;overflow:hidden;box-shadow:0 8px 22px rgba(0,0,0,.05)}
-    .cert-card img{width:100%;height:180px;object-fit:cover;display:block}
-    .cert-card .content{padding:14px}
-    .cert-card h3{margin:8px 0 6px;font-size:18px;color:var(--text)}
-    .cert-card p{margin:0;color:var(--muted);font-size:14px}
-    
     /* Animations */
     .reveal-init{opacity:0; transform:translateY(22px); transition:opacity .7s cubic-bezier(.22,.61,.36,1), transform .7s cubic-bezier(.22,.61,.36,1)}
     .reveal-active{opacity:1; transform:none}
@@ -184,25 +181,33 @@
     @media (prefers-reduced-motion: reduce){ .splash, .splash *{ animation:none!important; transition:none!important; } }
   
     /* ===== Boutons des cartes Projets ===== */
-      .card .actions{ display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
-      .card-btn{
-        display:inline-flex; align-items:center; gap:8px;
-        padding:8px 12px; border-radius:999px; font-size:14px; font-weight:600;
-        border:1px solid var(--border);
-        box-shadow:0 4px 10px rgba(0,0,0,.05);
-        transition:transform .15s ease, filter .15s ease, background .15s ease, border-color .15s ease;
-        text-decoration:none; color:#2C2C2C;
-      }
-      .card-btn:hover{ transform:translateY(-1px); filter:brightness(1.02); }
-      .card-btn:active{ transform:translateY(0); }
-      .btn-powerbi{ background:var(--powerbi); border-color:var(--powerbi-600); }
-      .btn-recono{  background:var(--r-econo);  border-color:var(--r-econo-600); }
-      .btn-python{  background:var(--python);   border-color:var(--python-600); }
-      .btn-flask{   background:var(--flask);    border-color:var(--flask-600); }
-      .card-btn.is-clicked{
-        filter:brightness(0.96);
-        box-shadow:0 6px 14px rgba(0,0,0,.08) inset;
-      }
+    .card .actions{ display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
+    .card-btn{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 12px; border-radius:999px; font-size:14px; font-weight:600;
+      border:1px solid var(--border);
+      box-shadow:0 4px 10px rgba(0,0,0,.05);
+      transition:transform .15s ease, filter .15s ease, background .15s ease, border-color .15s ease;
+      text-decoration:none; color:#2C2C2C;
+    }
+    .card-btn:hover{ transform:translateY(-1px); filter:brightness(1.02); }
+    .card-btn:active{ transform:translateY(0); }
+    .btn-powerbi{ background:var(--powerbi); border-color:var(--powerbi-600); }
+    .btn-recono{  background:var(--r-econo);  border-color:var(--r-econo-600); }
+    .btn-python{  background:var(--python);   border-color:var(--python-600); }
+    .btn-flask{   background:var(--flask);    border-color:var(--flask-600); }
+    .card-btn.is-clicked{
+      filter:brightness(0.96);
+      box-shadow:0 6px 14px rgba(0,0,0,.08) inset;
+    }
+
+    /* ===== Certifications (nouveau) ===== */
+    .cert-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
+    .cert-card{background:var(--card);border:1px solid var(--border);border-radius:18px;overflow:hidden;box-shadow:0 8px 22px rgba(0,0,0,.05)}
+    .cert-card img{width:100%;height:180px;object-fit:cover;display:block}
+    .cert-card .content{padding:14px}
+    .cert-card h3{margin:8px 0 6px;font-size:18px;color:var(--text)}
+    .cert-card p{margin:0;color:var(--muted);font-size:14px}
   </style>
 </head>
 <body>
@@ -210,8 +215,6 @@
   <!-- ===== Splash intégré ===== -->
   <div id="splash" class="splash" aria-label="Écran d’introduction">
     <div class="splash-inner">
-      <!-- Remplace 'GH' par une image si tu veux -->
-      <!-- <img src="Logo.png" alt="Logo" class="splash-logo-img"> -->
       <div class="splash-logo-text">GH</div>
     </div>
   </div>
@@ -226,7 +229,7 @@
         <li><a href="#key-skills">Compétences clés</a></li>
         <li><a href="#projets">Projets</a></li>
         <li><a href="#experiences">Expériences</a></li>
-        <li><a href="#interets">Centres d’intérêt</a></li>
+        <li><a href="#certifications">Certifications</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
       <div style="display:flex;align-items:center;gap:10px">
@@ -243,7 +246,7 @@
     <a href="#key-skills">Compétences clés</a>
     <a href="#projets">Projets</a>
     <a href="#experiences">Expériences</a>
-    <a href="#interets">Certifications</a>
+    <a href="#certifications">Certifications</a>
     <a href="#contact">Contact</a>
     <hr>
     <div class="side-lang"><a href="index_en.html">🇬🇧 English</a></div>
@@ -253,7 +256,7 @@
     <!-- ====== HERO ====== -->
     <section id="hero" class="hero reveal-init">
       <div class="profile-card">
-        <img src="portrait.jpg" alt="Portrait de Tran Gia Han DINH" class="avatar">
+        <img src="portrait.jpg" alt="Portrait de Tran Gia Han DINH" class="avatar" width="180" height="180">
         <h3 class="name">Tran Gia Han <strong>DINH</strong></h3>
         <div class="role-chips"><span>Data Analyst</span><span>Data Scientist</span></div>
         <div class="contact-icons">
@@ -367,11 +370,11 @@
       </ul>
     </section>
 
-   <!-- ====== CERTIFICATIONS ====== -->
+    <!-- ====== CERTIFICATIONS ====== -->
     <section id="certifications" class="reveal-init">
       <h2>Certifications</h2>
       <p class="bio">Mes certificats Power BI attestent de mes compétences en modélisation, DAX et data storytelling.</p>
-    
+
       <div class="cert-grid reveal-stagger">
         <!-- Power BI Essentiel -->
         <article class="cert-card reveal-init">
@@ -391,8 +394,8 @@
             </div>
           </div>
         </article>
-    
-        <!-- Power BI Avancé (DAX) -->
+
+        <!-- Power BI Avancé (DAX / visualiser des données) -->
         <article class="cert-card reveal-init">
           <a href="cert_powerbi_avance_dax.pdf" target="_blank" rel="noreferrer" aria-label="Ouvrir le PDF du certificat Power BI Avancé DAX">
             <img
@@ -505,10 +508,10 @@
     (function () {
       const MIN = 700;            // durée minimale d’affichage (ms)
       const MAX_WAIT = 1200;      // filet de sécurité si la page met du temps
-  
+    
       const splash = document.getElementById('splash');
       if (!splash) return;
-  
+    
       // Permettre de passer le splash tout de suite (clic ou touche)
       const skip = () => {
         splash.classList.add('hide');
@@ -518,16 +521,16 @@
       };
       splash.addEventListener('click', skip);
       window.addEventListener('keydown', skip);
-  
+    
       const start = performance.now();
-  
+    
       // Dès que le DOM est prêt (plus rapide que 'load')
       document.addEventListener('DOMContentLoaded', () => {
         const elapsed = performance.now() - start;
         const remaining = Math.max(0, MIN - elapsed);
         setTimeout(skip, remaining);
       });
-  
+    
       // Filet de sécu : quoi qu’il arrive, on cache au bout de MAX_WAIT
       setTimeout(skip, MAX_WAIT);
     })();
