@@ -139,21 +139,14 @@
     .chip .emoji{font-size:20px}
     .bio{color:var(--muted);margin-top:12px}
 
-    /* --- Mini galerie pour intérêts --- */
-    .mini-gallery{
-      display:grid;
-      grid-template-columns:repeat(auto-fill, minmax(140px,1fr));
-      gap:10px;
-      margin-top:10px;
-    }
-    .mini-gallery img{
-      width:100%; height:120px; object-fit:cover;
-      border-radius:12px; border:1px solid var(--border);
-      box-shadow:0 6px 16px rgba(0,0,0,.05);
-      transition:transform .2s ease, filter .2s ease;
-    }
-    .mini-gallery img:hover{ transform:translateY(-2px); filter:brightness(1.03); }
-
+   /* ===== Certifications ===== */
+    .cert-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
+    .cert-card{background:var(--card);border:1px solid var(--border);border-radius:18px;overflow:hidden;box-shadow:0 8px 22px rgba(0,0,0,.05)}
+    .cert-card img{width:100%;height:180px;object-fit:cover;display:block}
+    .cert-card .content{padding:14px}
+    .cert-card h3{margin:8px 0 6px;font-size:18px;color:var(--text)}
+    .cert-card p{margin:0;color:var(--muted);font-size:14px}
+    
     /* Animations */
     .reveal-init{opacity:0; transform:translateY(22px); transition:opacity .7s cubic-bezier(.22,.61,.36,1), transform .7s cubic-bezier(.22,.61,.36,1)}
     .reveal-active{opacity:1; transform:none}
@@ -374,46 +367,47 @@
       </ul>
     </section>
 
-    <!-- ====== CERTIFICATIONS ====== -->
-    <section id="interets" class="reveal-init">
+   <!-- ====== CERTIFICATIONS ====== -->
+    <section id="certifications" class="reveal-init">
       <h2>Certifications</h2>
       <p class="bio">Mes certificats Power BI attestent de mes compétences en modélisation, DAX et data storytelling.</p>
     
-        <div class="cert-grid reveal-stagger">
+      <div class="cert-grid reveal-stagger">
         <!-- Power BI Essentiel -->
         <article class="cert-card reveal-init">
-          <a href="cert_powerbi_essentiel.jpg" target="_blank" rel="noreferrer">
+          <a href="cert_powerbi_essentiel.pdf" target="_blank" rel="noreferrer" aria-label="Ouvrir le PDF du certificat Power BI Essentiel">
             <img
               src="cert_powerbi_essentiel.jpg"
               alt="Certification Power BI Essentiel — bases, modélisation et partage de rapports"
-              loading="lazy" decoding="async">
+              loading="lazy" decoding="async"
+              onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?><svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;800&quot; height=&quot;450&quot;><rect width=&quot;100%&quot; height=&quot;100%&quot; fill=&quot;#F3E9DD&quot;/><text x=&quot;50%&quot; y=&quot;46%&quot; font-size=&quot;28&quot; font-family=&quot;Inter, Arial&quot; fill=&quot;#5A4634&quot; text-anchor=&quot;middle&quot;>Aperçu indisponible</text><text x=&quot;50%&quot; y=&quot;58%&quot; font-size=&quot;18&quot; font-family=&quot;Inter, Arial&quot; fill=&quot;#6F6A61&quot; text-anchor=&quot;middle&quot;>Cliquez pour ouvrir le PDF</text></svg>';">
           </a>
           <div class="content">
             <span class="tag">Power BI</span>
             <h3>Power BI — Essentiel</h3>
             <p>Import & nettoyage (Power Query), modèle de données, visuels de base, partage sécurisé.</p>
-            <!-- (Option) Lien vers PDF -->
-            <!-- <div class="actions" style="margin-top:10px">
-              <a class="card-btn btn-powerbi" href="cert_powerbi_essentiel.pdf" target="_blank" rel="noreferrer">Voir le certificat (PDF) →</a>
-            </div> -->
+            <div class="actions" style="margin-top:10px">
+              <a class="card-btn btn-powerbi" href="cert_powerbi_essentiel.pdf" target="_blank" rel="noreferrer">Voir le certificat PDF →</a>
+            </div>
           </div>
         </article>
     
-        <!-- Power BI Avancé (DAX / visualiser des données) -->
+        <!-- Power BI Avancé (DAX) -->
         <article class="cert-card reveal-init">
-          <a href="cert_powerbi_avance_dax.jpg" target="_blank" rel="noreferrer">
+          <a href="cert_powerbi_avance_dax.pdf" target="_blank" rel="noreferrer" aria-label="Ouvrir le PDF du certificat Power BI Avancé DAX">
             <img
               src="cert_powerbi_avance_dax.jpg"
               alt="Certification Power BI Avancé — Visualiser des données avec le langage DAX"
-              loading="lazy" decoding="async">
+              loading="lazy" decoding="async"
+              onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?><svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;800&quot; height=&quot;450&quot;><rect width=&quot;100%&quot; height=&quot;100%&quot; fill=&quot;#EBD4CB&quot;/><text x=&quot;50%&quot; y=&quot;46%&quot; font-size=&quot;28&quot; font-family=&quot;Inter, Arial&quot; fill=&quot;#5C4A42&quot; text-anchor=&quot;middle&quot;>Aperçu indisponible</text><text x=&quot;50%&quot; y=&quot;58%&quot; font-size=&quot;18&quot; font-family=&quot;Inter, Arial&quot; fill=&quot;#6F6A61&quot; text-anchor=&quot;middle&quot;>Cliquez pour ouvrir le PDF</text></svg>';">
           </a>
           <div class="content">
             <span class="tag">Power BI · DAX</span>
             <h3>Power BI — Avancé : DAX & visualisation</h3>
             <p>Mesures & colonnes calculées, contexte d’évaluation, time-intelligence, storytelling et KPIs.</p>
-            <!-- <div class="actions" style="margin-top:10px">
-              <a class="card-btn btn-powerbi" href="cert_powerbi_avance_dax.pdf" target="_blank" rel="noreferrer">Voir le certificat (PDF) →</a>
-            </div> -->
+            <div class="actions" style="margin-top:10px">
+              <a class="card-btn btn-powerbi" href="cert_powerbi_avance_dax.pdf" target="_blank" rel="noreferrer">Voir le certificat PDF →</a>
+            </div>
           </div>
         </article>
       </div>
