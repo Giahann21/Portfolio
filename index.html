@@ -15,11 +15,11 @@
       --text:#2C2C2C; --muted:#6F6A61;
       --primary:#E6D5B8; --primary-600:#D4C0A2; --accent:#EBD4CB; --ring:rgba(230,213,184,.4);
 
-      /* === Couleurs boutons projets === */
-      --powerbi:#F7E2A7;       --powerbi-600:#E8CF86;   /* jaune pastel */
-      --r-econo:#CFE8D6;       --r-econo-600:#B8D9C3;   /* vert sauge */
-      --python:#CFE1F6;        --python-600:#B8D1EE;    /* bleu pastel */
-      --flask:#E5D4F5;         --flask-600:#D3BFEE;     /* lavande */
+      /* Couleurs boutons projets */
+      --powerbi:#F7E2A7; --powerbi-600:#E8CF86;
+      --r-econo:#CFE8D6; --r-econo-600:#B8D9C3;
+      --python:#CFE1F6; --python-600:#B8D1EE;
+      --flask:#E5D4F5; --flask-600:#D3BFEE;
     }
     *{box-sizing:border-box}
     html,body{margin:0;height:100%}
@@ -36,7 +36,7 @@
     a{color:inherit;text-decoration:none}
     a:hover{filter:brightness(1.02)}
 
-    /* Header / Nav clair collé en haut toute la page */
+    /* Header / Nav */
     header{
       position: fixed; top: 0; left: 0; right: 0; z-index: 70; width: 100%;
       background: linear-gradient(180deg, rgba(255,255,255,.95), rgba(253,251,247,.85));
@@ -56,8 +56,6 @@
     nav ul li a:hover::after, nav ul li a.active::after{transform:scaleX(1)}
     .lang-btn{border:1px solid var(--border); background:#fff; color:var(--text); padding:6px 10px; border-radius:10px; cursor:pointer; transition:.2s;}
     .lang-btn:hover{filter:brightness(1.02)}
-
-    /* Menu hamburger (mobile) */
     .menu-toggle{font-size:28px;background:none;border:none;color:var(--text);cursor:pointer;display:none}
     @media (max-width:900px){ nav ul{display:none} .menu-toggle{display:inline-block} }
 
@@ -79,7 +77,7 @@
 
     .container{max-width:1080px;margin:0 auto;padding:40px 20px}
 
-    /* —— HERO split (carte + bio) —— */
+    /* HERO */
     .hero{display:grid;grid-template-columns:0.9fr 1.1fr;gap:36px;align-items:center;padding:48px 0}
     @media(max-width:900px){.hero{grid-template-columns:1fr}}
     .hero h1{font-size:clamp(36px,7vw,74px);line-height:1.05;margin:.2em 0}
@@ -94,7 +92,6 @@
     .btn:focus{ outline:none; box-shadow:0 0 0 3px var(--ring) }
     .btn.secondary{background:#fff;color:var(--text); border:1px solid var(--border)}
 
-    /* Carte profil */
     .profile-card{ background:var(--card); border:1px solid var(--border); border-radius:18px; padding:28px 22px;
       box-shadow:0 8px 22px rgba(0,0,0,.05); display:flex; flex-direction:column; align-items:center; gap:16px }
     .avatar{width:180px;height:180px;border-radius:50%;border:3px solid #FFF;object-fit:cover;box-shadow:0 6px 18px rgba(0,0,0,.06)}
@@ -103,8 +100,8 @@
     .role-chips{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
     .role-chips span{ font-size:14px;padding:6px 10px;border:1px solid var(--border); border-radius:999px;background:#F3E9DD;color:#5A4634 }
     .role-chips span:nth-child(2){ background:#EBD4CB; color:#5C4A42; border-color:#E3C9C0 }
-    
-    /* Icônes contacts (pro) */
+
+    /* Contact icons */
     .contact-icons{ display:flex; gap:12px; justify-content:center; flex-wrap:wrap; width:100%; margin-top:6px; }
     .icon-btn{ width:44px; height:44px; display:grid; place-items:center; border-radius:12px; background:#fff;
       border:1px solid var(--border); box-shadow:0 4px 14px rgba(0,0,0,.08); transition:transform .15s ease, box-shadow .15s ease, background .15s ease; text-decoration:none; }
@@ -125,32 +122,13 @@
     section{padding:20px 0}
     footer{border-top:1px solid var(--border);padding:28px 20px;color:#6F6A61;background:linear-gradient(180deg, #FFF, #FDFBF7)}
 
-    /* Skills */
-    .skill-card{display:flex;flex-direction:column;align-items:center;text-align:center}
-    .skill-card img{width:60px;height:60px;margin-top:16px; filter:drop-shadow(0 8px 18px rgba(0,0,0,.06))}
-
-    /* --- Mini galerie (si besoin dans d'autres sections) --- */
-    .mini-gallery{
-      display:grid;
-      grid-template-columns:repeat(auto-fill, minmax(140px,1fr));
-      gap:10px;
-      margin-top:10px;
-    }
-    .mini-gallery img{
-      width:100%; height:120px; object-fit:cover;
-      border-radius:12px; border:1px solid var(--border);
-      box-shadow:0 6px 16px rgba(0,0,0,.05);
-      transition:transform .2s ease, filter .2s ease;
-    }
-    .mini-gallery img:hover{ transform:translateY(-2px); filter:brightness(1.03); }
-
     /* Animations */
     .reveal-init{opacity:0; transform:translateY(22px); transition:opacity .7s cubic-bezier(.22,.61,.36,1), transform .7s cubic-bezier(.22,.61,.36,1)}
     .reveal-active{opacity:1; transform:none}
     .reveal-stagger > *{transition-delay:var(--stagger)}
     @media (prefers-reduced-motion: reduce){.reveal-init,.reveal-active{opacity:1; transform:none; transition:none}}
-    
-    /* Bouton de progression (clair) */
+
+    /* Bouton de progression */
     .progress-btn{
       position:fixed; right:16px; bottom:16px; width:56px; height:56px; border-radius:50%; border:none; cursor:pointer; z-index:60;
       background:linear-gradient(135deg,var(--primary),var(--accent)); display:grid; place-items:center; padding:0;
@@ -159,7 +137,7 @@
     .progress-btn:hover{filter:brightness(1.02)}
     .progress-btn:focus{outline:none; box-shadow:0 0 0 6px var(--ring)}
 
-    /* ===== Splash intégré (plein écran) ===== */
+    /* Splash */
     .splash{
       position:fixed; inset:0; z-index:9999;
       display:flex; align-items:center; justify-content:center;
@@ -179,8 +157,8 @@
     .splash-logo-text{ font-family:"Playfair Display", serif; font-weight:700; font-size:44px; color:#5A4634; letter-spacing:.5px; }
     @keyframes popin{ from{transform:scale(.85); opacity:.0;} to{transform:scale(1); opacity:1;} }
     @media (prefers-reduced-motion: reduce){ .splash, .splash *{ animation:none!important; transition:none!important; } }
-  
-    /* ===== Boutons des cartes Projets ===== */
+
+    /* Boutons cartes Projets */
     .card .actions{ display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
     .card-btn{
       display:inline-flex; align-items:center; gap:8px;
@@ -196,29 +174,29 @@
     .btn-recono{  background:var(--r-econo);  border-color:var(--r-econo-600); }
     .btn-python{  background:var(--python);   border-color:var(--python-600); }
     .btn-flask{   background:var(--flask);    border-color:var(--flask-600); }
-    .card-btn.is-clicked{
-      filter:brightness(0.96);
-      box-shadow:0 6px 14px rgba(0,0,0,.08) inset;
-    }
+    .card-btn.is-clicked{ filter:brightness(0.96); box-shadow:0 6px 14px rgba(0,0,0,.08) inset; }
 
-    /* ===== Certifications (nouveau) ===== */
+    /* ===== Certifications ===== */
     .cert-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
     .cert-card{background:var(--card);border:1px solid var(--border);border-radius:18px;overflow:hidden;box-shadow:0 8px 22px rgba(0,0,0,.05)}
-    .cert-card img{width:100%;height:180px;object-fit:cover;display:block}
     .cert-card .content{padding:14px}
     .cert-card h3{margin:8px 0 6px;font-size:18px;color:var(--text)}
     .cert-card p{margin:0;color:var(--muted);font-size:14px}
+    .cert-thumb{width:100%; height:180px; display:block; border:0;}
+    .cert-fallback{
+      display:grid; place-items:center; height:180px;
+      background:#F3E9DD; color:#5A4634; text-align:center; padding:10px;
+      font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+    }
+    .cert-fallback strong{display:block; margin-bottom:6px}
   </style>
 </head>
 <body>
 
-  <!-- ===== Splash intégré ===== -->
+  <!-- Splash -->
   <div id="splash" class="splash" aria-label="Écran d’introduction">
-    <div class="splash-inner">
-      <div class="splash-logo-text">GH</div>
-    </div>
+    <div class="splash-inner"><div class="splash-logo-text">GH</div></div>
   </div>
-  <!-- ===== /Splash ===== -->
 
   <header>
     <nav>
@@ -253,7 +231,7 @@
   </aside>
 
   <main class="container">
-    <!-- ====== HERO ====== -->
+    <!-- HERO -->
     <section id="hero" class="hero reveal-init">
       <div class="profile-card">
         <img src="portrait.jpg" alt="Portrait de Tran Gia Han DINH" class="avatar" width="180" height="180">
@@ -288,7 +266,7 @@
       </div>
     </section>
 
-    <!-- ====== COMPÉTENCES ====== -->
+    <!-- COMPÉTENCES -->
     <section id="key-skills" class="reveal-init">
       <h2>Compétences clés</h2>
       <div class="grid reveal-stagger" style="grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px;">
@@ -299,12 +277,10 @@
       </div>
     </section>
 
-     <!-- ====== PROJETS ====== -->
+    <!-- PROJETS -->
     <section id="projets" class="reveal-init">
       <h2>Projets</h2>
       <div class="grid projects reveal-stagger">
-
-        <!-- Power BI -->
         <article class="card reveal-init">
           <img src="analyse_ventes.png" alt="Dashboard Power BI - Analyse des ventes"/>
           <div class="content">
@@ -317,7 +293,6 @@
           </div>
         </article>
 
-        <!-- R · Econométrie -->
         <article class="card reveal-init">
           <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1600&auto=format&fit=crop" alt="Tensions du marché du travail"/>
           <div class="content">
@@ -330,7 +305,6 @@
           </div>
         </article>
 
-        <!-- Python élections -->
         <article class="card reveal-init">
           <img src="https://images.unsplash.com/photo-1529101091764-c3526daf38fe?q=80&w=1600&auto=format&fit=crop" alt="Élections et socio-démographie"/>
           <div class="content">
@@ -343,7 +317,6 @@
           </div>
         </article>
 
-        <!-- Flask EDT -->
         <article class="card reveal-init">
           <img src="photo_emploidutemps.png" alt="Application Emploi du temps"/>
           <div class="content">
@@ -356,11 +329,10 @@
             </div>
           </div>
         </article>
-
       </div>
     </section>
 
-    <!-- ====== EXPÉRIENCES ====== -->
+    <!-- EXPÉRIENCES -->
     <section id="experiences" class="reveal-init">
       <h2>Expériences</h2>
       <ul style="list-style:none; padding:0; margin:0;">
@@ -370,20 +342,25 @@
       </ul>
     </section>
 
-    <!-- ====== CERTIFICATIONS ====== -->
+    <!-- CERTIFICATIONS -->
     <section id="certifications" class="reveal-init">
       <h2>Certifications</h2>
-      <p class="bio">Mes certificats Power BI attestent de mes compétences en modélisation, DAX et data storytelling.</p>
+      <p class="bio" style="color:var(--muted);margin-top:12px">Mes certificats Power BI attestent de mes compétences en modélisation, DAX et data storytelling.</p>
 
       <div class="cert-grid reveal-stagger">
         <!-- Power BI Essentiel -->
         <article class="cert-card reveal-init">
-          <a href="cert_powerbi_essentiel.pdf" target="_blank" rel="noreferrer" aria-label="Ouvrir le PDF du certificat Power BI Essentiel">
-            <img
-              src="cert_powerbi_essentiel.jpg"
-              alt="Certification Power BI Essentiel — bases, modélisation et partage de rapports"
-              loading="lazy" decoding="async"
-              onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?><svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;800&quot; height=&quot;450&quot;><rect width=&quot;100%&quot; height=&quot;100%&quot; fill=&quot;#F3E9DD&quot;/><text x=&quot;50%&quot; y=&quot;46%&quot; font-size=&quot;28&quot; font-family=&quot;Inter, Arial&quot; fill=&quot;#5A4634&quot; text-anchor=&quot;middle&quot;>Aperçu indisponible</text><text x=&quot;50%&quot; y=&quot;58%&quot; font-size=&quot;18&quot; font-family=&quot;Inter, Arial&quot; fill=&quot;#6F6A61&quot; text-anchor=&quot;middle&quot;>Cliquez pour ouvrir le PDF</text></svg>';">
+          <a href="cert_powerbi_essentiel.pdf" target="_blank" rel="noreferrer"
+             aria-label="Ouvrir le PDF du certificat Power BI Essentiel">
+            <!-- Essaye d'afficher l'aperçu JPG ; sinon fallback interne s'affiche -->
+            <object data="cert_powerbi_essentiel.jpg" type="image/jpeg" class="cert-thumb">
+              <div class="cert-fallback">
+                <div>
+                  <strong>Aperçu indisponible</strong>
+                  <span>Cliquez pour ouvrir le PDF</span>
+                </div>
+              </div>
+            </object>
           </a>
           <div class="content">
             <span class="tag">Power BI</span>
@@ -395,14 +372,18 @@
           </div>
         </article>
 
-        <!-- Power BI Avancé (DAX / visualiser des données) -->
+        <!-- Power BI Avancé (DAX) -->
         <article class="cert-card reveal-init">
-          <a href="cert_powerbi_avance_dax.pdf" target="_blank" rel="noreferrer" aria-label="Ouvrir le PDF du certificat Power BI Avancé DAX">
-            <img
-              src="cert_powerbi_avance_dax.jpg"
-              alt="Certification Power BI Avancé — Visualiser des données avec le langage DAX"
-              loading="lazy" decoding="async"
-              onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?><svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;800&quot; height=&quot;450&quot;><rect width=&quot;100%&quot; height=&quot;100%&quot; fill=&quot;#EBD4CB&quot;/><text x=&quot;50%&quot; y=&quot;46%&quot; font-size=&quot;28&quot; font-family=&quot;Inter, Arial&quot; fill=&quot;#5C4A42&quot; text-anchor=&quot;middle&quot;>Aperçu indisponible</text><text x=&quot;50%&quot; y=&quot;58%&quot; font-size=&quot;18&quot; font-family=&quot;Inter, Arial&quot; fill=&quot;#6F6A61&quot; text-anchor=&quot;middle&quot;>Cliquez pour ouvrir le PDF</text></svg>';">
+          <a href="cert_powerbi_avance_dax.pdf" target="_blank" rel="noreferrer"
+             aria-label="Ouvrir le PDF du certificat Power BI Avancé DAX">
+            <object data="cert_powerbi_avance_dax.jpg" type="image/jpeg" class="cert-thumb">
+              <div class="cert-fallback" style="background:#EBD4CB; color:#5C4A42">
+                <div>
+                  <strong>Aperçu indisponible</strong>
+                  <span>Cliquez pour ouvrir le PDF</span>
+                </div>
+              </div>
+            </object>
           </a>
           <div class="content">
             <span class="tag">Power BI · DAX</span>
@@ -416,7 +397,7 @@
       </div>
     </section>
 
-    <!-- ====== CONTACT ====== -->
+    <!-- CONTACT -->
     <section id="contact" class="reveal-init" style="text-align:center; position:relative; padding:80px 20px; background:
       radial-gradient(700px 400px at 50% 0%, rgba(235,212,203,.25), transparent 60%),
       linear-gradient(180deg, rgba(255,255,255,.7), rgba(255,255,255,.3)),
@@ -453,7 +434,7 @@
     // année
     document.getElementById('y').textContent = new Date().getFullYear();
 
-    // Email obfusqué -> construit le mailto au chargement
+    // Email obfusqué
     const emailIcon = document.getElementById('emailIcon');
     if (emailIcon) {
       const addr = `${emailIcon.dataset.user}@${emailIcon.dataset.domain}`;
@@ -504,15 +485,11 @@
     }
     updateProgress(); window.addEventListener('scroll', updateProgress, {passive:true}); window.addEventListener('resize', updateProgress);
 
-    // Splash : disparaît très vite, dès que le DOM est prêt
+    // Splash : disparaît très vite
     (function () {
-      const MIN = 700;            // durée minimale d’affichage (ms)
-      const MAX_WAIT = 1200;      // filet de sécurité si la page met du temps
-    
+      const MIN = 700; const MAX_WAIT = 1200;
       const splash = document.getElementById('splash');
       if (!splash) return;
-    
-      // Permettre de passer le splash tout de suite (clic ou touche)
       const skip = () => {
         splash.classList.add('hide');
         splash.addEventListener('transitionend', () => splash.remove(), { once: true });
@@ -521,17 +498,12 @@
       };
       splash.addEventListener('click', skip);
       window.addEventListener('keydown', skip);
-    
       const start = performance.now();
-    
-      // Dès que le DOM est prêt (plus rapide que 'load')
       document.addEventListener('DOMContentLoaded', () => {
         const elapsed = performance.now() - start;
         const remaining = Math.max(0, MIN - elapsed);
         setTimeout(skip, remaining);
       });
-    
-      // Filet de sécu : quoi qu’il arrive, on cache au bout de MAX_WAIT
       setTimeout(skip, MAX_WAIT);
     })();
   </script>
